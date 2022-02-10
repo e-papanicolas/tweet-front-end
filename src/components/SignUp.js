@@ -62,7 +62,6 @@ function SignUp({ handleLogin }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((json) => {
-          console.log(json.user, json.jwt);
           localStorage.setItem("jwt", json.jwt);
           // localStorage.token = json.jwt;
           // localStorage.currentUser = json.user.id;
@@ -70,8 +69,6 @@ function SignUp({ handleLogin }) {
         });
       } else {
         res.json().then((json) => {
-          console.log(json);
-          console.log(json.errors);
           setErrors(json.errors);
         });
       }

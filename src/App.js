@@ -51,7 +51,6 @@ function App() {
         });
       } else {
         res.json().then((data) => {
-          console.log(data.errors);
           setErrors(data.errors);
         });
       }

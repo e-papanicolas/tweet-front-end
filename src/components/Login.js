@@ -55,7 +55,6 @@ function Login({ onLogin }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           // localStorage.token = data.jwt;
           // localStorage.currentUser = data.user.id;
           localStorage.setItem("jwt", data.jwt);
