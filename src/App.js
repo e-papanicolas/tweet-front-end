@@ -62,11 +62,6 @@ function App() {
     });
   }, [token]);
 
-  useEffect(() => {
-    const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
-    console.log(cable);
-  }, []);
-
   if (currentUser.name === "") {
     return <p>LOADING...</p>;
   }
