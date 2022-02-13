@@ -169,7 +169,7 @@ function SignUp({ handleLogin }) {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <NavLink to="/login" variant="body2">
+                <NavLink to="/" variant="body2">
                   Already have an account? Sign in
                 </NavLink>
               </Grid>

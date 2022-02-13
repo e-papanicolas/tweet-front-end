@@ -9,7 +9,12 @@ import Profile from "./components/Profile";
 import Boards from "./components/Boards";
 import Friends from "./components/Friends";
 
+import ActionCable from "actioncable";
+
+import "./index.css";
+
 function App() {
+  // token needs to go on every page with a protected fetch
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
@@ -35,7 +40,7 @@ function App() {
   function handleLogOut() {
     setLoggedIn(false);
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -57,6 +62,15 @@ function App() {
     });
   }, [token]);
 
+  useEffect(() => {
+    const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+    console.log(cable);
+  }, []);
+
+  if (currentUser.name === "") {
+    return <p>LOADING...</p>;
+  }
+
   if (loggedIn === false) {
     return (
       <div>
@@ -71,11 +85,7 @@ function App() {
             }
           />
 
-          <Route
-            exact
-            path="/login"
-            element={<Login onLogin={handleLogin} />}
-          />
+          <Route exact path="/" element={<Login onLogin={handleLogin} />} />
           {errors ? errors.map((e) => <div>{e}</div>) : null}
         </Routes>
       </div>
