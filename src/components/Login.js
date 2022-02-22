@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import { TextField } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -15,18 +13,22 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { NavLink } from "react-router-dom";
 
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://elenipapanicolas.com">
-//          Eleni Papanicolas
-//       </Link>{
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://elenipapanicolas.com">
+        Eleni Papanicolas
+      </Link>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
 
 const theme = createTheme();
 
@@ -55,8 +57,6 @@ function Login({ onLogin }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          // localStorage.token = data.jwt;
-          // localStorage.currentUser = data.user.id;
           localStorage.setItem("jwt", data.jwt);
           onLogin(data.user);
         });
@@ -99,7 +99,7 @@ function Login({ onLogin }) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#5b85d9" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -134,10 +134,6 @@ function Login({ onLogin }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {errors ? <p>{errors.error}</p> : null}
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
@@ -158,7 +154,7 @@ function Login({ onLogin }) {
                   </NavLink>
                 </Grid>
               </Grid>
-              {/* <Copyright sx={{ mt: 5 }} /> */}
+              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>

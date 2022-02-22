@@ -89,3 +89,28 @@ nav.horizontal:hover::after {
 nav.vertical:hover::after {
   transform: scaleY(1.1);
 }
+
+/* BOARD PAGE STYLES */
+#board-container {
+  display: flex-column;
+}
+
+#icon-large {
+  font-size: 7em;
+}
+
+#icon-med {
+  font-size: 3em;
+}
+
+#boards-container {
+}
+
+.welcome {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 10px;
+  margin: 30px;
+  font-size: 1.5em;
+}
