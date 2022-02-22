@@ -1,10 +1,13 @@
-import "../index.css";
+import React from 'react'
+// import { UserContext } from "../App";
+// import { useContext} from "react";
 
-function Profile({ user }) {
+function Profile({user}) {
+  // const user = useContext(UserContext);
   return (
-    <div className="bg-yellow-100 flex flex-col min-h-screen">
+    <div>
       <p>profile page</p>
-      <div className="text-xl font-bold">
+      <div>
         <h1>WELCOME {user.first_name}</h1>
       </div>
     </div>

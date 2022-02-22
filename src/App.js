@@ -1,41 +1,38 @@
-import { useState, useEffect } from "react";
+// import react and utils
+import { useState, useEffect, createContext } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
+// TODO: see where or if i need this import
+import ActionCable from "actioncable";
 
+// import components
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import Homepage from "./components/Homepage";
 import NavBar from "./components/NavBar";
 import Profile from "./components/Profile";
 import Boards from "./components/Boards";
-import Friends from "./components/Friends";
 
-import ActionCable from "actioncable";
-
+// import css file
 import "./index.css";
 
+// TODO: see why user context isn't working properly
+export const UserContext = createContext();
+
 function App() {
-  // token needs to go on every page with a protected fetch
+  // auth - token needs to go on every page with a protected fetch
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
+
+  // set state
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState([]);
 
+  // handles login and logout, sets or removes user
   function handleLogin(user) {
     setCurrentUser(user);
     setLoggedIn(true);
     navigate("/");
   }
-
-  // function handleLogOut() {
-  //   fetch("http://localhost:3000/logout", {
-  //     method: "DELETE",
-  //   }).then(() => {
-  //     navigate("/login");
-  //     setLoggedIn(false);
-  //     localStorage.clear();
-  //   });
-  // }
 
   function handleLogOut() {
     setLoggedIn(false);
@@ -43,6 +40,7 @@ function App() {
     navigate("/");
   }
 
+  // fetches the user from api and sets user
   useEffect(() => {
     fetch("http://localhost:3000/me", {
       headers: {
@@ -62,10 +60,12 @@ function App() {
     });
   }, [token]);
 
+  // TODO: have a loading spinner here
   if (currentUser.name === "") {
     return <p>LOADING...</p>;
   }
 
+  // pages rendered when user is logged out
   if (loggedIn === false) {
     return (
       <div>
@@ -87,15 +87,14 @@ function App() {
     );
   }
 
+  // pages rendered when user is logged in
   return (
     <div className="App">
       <div className="background"></div>
       <NavBar handleLogOut={handleLogOut} user={currentUser} />
       <Routes>
         <Route path="/me" element={<Profile user={currentUser} />} />
-        <Route path="/boards" element={<Boards user={currentUser} />} />
-        <Route path="/friends" element={<Friends user={currentUser} />} />
-        <Route path="/" element={<Homepage user={currentUser} />} />
+        <Route path="/" element={<Boards user={currentUser} />} />
       </Routes>
     </div>
   );

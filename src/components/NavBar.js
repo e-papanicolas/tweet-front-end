@@ -1,43 +1,39 @@
-import { NavLink } from "react-router-dom";
 import React from "react";
-import "../index.css";
+import { NavLink } from "react-router-dom";
+// import { UserContext } from "../App";
+// import { useContext} from "react";
 
-function NavBar({ handleLogOut }) {
+import "../App.css";
+import Icon from "@mui/material/Icon";
+
+function NavBar({ handleLogOut, user }) {
+  // const user = useContext(UserContext);
   return (
-    <div className="min-w-screen h-20 bg-gray-500 flex justify-between items-center p-50">
-      <h1 className="text-2xl">final project app</h1>
+    <div id="nav">
+      <h1>
+        <Icon className="material-icons">verified</Icon>
+      </h1>
 
-      <div className="">
-        <ul className="flex space-x-20 w-1000">
+      <nav className="nav vertical">
+        <ul>
           <li>
-            <NavLink className="text-white text-2xl" to="/">
-              Home
+            <NavLink to="/">
+              <Icon className="material-icons">home</Icon>
             </NavLink>
           </li>
           <li>
-            <NavLink className="text-white text-2xl" to="/me">
-              Profile
+            <NavLink to="/me">
+              <Icon className="material-icons">face</Icon>
             </NavLink>
           </li>
-          <li>
-            <NavLink className="text-white text-2xl" to="/boards">
-              Boards
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="text-white text-2xl" to="/friends">
-              Friends
-            </NavLink>
-          </li>
-          <li
-            onClick={handleLogOut}
-            className="text-white text-2xl cursor-pointer"
-          >
-            Log Out
+          <li onClick={handleLogOut}>
+            <p>
+              <Icon className="material-icons">logout</Icon>
+            </p>
             {/* need hover icon for logout to match links */}
           </li>
         </ul>
-      </div>
+      </nav>
     </div>
   );
 }

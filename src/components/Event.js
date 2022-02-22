@@ -1,7 +1,10 @@
 import React from "react";
 import { ActionCableConsumer } from "react-actioncable-provider";
+import { UserContext } from "../App";
+import { useContext} from "react";
 
 export default function Event() {
+  const user = useContext(UserContext);
   const token = localStorage.getItem("jwt");
   const channelObj = {
     channel: "TweetChannel",

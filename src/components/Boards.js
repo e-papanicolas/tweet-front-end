@@ -1,15 +1,18 @@
-import "../index.css";
+import React from "react";
 import Event from "./Event";
 import { ActionCableProvider } from "react-actioncable-provider";
+// import { UserContext } from "../App";
+// import { useContext} from "react";
 
 function Boards({ user }) {
+  // const user = useContext(UserContext);
   return (
-    <div className="bg-yellow-100 flex flex-col min-h-screen">
+    <div>
       <p>boards page</p>
-      <div className="text-xl font-bold">
-        <ActionCableProvider url="ws://localhost:3000/cable">
+      <div>
+        {/* <ActionCableProvider url="ws://localhost:3000/cable">
           <Event />
-        </ActionCableProvider>
+        </ActionCableProvider> */}
       </div>
     </div>
   );
