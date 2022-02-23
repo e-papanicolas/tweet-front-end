@@ -96,7 +96,13 @@ function App() {
       <Routes>
         <Route
           path="/me"
-          element={<Profile user={currentUser} setUser={setCurrentUser} />}
+          element={
+            <Profile
+              user={currentUser}
+              setUser={setCurrentUser}
+              setLoggedIn={setLoggedIn}
+            />
+          }
         />
         <Route path="/" element={<Boards user={currentUser} />} />
       </Routes>

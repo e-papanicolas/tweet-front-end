@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import Icon from "@mui/material/Icon";
 
-function Profile({ user, setUser }) {
+function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
   // const user = useContext(UserContext);
@@ -82,9 +82,8 @@ function Profile({ user, setUser }) {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      setLoggedIn(false);
       localStorage.clear();
-      setUser({});
       navigate("/");
     }
   }
