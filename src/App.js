@@ -94,7 +94,10 @@ function App() {
       <div className="background"></div>
       <NavBar handleLogOut={handleLogOut} user={currentUser} />
       <Routes>
-        <Route path="/me" element={<Profile user={currentUser} />} />
+        <Route
+          path="/me"
+          element={<Profile user={currentUser} setUser={setCurrentUser} />}
+        />
         <Route path="/" element={<Boards user={currentUser} />} />
       </Routes>
     </div>
