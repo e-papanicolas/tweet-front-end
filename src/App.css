@@ -114,3 +114,32 @@ nav.vertical:hover::after {
   margin: 30px;
   font-size: 1.5em;
 }
+
+#profile-container .icon-p {
+  font-size: 3em;
+}
+
+#profile-container .icon-p:hover {
+  opacity: 50%;
+}
+
+.icon-s:hover {
+  opacity: 50%;
+}
+
+.upload-photo {
+  display: flex;
+  padding: 10px;
+  position: relative;
+}
+
+img {
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 200px;
+  height: 200px;
+}
+
+.upload {
+  position: absolute;
+}
