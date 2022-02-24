@@ -1,15 +1,17 @@
+// import react and utils
 import React from "react";
 // import { UserContext } from "../App";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../App.css";
 import Icon from "@mui/material/Icon";
+import "../App.css";
 
 function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
   // const user = useContext(UserContext);
 
+  // sets state
   const [editProfile, setEditProfile] = useState(false);
   const [profilePic, setProfilePic] = useState();
   const [uploadPhoto, setUploadPhoto] = useState(false);
@@ -117,7 +119,7 @@ function Profile({ user, setUser, setLoggedIn }) {
         )}
       </div>
       {editProfile ? (
-        <div>
+        <div className="edit-profile">
           <form>
             <label>username: </label>
             <input

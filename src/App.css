@@ -97,6 +97,11 @@ nav.vertical:hover::after {
 
 #icon-large {
   font-size: 7em;
+  cursor: pointer;
+}
+
+#icon-large:hover {
+  opacity: 50%;
 }
 
 #icon-med {
@@ -124,7 +129,7 @@ nav.vertical:hover::after {
 }
 
 .icon-r {
-  color: red;
+  color: #f64652;
 }
 
 .icon-s:hover {
@@ -146,4 +151,14 @@ img {
 
 .upload {
   position: absolute;
+}
+
+#profile-container .edit-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+#board-form {
+  display: flex;
+  flex-direction: column;
 }
