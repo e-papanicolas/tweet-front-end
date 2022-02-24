@@ -82,7 +82,12 @@ function Boards({ user }) {
 
   // renders single event when preview is clicked
   if (eventPage) {
-    return <Event event={currentEvent} setEventPage={setEventPage} />;
+    // <ActionCableProvider url="ws://localhost:3000/cable">
+    //       <Event />
+    //     </ActionCableProvider>
+    return (
+      <Event event={currentEvent} setEventPage={setEventPage} user={user} />
+    );
   }
 
   // if user has boards, map over and render Event component for each, inside ActionCableProvider
@@ -105,9 +110,6 @@ function Boards({ user }) {
               />
             );
           })}
-          {/* <ActionCableProvider url="ws://localhost:3000/cable">
-          <Event />
-        </ActionCableProvider> */}
         </div>
       </div>
     );

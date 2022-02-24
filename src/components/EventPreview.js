@@ -1,6 +1,5 @@
+// import react and utils
 import React from "react";
-import Event from "./Event";
-import { useState } from "react";
 
 export default function EventPreview({ event, handleShowEvent }) {
   return (

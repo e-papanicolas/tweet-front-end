@@ -1,8 +1,9 @@
+// import react and utils
 import React from "react";
 // import { UserContext } from "../App";
 import { useState } from "react";
-import "../App.css";
 import Icon from "@mui/material/Icon";
+import "../App.css";
 
 export default function NewBoardForm({
   user,
