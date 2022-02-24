@@ -123,6 +123,10 @@ nav.vertical:hover::after {
   opacity: 50%;
 }
 
+.icon-r {
+  color: red;
+}
+
 .icon-s:hover {
   opacity: 50%;
 }

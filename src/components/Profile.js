@@ -117,46 +117,33 @@ function Profile({ user, setUser, setLoggedIn }) {
         )}
       </div>
       {editProfile ? (
-        <>
-          <label>username: </label>
-          <input
-            name="username"
-            placeholder={user.username}
-            onChange={handleProfileDataChange}
-          ></input>
-        </>
-      ) : (
-        <div>{user.username}</div>
-      )}
-      {editProfile ? (
         <div>
-          <label>first name: </label>
-          <input
-            name="first_name"
-            placeholder={user.first_name}
-            onChange={handleProfileDataChange}
-          ></input>
-          <label>last name: </label>
-          <input
-            name="last_name"
-            placeholder={user.last_name}
-            onChange={handleProfileDataChange}
-          ></input>
-        </div>
-      ) : (
-        <h2>
-          {user.first_name[0].toUpperCase() + user.first_name.slice(1)}{" "}
-          {user.last_name[0].toUpperCase() + user.last_name.slice(1)}
-        </h2>
-      )}
-      {editProfile ? (
-        <div>
-          <label>bio: </label>
-          <textarea
-            name="bio"
-            placeholder={user.bio}
-            onChange={handleProfileDataChange}
-          ></textarea>
+          <form>
+            <label>username: </label>
+            <input
+              name="username"
+              placeholder={user.username}
+              onChange={handleProfileDataChange}
+            ></input>
+            <label>first name: </label>
+            <input
+              name="first_name"
+              placeholder={user.first_name}
+              onChange={handleProfileDataChange}
+            ></input>
+            <label>last name: </label>
+            <input
+              name="last_name"
+              placeholder={user.last_name}
+              onChange={handleProfileDataChange}
+            ></input>
+            <label>bio: </label>
+            <textarea
+              name="bio"
+              placeholder={user.bio}
+              onChange={handleProfileDataChange}
+            ></textarea>
+          </form>
           <div>
             <Icon
               className="icon-p"
@@ -172,7 +159,17 @@ function Profile({ user, setUser, setLoggedIn }) {
             </Icon>
           </div>
         </div>
-      ) : user.bio === null ? (
+      ) : (
+        <div>
+          <h2>{user.username}</h2>
+          <h2>
+            {user.first_name[0].toUpperCase() + user.first_name.slice(1)}{" "}
+            {user.last_name[0].toUpperCase() + user.last_name.slice(1)}
+          </h2>
+        </div>
+      )}
+
+      {user.bio === null ? (
         <div>
           <p>You haven't added a bio yet.</p>
         </div>
@@ -181,16 +178,18 @@ function Profile({ user, setUser, setLoggedIn }) {
           <p>{user.bio}</p>
         </div>
       )}
+
       {editProfile ? null : (
         <div>
           <Icon className="icon-p" onClick={() => setEditProfile(!editProfile)}>
             edit
           </Icon>
-          <Icon className="icon-p" onClick={setWarnDelete}>
+          <Icon className="icon-p icon-r" onClick={setWarnDelete}>
             delete_forever
           </Icon>
         </div>
       )}
+
       {warnDelete ? (
         <div>
           <p>
