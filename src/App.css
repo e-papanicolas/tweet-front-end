@@ -162,3 +162,14 @@ img {
   display: flex;
   flex-direction: column;
 }
+
+.previews {
+  display: flex;
+}
+
+.event-preview {
+  border: 2px solid #5b85d9;
+  border-radius: 15px;
+  padding: 0 10px;
+  margin: 30px;
+}

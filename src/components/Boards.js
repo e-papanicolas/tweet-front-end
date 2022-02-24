@@ -8,21 +8,67 @@ import Icon from "@mui/material/Icon";
 // import components
 import Event from "./Event";
 import NewBoardForm from "./NewBoardForm";
+import EventPreview from "./EventPreview";
 import "../App.css";
 
 function Boards({ user }) {
   // const user = useContext(UserContext);
+  const token = localStorage.getItem("jwt");
 
   // sets state
   const [formPopup, setFormPopup] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [events, setEvents] = useState(user.events);
+  const [eventPage, setEventPage] = useState(false);
+  const [currentEvent, setCurrentEvent] = useState(null);
+
+  // fetch for creating new event
+  function handleCreateNewEvent(e, eventFormData) {
+    e.preventDefault();
+    fetch(`http://localhost:3000/events`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventFormData),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log(data);
+          setFormPopup(!formPopup);
+          setEvents([...events, data]);
+        });
+      } else {
+        res.json().then((data) => {
+          setErrors(data.errors);
+        });
+      }
+    });
+  }
+
+  // function to handle showing single event when preview button is clicked
+  function handleShowEvent(event) {
+    setEventPage(true);
+    setCurrentEvent(event);
+  }
 
   // renders new form popup when button is clicked
   if (formPopup) {
-    return <NewBoardForm user={user} setFormPopup={setFormPopup} />;
+    return (
+      <div>
+        <NewBoardForm
+          user={user}
+          setFormPopup={setFormPopup}
+          handleCreateNewEvent={handleCreateNewEvent}
+        />
+        {errors ? errors.map((e) => <div>{e}</div>) : null}
+      </div>
+    );
   }
 
   // if user has no events, only offer to add new
-  if (!user.events) {
+  if (!events) {
     return (
       <div id="board-container">
         <p>You don't have any boards...</p>
@@ -32,6 +78,11 @@ function Boards({ user }) {
         </Icon>
       </div>
     );
+  }
+
+  // renders single event when preview is clicked
+  if (eventPage) {
+    return <Event event={currentEvent} setEventPage={setEventPage} />;
   }
 
   // if user has boards, map over and render Event component for each, inside ActionCableProvider
@@ -44,8 +95,16 @@ function Boards({ user }) {
             edit_calendar
           </Icon>
         </div>
-        <div>
-          {/*  map over user.events and render event card for each */}
+        <div className="previews">
+          {events.map((event) => {
+            return (
+              <EventPreview
+                event={event}
+                key={event.id}
+                handleShowEvent={handleShowEvent}
+              />
+            );
+          })}
           {/* <ActionCableProvider url="ws://localhost:3000/cable">
           <Event />
         </ActionCableProvider> */}
