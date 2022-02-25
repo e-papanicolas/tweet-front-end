@@ -1,6 +1,7 @@
 // import react and utils
 import { useState, useEffect, createContext } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
+import { ActionCableProvider } from "react-actioncable-provider";
 
 // TODO: see where or if i need this import
 import ActionCable from "actioncable";
@@ -11,6 +12,7 @@ import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import Profile from "./components/Profile";
 import Boards from "./components/Boards";
+import Event from "./components/Event";
 
 // import css file
 import "./index.css";
@@ -32,7 +34,7 @@ function App() {
   function handleLogin(user) {
     setCurrentUser(user);
     setLoggedIn(true);
-    navigate("/");
+    navigate("/myevents");
   }
 
   function handleLogOut() {
@@ -104,7 +106,11 @@ function App() {
             />
           }
         />
-        <Route path="/" element={<Boards user={currentUser} />} />
+        <Route path="/myevents" element={<Boards user={currentUser} />} />
+        <Route
+          path="/myevents/:eventId"
+          element={<Event user={currentUser} />}
+        />
       </Routes>
     </div>
   );

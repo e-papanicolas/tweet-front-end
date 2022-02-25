@@ -1,12 +1,10 @@
 // import react and utils
 import React from "react";
-import { ActionCableProvider } from "react-actioncable-provider";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
 // import { UserContext } from "../App";
 
 // import components
-import Event from "./Event";
 import NewBoardForm from "./NewBoardForm";
 import EventPreview from "./EventPreview";
 import "../App.css";
@@ -19,8 +17,6 @@ function Boards({ user }) {
   const [formPopup, setFormPopup] = useState(false);
   const [errors, setErrors] = useState([]);
   const [events, setEvents] = useState(user.events);
-  const [eventPage, setEventPage] = useState(false);
-  const [currentEvent, setCurrentEvent] = useState(null);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -45,12 +41,6 @@ function Boards({ user }) {
         });
       }
     });
-  }
-
-  // function to handle showing single event when preview button is clicked
-  function handleShowEvent(event) {
-    setEventPage(true);
-    setCurrentEvent(event);
   }
 
   // renders new form popup when button is clicked
@@ -80,16 +70,6 @@ function Boards({ user }) {
     );
   }
 
-  // renders single event when preview is clicked
-  if (eventPage) {
-    // <ActionCableProvider url="ws://localhost:3000/cable">
-    //       <Event />
-    //     </ActionCableProvider>
-    return (
-      <Event event={currentEvent} setEventPage={setEventPage} user={user} />
-    );
-  }
-
   // if user has boards, map over and render Event component for each, inside ActionCableProvider
   else
     return (
@@ -102,13 +82,7 @@ function Boards({ user }) {
         </div>
         <div className="previews">
           {events.map((event) => {
-            return (
-              <EventPreview
-                event={event}
-                key={event.id}
-                handleShowEvent={handleShowEvent}
-              />
-            );
+            return <EventPreview event={event} key={event.id} />;
           })}
         </div>
       </div>

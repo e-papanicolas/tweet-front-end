@@ -17,7 +17,7 @@ function NavBar({ handleLogOut, user }) {
       <nav className="nav vertical">
         <ul>
           <li>
-            <NavLink to="/">
+            <NavLink to="/myevents">
               <Icon>home</Icon>
             </NavLink>
           </li>
