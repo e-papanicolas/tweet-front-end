@@ -8,6 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { UserContext } from "../App";
 // import { useContext } from "react";
 import Icon from "@mui/material/Icon";
+import Tweet from "./Tweet";
 
 export default function Event({ user }) {
   let { eventId } = useParams();
@@ -55,9 +56,14 @@ export default function Event({ user }) {
   };
 
   function handleRecieveData(data) {
-    console.log(data);
-    const res = JSON.parse(data.body);
-    console.log(res);
+    if (data.body !== "starting twitter streaming") {
+      const res = JSON.parse(data.body);
+      console.log(res);
+      if (res.body !== "\r\n") {
+        const newTweet = res;
+        setTweets([...tweets, newTweet]);
+      }
+    }
   }
   // render event
   return (
@@ -86,6 +92,11 @@ export default function Event({ user }) {
 
           <div>
             <button onClick={startStream}>start stream</button>
+          </div>
+          <div id="tweet-container">
+            {tweets.map((tweet) => {
+              return <Tweet key={tweet.data.id} tweet={tweet} />;
+            })}
           </div>
         </ActionCableConsumer>
       </div>
