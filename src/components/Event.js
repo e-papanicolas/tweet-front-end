@@ -39,18 +39,34 @@ export default function Event({ user }) {
       .catch(console.error);
   }, [token, eventId]);
 
+  function startStream() {
+    fetch(`http://localhost:3000/streamstart/${event.id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
   // TODO: update so that event is using rule id returned from backend on create
   const channelObj = {
     channel: "TweetChannel",
     rule: event.rule_id,
   };
 
-  // TODO: add consumer back in and channel obj and create onrecieved function to add tweet to state holding array of tweets render tweet for each
+  function handleRecieveData(data) {
+    console.log(data);
+    const res = JSON.parse(data.body);
+    console.log(res);
+  }
   // render event
   return (
     <ActionCableProvider url="ws://localhost:3000/cable">
       <div id="event-page">
-        <ActionCableConsumer channel={channelObj} onReceived={console.log}>
+        <ActionCableConsumer
+          channel={channelObj}
+          onReceived={handleRecieveData}
+        >
           <div className="event-title">
             <h2>{event.name}</h2>
             <h2>#{event.hashtag}</h2>
@@ -66,6 +82,10 @@ export default function Event({ user }) {
             >
               clear
             </Icon>
+          </div>
+
+          <div>
+            <button onClick={startStream}>start stream</button>
           </div>
         </ActionCableConsumer>
       </div>
