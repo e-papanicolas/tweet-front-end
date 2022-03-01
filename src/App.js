@@ -10,12 +10,12 @@ import Profile from "./components/Profile";
 import Boards from "./components/Boards";
 import Event from "./components/Event";
 import Loader from "./components/Loader";
+// import IsLoadingHOC from "./components/IsLoadingHOC";
 
 // import css file
 import "./index.css";
 
-// TODO: see why user context isn't working properly
-export const UserContext = createContext();
+// const HOC = IsLoadingHOC();
 
 function App() {
   // auth - token needs to go on every page with a protected fetch

@@ -1,12 +1,5 @@
 /* TWEET STYLES */
 
-#tweet-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
 #tweet-container body {
   background: #e6ecf0;
   font-family: "Asap", sans-serif;

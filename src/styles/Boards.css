@@ -18,6 +18,40 @@
 #board-form {
   display: flex;
   flex-direction: column;
+  height: 50vh;
+  width: 50vh;
+  background-color: white;
+  border: 2px solid #f2cb05;
+  border-radius: 5px;
+}
+
+.form-title {
+  display: flex;
+  padding: 10px;
+  margin: 5px;
+  justify-content: center;
+}
+
+.form {
+  margin: 5px;
+  padding: 10px;
+}
+
+#board-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#board-form input,
+select {
+  width: 50%;
+  padding: 5px;
+  margin: 5px;
+}
+
+#board-form label {
+  padding: 5px;
 }
 
 .previews {
@@ -25,8 +59,43 @@
 }
 
 .event-preview {
-  border: 2px solid #5b85d9;
-  border-radius: 15px;
-  padding: 0 10px;
+  border: 2px solid #f2cb05;
+  border-radius: 10px;
+  padding: 10px;
   margin: 30px;
+  display: flex;
+  background-color: white;
+}
+
+.preview-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.preview-titles {
+  padding: 10px;
+}
+
+.preview-buttons {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pb {
+  cursor: pointer;
+}
+
+.pb:hover {
+  opacity: 50%;
+}
+
+.red {
+  color: #f64652;
+}
+
+.blue {
+  color: #5b85d9;
 }

@@ -85,12 +85,15 @@ export default function Event({ user }) {
         >
           <div className="event-title">
             <h2>{event.name}</h2>
-            <h2>#{event.hashtag}</h2>
-            <Icon id="icon-med" className="send-button">
+            <h2>
+              <span className="hashtag">#</span>
+              {event.hashtag}
+            </h2>
+            {/* <Icon id="icon-med" className="send-button">
               send
-            </Icon>
+            </Icon> */}
+            {/* TODO: add click handler to share */}
           </div>
-          {/* TODO: add click handler to share */}
           <div>
             <Icon
               className="icon-s close-button"
@@ -100,15 +103,15 @@ export default function Event({ user }) {
             </Icon>
           </div>
 
-          <div>
-            <button onClick={startStream}>start stream</button>
+          <div className="start-stream">
+            <button onClick={startStream}>start streaming now</button>
           </div>
           <div id="tweet-container">
             {tweets.map((tweet) => {
               return <Tweet key={tweet.data.id} tweet={tweet} />;
             })}
           </div>
-          {errors ? errors.map((error) => <p>error</p>) : null}
+          <div>{errors ? errors.map((error) => <p>error</p>) : null}</div>
         </ActionCableConsumer>
       </div>
     </ActionCableProvider>

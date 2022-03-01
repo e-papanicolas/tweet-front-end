@@ -17,7 +17,37 @@ img {
   position: absolute;
 }
 
-#profile-container .edit-profile {
+#profile-container .edit-profile form {
   display: flex;
   flex-direction: column;
+  width: 30%;
+}
+
+#profile-container {
+  background: white;
+  height: 70vh;
+  width: 50vw;
+  padding: 20px;
+  border: 2px solid #f2cb05;
+  border-radius: 5px;
+}
+
+.inner-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.at {
+  color: #f2cb05;
+}
+
+.bio {
+  padding: 10px;
+  margin: 5px;
+  height: 10vh;
+}
+
+.submit-button {
+  padding: 2px;
 }

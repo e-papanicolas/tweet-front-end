@@ -2,19 +2,12 @@ import React from "react";
 import { useState } from "react";
 import Loader from "./Loader";
 
-export const IsLoadingHOC = (WrappedComponent, loadingMessage) => {
-  function HOC(props) {
+export const IsLoadingHOC = () => {
+  function HOC() {
     const [isLoading, setLoading] = useState(true);
-    const setLoadingState = (isComponentLoading) => {
-      setLoading(isComponentLoading);
-    };
+    setLoading(!isLoading);
 
-    return (
-      <>
-        {isLoading && <Loader message={loadingMessage} />}
-        <WrappedComponent {...props} setLoading={setLoadingState} />
-      </>
-    );
+    return <>{isLoading && <Loader />}</>;
   }
   return HOC;
 };

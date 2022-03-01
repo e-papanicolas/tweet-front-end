@@ -8,7 +8,8 @@ body {
   font-family: Poppins, sans-serif;
   min-height: 100vh;
   background: #f0f0f2;
-  color: #f2cb05;
+  /* color: #f2cb05; */
+  color: #5f5f63;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +28,8 @@ body {
 
 #icon-med {
   font-size: 3em;
+  color: #f2cb05;
+  cursor: pointer;
 }
 
 #icon-med:hover {
@@ -37,14 +40,38 @@ body {
   color: #f64652;
 }
 
+.icon-y {
+  color: #f2cb05;
+}
+
+.icon-s {
+  cursor: pointer;
+}
+
 .icon-s:hover {
   opacity: 50%;
 }
 
 #profile-container .icon-p {
+  cursor: pointer;
   font-size: 3em;
 }
 
 #profile-container .icon-p:hover {
   opacity: 50%;
+}
+
+.form-line-active input:focus,
+.form-line-active textarea:focus {
+  border: 1px solid #f2cb05 !important;
+  box-shadow: 0 0 3px #f2cb05 !important;
+  -moz-box-shadow: 0 0 3px #f2cb05 !important;
+  -webkit-box-shadow: 0 0 3px #f2cb05 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline-offset: 0px !important;
+  outline: none !important;
 }
