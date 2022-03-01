@@ -15,7 +15,7 @@ export default function Tweet({ tweet }) {
             {tweet.includes.users[0].name}{" "}
             <span>@{tweet.includes.users[0].username}</span>
             <span>
-              {date.slice(0, 10)} {date.slice(16, 21)}
+              {date.slice(4, 10)} {date.slice(16, 21)}
             </span>
             <p>{tweet.data.text}</p>
           </div>
