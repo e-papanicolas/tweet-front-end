@@ -9,6 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { useContext } from "react";
 import Icon from "@mui/material/Icon";
 import Tweet from "./Tweet";
+import "../styles/Event.css";
 
 export default function Event({ user }) {
   let { eventId } = useParams();
@@ -22,9 +23,10 @@ export default function Event({ user }) {
     id: eventId,
     name: "",
     rule_id: "",
+    timeout: "",
   });
 
-  // fetches the event and starts stream
+  // fetches the event and loads info on page
   useEffect(() => {
     fetch(`http://localhost:3000/events/${eventId}`, {
       headers: {
@@ -40,6 +42,7 @@ export default function Event({ user }) {
       .catch(console.error);
   }, [token, eventId]);
 
+  // sends request to back end to start streaming from twitter
   function startStream() {
     fetch(`http://localhost:3000/streamstart/${event.id}`, {
       method: "GET",
@@ -49,12 +52,15 @@ export default function Event({ user }) {
     });
   }
 
-  // TODO: update so that event is using rule id returned from backend on create
+  // lets the back end know the channel to broadcast on
   const channelObj = {
     channel: "TweetChannel",
     rule: event.rule_id,
   };
 
+  // recieves data from websocket, filters out broadcasts that arent tweets
+  // creates a new tweet out of the response and adds it to the tweet array
+  // which triggers state and it appears on the page
   function handleRecieveData(data) {
     if (data.body !== "starting twitter streaming") {
       const res = JSON.parse(data.body);

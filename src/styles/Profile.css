@@ -1,0 +1,23 @@
+/* PROFILE STYLES */
+
+.upload-photo {
+  display: flex;
+  padding: 10px;
+  position: relative;
+}
+
+img {
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 200px;
+  height: 200px;
+}
+
+.upload {
+  position: absolute;
+}
+
+#profile-container .edit-profile {
+  display: flex;
+  flex-direction: column;
+}

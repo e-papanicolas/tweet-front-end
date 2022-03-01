@@ -1,0 +1,27 @@
+/* EVENT STYLES */
+
+#event-page {
+  min-height: 90vh;
+  min-width: 80vw;
+}
+
+.close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 30px;
+}
+
+.send-button {
+  align-self: center;
+}
+
+.event-title {
+  display: flex;
+  justify-content: center;
+}
+
+#event-page h2 {
+  padding: 10px;
+  font-size: 3em;
+}

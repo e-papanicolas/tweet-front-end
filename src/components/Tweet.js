@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Tweet.css";
 
 export default function Tweet({ tweet }) {
   const date = new Date(tweet.data.created_at).toString();
@@ -20,15 +21,15 @@ export default function Tweet({ tweet }) {
             <p>{tweet.data.text}</p>
           </div>
         </div>
-        {/* {tweet.data.entities ? (
+        {tweet.includes.media ? (
           <div className="tweet-img-wrap">
             <img
-              src="https://pbs.twimg.com/media/Dgti2h0WkAEUPmT.png"
-              alt=""
+              src={tweet.includes.media.preview_image_url}
+              alt="tweet img attached"
               className="tweet-img"
             />
           </div>
-        ) : null} */}
+        ) : null}
 
         <div className="tweet-info-counts">
           <div className="comments">

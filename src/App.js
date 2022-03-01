@@ -1,10 +1,6 @@
 // import react and utils
 import { useState, useEffect, createContext } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
-import { ActionCableProvider } from "react-actioncable-provider";
-
-// TODO: see where or if i need this import
-import ActionCable from "actioncable";
 
 // import components
 import Login from "./components/Login";
@@ -13,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Profile from "./components/Profile";
 import Boards from "./components/Boards";
 import Event from "./components/Event";
+import Loader from "./components/Loader";
 
 // import css file
 import "./index.css";
@@ -29,6 +26,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   // handles login and logout, sets or removes user
   function handleLogin(user) {
@@ -45,6 +43,7 @@ function App() {
 
   // fetches the user from api and sets user
   useEffect(() => {
+    setLoading(true);
     fetch("http://localhost:3000/me", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,11 +60,11 @@ function App() {
         });
       }
     });
+    setLoading(false);
   }, [token]);
 
-  // TODO: have a loading spinner here
-  if (currentUser.name === "") {
-    return <p>LOADING...</p>;
+  if (isLoading) {
+    return <Loader />;
   }
 
   // pages rendered when user is logged out

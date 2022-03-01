@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
-import "../App.css";
+import "../styles/Profile.css";
 
 function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");

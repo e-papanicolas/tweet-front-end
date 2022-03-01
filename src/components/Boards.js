@@ -7,7 +7,8 @@ import Icon from "@mui/material/Icon";
 // import components
 import NewBoardForm from "./NewBoardForm";
 import EventPreview from "./EventPreview";
-import "../App.css";
+import Loader from "./Loader";
+import "../styles/Boards.css";
 
 function Boards({ user }) {
   // const user = useContext(UserContext);
@@ -17,6 +18,7 @@ function Boards({ user }) {
   const [formPopup, setFormPopup] = useState(false);
   const [errors, setErrors] = useState([]);
   const [events, setEvents] = useState(user.events);
+  const [isLoading, setLoading] = useState(false);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -41,6 +43,28 @@ function Boards({ user }) {
         });
       }
     });
+  }
+
+  // deletes event from db, updates state to remove it from the page
+  // deletes rule from twitter stream also
+  function handleDeleteEvent(event) {
+    setLoading(!isLoading);
+    fetch(`http://localhost:3000/events/${event.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data);
+        setLoading(false);
+      });
+  }
+
+  // loading spinner when state is set to true
+  if (isLoading) {
+    return <Loader />;
   }
 
   // renders new form popup when button is clicked
@@ -70,7 +94,7 @@ function Boards({ user }) {
     );
   }
 
-  // if user has boards, map over and render Event component for each, inside ActionCableProvider
+  // if user has boards, map over and render Event component for each
   else
     return (
       <div id="boards-container">
@@ -82,7 +106,13 @@ function Boards({ user }) {
         </div>
         <div className="previews">
           {events.map((event) => {
-            return <EventPreview event={event} key={event.id} />;
+            return (
+              <EventPreview
+                event={event}
+                key={event.id}
+                handleDeleteEvent={handleDeleteEvent}
+              />
+            );
           })}
         </div>
       </div>
