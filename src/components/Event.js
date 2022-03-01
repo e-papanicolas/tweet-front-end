@@ -5,8 +5,6 @@ import { ActionCableConsumer } from "react-actioncable-provider";
 import ActionCable from "actioncable";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-// import { UserContext } from "../App";
-// import { useContext } from "react";
 import Icon from "@mui/material/Icon";
 import Tweet from "./Tweet";
 import "../styles/Event.css";
@@ -18,6 +16,7 @@ export default function Event({ user }) {
 
   // sets state
   const [tweets, setTweets] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [event, setEvent] = useState({
     hashtag: "",
     id: eventId,
@@ -32,14 +31,19 @@ export default function Event({ user }) {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setEvent(data);
-        setTweets(data.tweets);
-        console.log(data);
-      })
-      .catch(console.error);
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setEvent(data);
+          setTweets(data.tweets);
+          console.log(data);
+        });
+      } else {
+        res.json().then((data) => {
+          setErrors(data.errors);
+        });
+      }
+    });
   }, [token, eventId]);
 
   // sends request to back end to start streaming from twitter
@@ -104,6 +108,7 @@ export default function Event({ user }) {
               return <Tweet key={tweet.data.id} tweet={tweet} />;
             })}
           </div>
+          {errors ? errors.map((error) => <p>error</p>) : null}
         </ActionCableConsumer>
       </div>
     </ActionCableProvider>

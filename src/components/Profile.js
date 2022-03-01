@@ -1,6 +1,5 @@
 // import react and utils
 import React from "react";
-// import { UserContext } from "../App";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
@@ -9,7 +8,6 @@ import "../styles/Profile.css";
 function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
-  // const user = useContext(UserContext);
 
   // sets state
   const [editProfile, setEditProfile] = useState(false);
@@ -17,6 +15,7 @@ function Profile({ user, setUser, setLoggedIn }) {
   const [uploadPhoto, setUploadPhoto] = useState(false);
   const [warnDelete, setWarnDelete] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const [profileData, setProfileData] = useState({
     bio: user.bio,
@@ -43,13 +42,18 @@ function Profile({ user, setUser, setLoggedIn }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(profileData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data.user);
-        setEditProfile(!editProfile);
-      })
-      .catch(console.error);
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setUser(data.user);
+          setEditProfile(!editProfile);
+        });
+      } else {
+        res.json().then((data) => {
+          setErrors(data.errors);
+        });
+      }
+    });
   }
 
   // separate fetch for the profile picture because body is not being stringified
@@ -64,14 +68,19 @@ function Profile({ user, setUser, setLoggedIn }) {
         Accept: "application/json",
       },
       body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProfilePic(data.user.get_image);
-        setUploadPhoto(!uploadPhoto);
-      })
-      .catch(console.error);
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log(data);
+          setProfilePic(data.user.get_image);
+          setUploadPhoto(!uploadPhoto);
+        });
+      } else {
+        res.json().then((data) => {
+          setErrors(data.errors);
+        });
+      }
+    });
   }
 
   // handles account deletion
@@ -191,7 +200,7 @@ function Profile({ user, setUser, setLoggedIn }) {
           </Icon>
         </div>
       )}
-
+      {errors ? errors.map((error) => <p>error</p>) : null}
       {warnDelete ? (
         <div>
           <p>

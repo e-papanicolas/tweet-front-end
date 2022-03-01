@@ -1,6 +1,5 @@
 // import react and utils
 import React from "react";
-// import { UserContext } from "../App";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
 import "../App.css";
@@ -10,8 +9,6 @@ export default function NewBoardForm({
   setFormPopup,
   handleCreateNewEvent,
 }) {
-  // const user = useContext(UserContext);
-
   // sets state
   const [eventFormData, setEventFormData] = useState({
     user_id: user.id,
@@ -57,10 +54,10 @@ export default function NewBoardForm({
         <label>Streaming Time: </label>
         <select name="timeout" onChange={handleEventFormChange}>
           <option value="select an option">Select an option:</option>
-          <option value="900">900</option>
-          <option value="1800">1800</option>
-          <option value="3600">3600</option>
-          <option value="7200">7200</option>
+          <option value="900">15 minutes</option>
+          <option value="1800">30 minutes</option>
+          <option value="3600">1 hour</option>
+          <option value="7200">2 hours</option>
         </select>
         <input type="submit"></input>
       </form>

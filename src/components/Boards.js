@@ -2,7 +2,6 @@
 import React from "react";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
-// import { UserContext } from "../App";
 
 // import components
 import NewBoardForm from "./NewBoardForm";
@@ -11,7 +10,6 @@ import Loader from "./Loader";
 import "../styles/Boards.css";
 
 function Boards({ user }) {
-  // const user = useContext(UserContext);
   const token = localStorage.getItem("jwt");
 
   // sets state
@@ -54,12 +52,18 @@ function Boards({ user }) {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setEvents(data);
-        setLoading(false);
-      });
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setEvents(data);
+          setLoading(false);
+        });
+      } else {
+        res.json().then((data) => {
+          setErrors(data.errors);
+        });
+      }
+    });
   }
 
   // loading spinner when state is set to true
@@ -115,6 +119,7 @@ function Boards({ user }) {
             );
           })}
         </div>
+        <div>{errors ? errors.map((error) => <p>error</p>) : null}</div>
       </div>
     );
 }

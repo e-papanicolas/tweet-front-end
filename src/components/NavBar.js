@@ -2,12 +2,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "@mui/material/Icon";
-// import { UserContext } from "../App";
-// import { useContext} from "react";
 import "../styles/NavBar.css";
 
 function NavBar({ handleLogOut, user }) {
-  // const user = useContext(UserContext);
   return (
     <div id="nav">
       <h1>
