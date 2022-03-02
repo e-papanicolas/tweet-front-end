@@ -2,17 +2,20 @@
 import React from "react";
 import { ActionCableProvider } from "react-actioncable-provider";
 import { ActionCableConsumer } from "react-actioncable-provider";
-import ActionCable from "actioncable";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
-import Tweet from "./Tweet";
 import "../styles/Event.css";
+
+// import components
+import Tweet from "./Tweet";
+import Loader from "./Loader";
 
 export default function Event({ user }) {
   let { eventId } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
+  const [isLoading, setLoading] = useState(false);
 
   // sets state
   const [tweets, setTweets] = useState([]);
@@ -27,6 +30,7 @@ export default function Event({ user }) {
 
   // fetches the event and loads info on page
   useEffect(() => {
+    setLoading(!isLoading);
     fetch(`http://localhost:3000/events/${eventId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,8 +47,9 @@ export default function Event({ user }) {
           setErrors(data.errors);
         });
       }
+      setLoading(false);
     });
-  }, [token, eventId]);
+  }, [token, eventId, isLoading]);
 
   // sends request to back end to start streaming from twitter
   function startStream() {
@@ -75,6 +80,12 @@ export default function Event({ user }) {
       }
     }
   }
+
+  // loading spinner when state is set to true
+  if (isLoading) {
+    return <Loader />;
+  }
+
   // render event
   return (
     <ActionCableProvider url="ws://localhost:3000/cable">
@@ -111,7 +122,7 @@ export default function Event({ user }) {
               return <Tweet key={tweet.data.id} tweet={tweet} />;
             })}
           </div>
-          <div>{errors ? errors.map((error) => <p>error</p>) : null}</div>
+          <div>{errors ? errors.map((error) => <p>{error}</p>) : null}</div>
         </ActionCableConsumer>
       </div>
     </ActionCableProvider>

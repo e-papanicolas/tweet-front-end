@@ -1,6 +1,11 @@
 /* BOARD PAGE STYLES */
 #board-container {
   display: flex-column;
+  align-content: center;
+}
+
+#board-container p {
+  font-size: 1.5em;
 }
 
 #boards-container {

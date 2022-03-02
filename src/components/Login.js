@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import Loader from "./Loader";
 
 function Copyright(props) {
   return (
@@ -36,6 +37,12 @@ function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [isLoading, setLoading] = useState(false);
+
+  // loading spinner when state is set to true
+  if (isLoading) {
+    return <Loader />;
+  }
 
   let loginData = {
     user: {
@@ -45,6 +52,7 @@ function Login({ onLogin }) {
   };
 
   function handleSubmit(e) {
+    setLoading(!isLoading);
     e.preventDefault();
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -62,6 +70,7 @@ function Login({ onLogin }) {
       } else {
         res.json().then((error) => setErrors(error));
       }
+      setLoading(false);
     });
     setUsername("");
     setPassword("");

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import "../styles/Profile.css";
+import Loader from "./Loader";
 
 function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");
@@ -16,6 +17,7 @@ function Profile({ user, setUser, setLoggedIn }) {
   const [warnDelete, setWarnDelete] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState("");
   const [errors, setErrors] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   const [profileData, setProfileData] = useState({
     bio: user.bio,
@@ -23,6 +25,11 @@ function Profile({ user, setUser, setLoggedIn }) {
     last_name: user.last_name,
     username: user.username,
   });
+
+  // loading spinner when state is set to true
+  if (isLoading) {
+    return <Loader />;
+  }
 
   // handles form input changes
   function handleProfileDataChange(e) {
@@ -34,6 +41,7 @@ function Profile({ user, setUser, setLoggedIn }) {
 
   // fetch to submit profile update
   function handleSubmitProfileEdit(e) {
+    setLoading(!isLoading);
     e.preventDefault();
     fetch(`http://localhost:3000/users/${user.id}`, {
       method: "PATCH",
@@ -53,11 +61,13 @@ function Profile({ user, setUser, setLoggedIn }) {
           setErrors(data.errors);
         });
       }
+      setLoading(false);
     });
   }
 
   // separate fetch for the profile picture because body is not being stringified
   function handleSubmitPicture(e) {
+    setLoading(!isLoading);
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -80,11 +90,13 @@ function Profile({ user, setUser, setLoggedIn }) {
           setErrors(data.errors);
         });
       }
+      setLoading(false);
     });
   }
 
   // handles account deletion
   function handleDeleteAccount(e) {
+    setLoading(!isLoading);
     e.preventDefault();
     if (confirmDelete === user.username) {
       fetch(`http://localhost:3000/users/${user.id}`, {
@@ -95,6 +107,7 @@ function Profile({ user, setUser, setLoggedIn }) {
       });
       setLoggedIn(false);
       localStorage.clear();
+      setLoading(false);
       navigate("/");
     }
   }
@@ -217,7 +230,7 @@ function Profile({ user, setUser, setLoggedIn }) {
             </Icon>
           </div>
         )}
-        {errors ? errors.map((error) => <p>error</p>) : null}
+        {errors ? errors.map((error) => <p>{error}</p>) : null}
         {warnDelete ? (
           <div>
             <p>

@@ -1,3 +1,4 @@
+// import react and utils
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,9 +10,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import Loader from "./Loader";
 
 function Copyright(props) {
   return (
@@ -40,6 +41,12 @@ function SignUp({ handleLogin }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
+  // loading spinner when state is set to true
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const signUpData = {
     user: {
@@ -52,8 +59,8 @@ function SignUp({ handleLogin }) {
   };
 
   function handleSubmit(e) {
+    setLoading(!isLoading);
     e.preventDefault();
-
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -69,6 +76,7 @@ function SignUp({ handleLogin }) {
           setErrors(json.errors);
         });
       }
+      setLoading(false);
     });
   }
 

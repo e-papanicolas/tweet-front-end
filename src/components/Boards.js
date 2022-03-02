@@ -21,6 +21,7 @@ function Boards({ user }) {
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
     e.preventDefault();
+    setLoading(!isLoading);
     fetch(`http://localhost:3000/events`, {
       method: "POST",
       headers: {
@@ -40,6 +41,7 @@ function Boards({ user }) {
           setErrors(data.errors);
         });
       }
+      setLoading(false);
     });
   }
 
@@ -56,13 +58,13 @@ function Boards({ user }) {
       if (res.ok) {
         res.json().then((data) => {
           setEvents(data);
-          setLoading(false);
         });
       } else {
         res.json().then((data) => {
           setErrors(data.errors);
         });
       }
+      setLoading(false);
     });
   }
 
@@ -124,7 +126,7 @@ function Boards({ user }) {
             );
           })}
         </div>
-        <div>{errors ? errors.map((error) => <p>error</p>) : null}</div>
+        <div>{errors ? errors.map((error) => <p>{error}</p>) : null}</div>
       </div>
     );
 }
