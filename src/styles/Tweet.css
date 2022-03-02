@@ -21,11 +21,10 @@
   max-width: 490px;
   background: #fff;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 20px;
   border-radius: 3px;
-  padding: 30px;
-  border-bottom: 1px solid #e6ecf0;
-  border-top: 1px solid #e6ecf0;
+  padding: 10px;
+  border: 1px solid #e6ecf0;
 }
 
 .tweet-header {

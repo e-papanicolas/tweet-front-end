@@ -29,6 +29,8 @@ export default function Event({ user }) {
     timeout: "",
   });
 
+  console.log(event);
+
   // fetches the event and loads info on page
   useEffect(() => {
     setLoading(!isLoading);
@@ -78,6 +80,7 @@ export default function Event({ user }) {
       if (res.body !== "\r\n") {
         const newTweet = res;
         setTweets([...tweets, newTweet]);
+        console.log(newTweet);
       }
     }
   }
