@@ -18,12 +18,22 @@ export default function NewBoardForm({
     timeout: 0,
   });
 
+  // removes any whitespace from hashtag input
+  function removeSpacesFromHashtag(string) {
+    return string.replace(" ", "");
+  }
+
   // handles input changes on form
   function handleEventFormChange(e) {
     if (e.target.name === "timeout") {
       setEventFormData({
         ...eventFormData,
         [e.target.name]: parseInt(e.target.value, 10),
+      });
+    } else if (e.target.name === "hashtag") {
+      setEventFormData({
+        ...eventFormData,
+        [e.target.name]: removeSpacesFromHashtag(e.target.value),
       });
     } else {
       setEventFormData({

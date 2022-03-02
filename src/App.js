@@ -1,5 +1,5 @@
 // import react and utils
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
 
 // import components
@@ -10,12 +10,9 @@ import Profile from "./components/Profile";
 import Boards from "./components/Boards";
 import Event from "./components/Event";
 import Loader from "./components/Loader";
-// import IsLoadingHOC from "./components/IsLoadingHOC";
 
 // import css file
 import "./index.css";
-
-// const HOC = IsLoadingHOC();
 
 function App() {
   // auth - token needs to go on every page with a protected fetch
@@ -51,7 +48,6 @@ function App() {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           setCurrentUser(data.user);
           setLoggedIn(true);
         });
@@ -64,6 +60,7 @@ function App() {
     setLoading(false);
   }, [token]);
 
+  // spinner for loading when state is true
   if (isLoading) {
     return <Loader />;
   }
