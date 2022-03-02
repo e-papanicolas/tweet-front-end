@@ -6,6 +6,7 @@ import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import "../styles/Profile.css";
 import Loader from "./Loader";
+import defaultImage from "../images/default-user-image.png";
 
 function Profile({ user, setUser, setLoggedIn }) {
   const token = localStorage.getItem("jwt");
@@ -118,7 +119,11 @@ function Profile({ user, setUser, setLoggedIn }) {
     <div id="profile-container">
       <div className="inner-profile">
         <div>
-          <img src={profilePic || user.get_image} alt="user" />
+          {user.get_image === "../images/default-user-image.png" ? (
+            <img src={defaultImage} alt="user" />
+          ) : (
+            <img src={profilePic || user.get_image} alt="user" />
+          )}
 
           {uploadPhoto ? (
             <div>
