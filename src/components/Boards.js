@@ -89,7 +89,7 @@ function Boards({ user }) {
   }
 
   // if user has no events, only offer to add new
-  if (!user.events) {
+  if (!events) {
     return (
       <>
         <div className="welcome">
