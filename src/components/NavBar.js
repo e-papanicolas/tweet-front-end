@@ -7,10 +7,6 @@ import "../styles/NavBar.css";
 function NavBar({ handleLogOut, user }) {
   return (
     <div id="nav">
-      <h1>
-        <Icon>tag</Icon>
-      </h1>
-
       <nav className="nav vertical">
         <ul>
           <li>

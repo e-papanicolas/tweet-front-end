@@ -64,7 +64,8 @@ select {
   padding: 10px;
   margin: 30px;
   display: flex;
-  background-color: white;
+  background-color: #f0f0f2;
+  height: 30vh;
 }
 
 .preview-titles {

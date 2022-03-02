@@ -24,9 +24,9 @@ img {
 }
 
 #profile-container {
-  background: white;
+  background: #f0f0f2;
   height: 70vh;
-  width: 50vw;
+  width: 40vw;
   padding: 20px;
   border: 2px solid #f2cb05;
   border-radius: 5px;

@@ -86,15 +86,20 @@ function Boards({ user }) {
   }
 
   // if user has no events, only offer to add new
-  if (!events) {
+  if (!user.events) {
     return (
-      <div id="board-container">
-        <p>You don't have any boards...</p>
-        <p>Click to add one now.</p>
-        <Icon id="icon-large" onClick={() => setFormPopup(true)}>
-          edit_calendar
-        </Icon>
-      </div>
+      <>
+        <div className="welcome">
+          <p>welcome, {user.first_name}</p>
+        </div>
+        <div id="board-container">
+          <p>You don't have any boards...</p>
+          <p>Click to add one now.</p>
+          <Icon id="icon-large" onClick={() => setFormPopup(true)}>
+            edit_calendar
+          </Icon>
+        </div>
+      </>
     );
   }
 
