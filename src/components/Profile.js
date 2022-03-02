@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
+import Tooltip from "@mui/material/Tooltip";
 import "../styles/Profile.css";
 import Loader from "./Loader";
 
@@ -132,21 +133,25 @@ function Profile({ user, setUser, setLoggedIn }) {
                     value="Submit"
                   />
                 </form>
-                <Icon
-                  className="icon-s"
-                  onClick={() => setUploadPhoto(!uploadPhoto)}
-                >
-                  clear
-                </Icon>
+                <Tooltip title="close">
+                  <Icon
+                    className="icon-s"
+                    onClick={() => setUploadPhoto(!uploadPhoto)}
+                  >
+                    clear
+                  </Icon>
+                </Tooltip>
               </div>
             </div>
           ) : (
-            <Icon
-              className="icon-p"
-              onClick={() => setUploadPhoto(!uploadPhoto)}
-            >
-              add_a_photo
-            </Icon>
+            <Tooltip title="upload profile image">
+              <Icon
+                className="icon-p"
+                onClick={() => setUploadPhoto(!uploadPhoto)}
+              >
+                add_a_photo
+              </Icon>
+            </Tooltip>
           )}
         </div>
         {editProfile ? (
@@ -178,18 +183,22 @@ function Profile({ user, setUser, setLoggedIn }) {
               ></textarea>
             </form>
             <div>
-              <Icon
-                className="icon-p"
-                onClick={(e) => handleSubmitProfileEdit(e)}
-              >
-                upload
-              </Icon>
-              <Icon
-                className="icon-p"
-                onClick={() => setEditProfile(!editProfile)}
-              >
-                clear
-              </Icon>
+              <Tooltip title="upload changes">
+                <Icon
+                  className="icon-p"
+                  onClick={(e) => handleSubmitProfileEdit(e)}
+                >
+                  upload
+                </Icon>
+              </Tooltip>
+              <Tooltip title="close">
+                <Icon
+                  className="icon-p"
+                  onClick={() => setEditProfile(!editProfile)}
+                >
+                  clear
+                </Icon>
+              </Tooltip>
             </div>
           </div>
         ) : (
@@ -219,15 +228,19 @@ function Profile({ user, setUser, setLoggedIn }) {
 
         {editProfile ? null : (
           <div>
-            <Icon
-              className="icon-p icon-y"
-              onClick={() => setEditProfile(!editProfile)}
-            >
-              edit
-            </Icon>
-            <Icon className="icon-p icon-r" onClick={setWarnDelete}>
-              delete_forever
-            </Icon>
+            <Tooltip title="edit profile">
+              <Icon
+                className="icon-p icon-y"
+                onClick={() => setEditProfile(!editProfile)}
+              >
+                edit
+              </Icon>
+            </Tooltip>
+            <Tooltip title="delete account">
+              <Icon className="icon-p icon-r" onClick={setWarnDelete}>
+                delete_forever
+              </Icon>
+            </Tooltip>
           </div>
         )}
         {errors ? errors.map((error) => <p>{error}</p>) : null}

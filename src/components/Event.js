@@ -5,6 +5,7 @@ import { ActionCableConsumer } from "react-actioncable-provider";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
+import Tooltip from "@mui/material/Tooltip";
 import "../styles/Event.css";
 
 // import components
@@ -49,7 +50,7 @@ export default function Event({ user }) {
       }
       setLoading(false);
     });
-  }, [token, eventId, isLoading]);
+  }, [token, eventId]);
 
   // sends request to back end to start streaming from twitter
   function startStream() {
@@ -106,12 +107,14 @@ export default function Event({ user }) {
             {/* TODO: add click handler to share */}
           </div>
           <div>
-            <Icon
-              className="icon-s close-button"
-              onClick={() => navigate(`/myevents`)}
-            >
-              clear
-            </Icon>
+            <Tooltip title="close">
+              <Icon
+                className="icon-s close-button"
+                onClick={() => navigate(`/myevents`)}
+              >
+                clear
+              </Icon>
+            </Tooltip>
           </div>
 
           <div className="start-stream">

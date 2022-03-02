@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
+import Tooltip from "@mui/material/Tooltip";
 
 // import components
 import NewBoardForm from "./NewBoardForm";
@@ -97,9 +98,11 @@ function Boards({ user }) {
         <div id="board-container">
           <p>You don't have any boards...</p>
           <p>Click to add one now.</p>
-          <Icon id="icon-large" onClick={() => setFormPopup(true)}>
-            edit_calendar
-          </Icon>
+          <Tooltip title="add new event board">
+            <Icon id="icon-large" onClick={() => setFormPopup(true)}>
+              edit_calendar
+            </Icon>
+          </Tooltip>
         </div>
       </>
     );
@@ -111,9 +114,11 @@ function Boards({ user }) {
       <div id="boards-container">
         <div className="welcome">
           <p>welcome, {user.first_name}</p>
-          <Icon id="icon-med" onClick={() => setFormPopup(true)}>
-            edit_calendar
-          </Icon>
+          <Tooltip title="add new event board">
+            <Icon id="icon-med" onClick={() => setFormPopup(true)}>
+              edit_calendar
+            </Icon>
+          </Tooltip>
         </div>
         <div className="previews">
           {events.map((event) => {

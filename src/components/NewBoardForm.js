@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
+import Tooltip from "@mui/material/Tooltip";
 import "../App.css";
 
 export default function NewBoardForm({
@@ -37,9 +38,11 @@ export default function NewBoardForm({
     <div id="board-form">
       <div className="form-title">
         <h2>create a new event board</h2>
-        <Icon className="icon-s" onClick={() => setFormPopup(false)}>
-          clear
-        </Icon>
+        <Tooltip title="close">
+          <Icon className="icon-s" onClick={() => setFormPopup(false)}>
+            clear
+          </Icon>
+        </Tooltip>
       </div>
       <div className="form">
         <form onSubmit={(e) => handleCreateNewEvent(e, eventFormData)}>
