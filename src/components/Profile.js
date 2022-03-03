@@ -116,32 +116,103 @@ function Profile({ user, setUser, setLoggedIn }) {
 
   // page render
   return (
-    <div id="profile-container">
-      <div className="inner-profile">
-        <div>
-          {user.get_image === "../images/default-user-image.png" ? (
-            <img src={defaultImage} alt="user" />
-          ) : (
-            <img src={profilePic || user.get_image} alt="user" />
-          )}
+    <div className="profile-page-container">
+      <div id="profile-container">
+        <div className="inner-profile">
+          <div className="profile-photo-container">
+            {user.get_image === "../images/default-user-image.png" ? (
+              <img src={defaultImage} alt="user" />
+            ) : (
+              <img src={profilePic || user.get_image} alt="user" />
+            )}
 
-          {uploadPhoto ? (
-            <div>
-              <div className="upload-photo">
-                <form onSubmit={handleSubmitPicture}>
-                  <label htmlFor="image">
-                    <input type="file" name="image" accept="image/*" />
-                  </label>
+            {uploadPhoto ? (
+              <div>
+                <div className="upload-photo">
+                  <form onSubmit={handleSubmitPicture}>
+                    <label htmlFor="image">
+                      <input type="file" name="image" accept="image/*" />
+                    </label>
+                    <input
+                      className="submit-button"
+                      type="submit"
+                      value="Submit"
+                    />
+                  </form>
+                  <Tooltip title="close">
+                    <Icon
+                      className="icon-s"
+                      onClick={() => setUploadPhoto(!uploadPhoto)}
+                    >
+                      clear
+                    </Icon>
+                  </Tooltip>
+                </div>
+              </div>
+            ) : (
+              <div className="camera-icon">
+                <Tooltip title="upload profile image">
+                  <Icon
+                    className="icon-p"
+                    onClick={() => setUploadPhoto(!uploadPhoto)}
+                  >
+                    add_a_photo
+                  </Icon>
+                </Tooltip>
+              </div>
+            )}
+          </div>
+          {editProfile ? (
+            <div className="edit-profile">
+              <form>
+                <div className="edit-profile-input">
+                  <label>Username: </label>
                   <input
-                    className="submit-button"
-                    type="submit"
-                    value="Submit"
-                  />
-                </form>
+                    name="username"
+                    placeholder={user.username}
+                    onChange={handleProfileDataChange}
+                  ></input>
+                </div>
+                <div className="edit-profile-input">
+                  <label>First name: </label>
+                  <input
+                    name="first_name"
+                    placeholder={user.first_name}
+                    onChange={handleProfileDataChange}
+                  ></input>
+                </div>
+                <div className="edit-profile-input">
+                  <label>Last name: </label>
+                  <input
+                    name="last_name"
+                    placeholder={user.last_name}
+                    onChange={handleProfileDataChange}
+                  ></input>
+                </div>
+                <div className="edit-profile-bio-input">
+                  <label>bio: </label>
+                  <textarea
+                    name="bio"
+                    placeholder={user.bio}
+                    onChange={handleProfileDataChange}
+                    cols="50"
+                    rows="8"
+                  ></textarea>
+                </div>
+              </form>
+              <div>
+                <Tooltip title="upload changes">
+                  <Icon
+                    className="icon-p"
+                    onClick={(e) => handleSubmitProfileEdit(e)}
+                  >
+                    upload
+                  </Icon>
+                </Tooltip>
                 <Tooltip title="close">
                   <Icon
-                    className="icon-s"
-                    onClick={() => setUploadPhoto(!uploadPhoto)}
+                    className="icon-p"
+                    onClick={() => setEditProfile(!editProfile)}
                   >
                     clear
                   </Icon>
@@ -149,124 +220,69 @@ function Profile({ user, setUser, setLoggedIn }) {
               </div>
             </div>
           ) : (
-            <Tooltip title="upload profile image">
-              <Icon
-                className="icon-p"
-                onClick={() => setUploadPhoto(!uploadPhoto)}
-              >
-                add_a_photo
-              </Icon>
-            </Tooltip>
+            <div className="user-profile-info-container">
+              <h2>
+                <span className="at">@</span>
+                {user.username}
+              </h2>
+              <h2>
+                {user.first_name[0].toUpperCase() + user.first_name.slice(1)}{" "}
+                {user.last_name[0].toUpperCase() + user.last_name.slice(1)}
+              </h2>
+              {user.bio === null ? (
+                <div className="bio">
+                  <p>
+                    <strong>Hello World.</strong> I'm new here & I haven't added
+                    my bio yet!
+                  </p>
+                </div>
+              ) : (
+                <div className="bio">
+                  <p>{user.bio}</p>
+                </div>
+              )}
+            </div>
           )}
-        </div>
-        {editProfile ? (
-          <div className="edit-profile">
-            <form>
-              <label>username: </label>
-              <input
-                name="username"
-                placeholder={user.username}
-                onChange={handleProfileDataChange}
-              ></input>
-              <label>first name: </label>
-              <input
-                name="first_name"
-                placeholder={user.first_name}
-                onChange={handleProfileDataChange}
-              ></input>
-              <label>last name: </label>
-              <input
-                name="last_name"
-                placeholder={user.last_name}
-                onChange={handleProfileDataChange}
-              ></input>
-              <label>bio: </label>
-              <textarea
-                name="bio"
-                placeholder={user.bio}
-                onChange={handleProfileDataChange}
-              ></textarea>
-            </form>
-            <div>
-              <Tooltip title="upload changes">
+
+          {editProfile ? null : (
+            <div className="profile-buttons">
+              <Tooltip title="edit profile">
                 <Icon
-                  className="icon-p"
-                  onClick={(e) => handleSubmitProfileEdit(e)}
-                >
-                  upload
-                </Icon>
-              </Tooltip>
-              <Tooltip title="close">
-                <Icon
-                  className="icon-p"
+                  className="icon-p icon-y"
                   onClick={() => setEditProfile(!editProfile)}
                 >
-                  clear
+                  edit
+                </Icon>
+              </Tooltip>
+              <Tooltip title="delete account">
+                <Icon className="icon-p icon-r" onClick={setWarnDelete}>
+                  delete_forever
                 </Icon>
               </Tooltip>
             </div>
-          </div>
-        ) : (
-          <div>
-            <h2>
-              <span className="at">@</span>
-              {user.username}
-            </h2>
-            <h2>
-              {user.first_name[0].toUpperCase() + user.first_name.slice(1)}{" "}
-              {user.last_name[0].toUpperCase() + user.last_name.slice(1)}
-            </h2>
-            {user.bio === null ? (
-              <div className="bio">
-                <p>
-                  <strong>Hello World.</strong> I'm new here & I haven't added
-                  my bio yet!
-                </p>
-              </div>
-            ) : (
-              <div className="bio">
-                <p>{user.bio}</p>
-              </div>
-            )}
-          </div>
-        )}
-
-        {editProfile ? null : (
-          <div>
-            <Tooltip title="edit profile">
-              <Icon
-                className="icon-p icon-y"
-                onClick={() => setEditProfile(!editProfile)}
-              >
-                edit
-              </Icon>
-            </Tooltip>
-            <Tooltip title="delete account">
-              <Icon className="icon-p icon-r" onClick={setWarnDelete}>
-                delete_forever
-              </Icon>
-            </Tooltip>
-          </div>
-        )}
-        {errors ? errors.map((error) => <p>{error}</p>) : null}
-        {warnDelete ? (
-          <div>
-            <p>
-              <strong>WARNING: </strong> You are about to delete your account.
-              This cannot be undone.
-            </p>
-            <p>Please type your username and press "I Agree" to confirm.</p>
-            <form onSubmit={handleDeleteAccount}>
-              <input
-                type="text"
-                placeholder={user.username}
-                onChange={(e) => setConfirmDelete(e.target.value)}
-              />
-              <input type="submit" value="I Agree" />
-              <button onClick={() => setWarnDelete(!warnDelete)}>Cancel</button>
-            </form>
-          </div>
-        ) : null}
+          )}
+          {errors ? errors.map((error) => <p>{error}</p>) : null}
+          {warnDelete ? (
+            <div>
+              <p>
+                <strong>WARNING: </strong> You are about to delete your account.
+                This cannot be undone.
+              </p>
+              <p>Please type your username and press "I Agree" to confirm.</p>
+              <form onSubmit={handleDeleteAccount}>
+                <input
+                  type="text"
+                  placeholder={user.username}
+                  onChange={(e) => setConfirmDelete(e.target.value)}
+                />
+                <input type="submit" value="I Agree" />
+                <button onClick={() => setWarnDelete(!warnDelete)}>
+                  Cancel
+                </button>
+              </form>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

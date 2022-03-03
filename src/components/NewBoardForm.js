@@ -47,12 +47,14 @@ export default function NewBoardForm({
   return (
     <div id="board-form">
       <div className="form-title">
+        <div className="closing-x">
+          <Tooltip title="close">
+            <Icon className="icon-s" onClick={() => setFormPopup(false)}>
+              clear
+            </Icon>
+          </Tooltip>
+        </div>
         <h2>create a new event board</h2>
-        <Tooltip title="close">
-          <Icon className="icon-s" onClick={() => setFormPopup(false)}>
-            clear
-          </Icon>
-        </Tooltip>
       </div>
       <div className="form">
         <form onSubmit={(e) => handleCreateNewEvent(e, eventFormData)}>
@@ -63,11 +65,14 @@ export default function NewBoardForm({
             onChange={handleEventFormChange}
           ></input>
           <label>Hashtag: (do not include #)</label>
-          <input
-            type="text"
-            name="hashtag"
-            onChange={handleEventFormChange}
-          ></input>
+          <span className="hashtag-input">
+            <p>#</p>
+            <input
+              type="text"
+              name="hashtag"
+              onChange={handleEventFormChange}
+            ></input>
+          </span>
           <label>Streaming Time: </label>
           <select name="timeout" onChange={handleEventFormChange}>
             <option value="select an option">Select an option:</option>

@@ -77,7 +77,7 @@ function Boards({ user }) {
   // renders new form popup when button is clicked
   if (formPopup) {
     return (
-      <div>
+      <div className="new-board-form-container">
         <NewBoardForm
           user={user}
           setFormPopup={setFormPopup}
@@ -91,20 +91,22 @@ function Boards({ user }) {
   // if user has no events, only offer to add new
   if (!events || events.length === 0) {
     return (
-      <>
+      <div className="event-page-container">
         <div className="welcome">
           <p>welcome, {user.first_name}</p>
         </div>
         <div id="board-container">
           <p>You don't have any boards...</p>
           <p>Click to add one now.</p>
-          <Tooltip title="add new event board">
-            <Icon id="icon-large" onClick={() => setFormPopup(true)}>
-              edit_calendar
-            </Icon>
-          </Tooltip>
+          <div className="icon-container">
+            <Tooltip title="add new event board">
+              <Icon id="icon-large" onClick={() => setFormPopup(true)}>
+                edit_calendar
+              </Icon>
+            </Tooltip>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 

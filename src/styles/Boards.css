@@ -1,7 +1,10 @@
 /* BOARD PAGE STYLES */
 #board-container {
-  display: flex-column;
+  display: flex;
   align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 #board-container p {
@@ -9,6 +12,22 @@
 }
 
 #boards-container {
+}
+
+.event-page-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+.new-board-form-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome {
@@ -23,6 +42,7 @@
 #board-form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 50vh;
   width: 50vh;
   background-color: white;
@@ -30,8 +50,14 @@
   border-radius: 5px;
 }
 
+.closing-x {
+  align-self: flex-end;
+}
+
 .form-title {
   display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 10px;
   margin: 5px;
   justify-content: center;
@@ -45,6 +71,18 @@
 #board-form form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-bottom: 20%;
+}
+
+.hashtag-input {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.hashtag-input > p {
+  display: flex;
   align-items: center;
 }
 

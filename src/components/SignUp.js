@@ -91,6 +91,8 @@ function SignUp({ handleLogin }) {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              backgroundColor: "white",
+              //signing container
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#5b85d9" }}>

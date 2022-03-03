@@ -10,7 +10,7 @@ body {
   background: #f0f0f2;
   /* color: #f2cb05; */
   color: #5f5f63;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 
@@ -20,6 +20,11 @@ body {
 }
 
 /* ICON STYLES */
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+}
 
 #icon-large {
   font-size: 7em;
