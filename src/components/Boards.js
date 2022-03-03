@@ -122,16 +122,18 @@ function Boards({ user }) {
             </Icon>
           </Tooltip>
         </div>
-        <div className="previews">
-          {events.map((event) => {
-            return (
-              <EventPreview
-                event={event}
-                key={event.id}
-                handleDeleteEvent={handleDeleteEvent}
-              />
-            );
-          })}
+        <div className="preview-container">
+          <div className="previews">
+            {events.map((event) => {
+              return (
+                <EventPreview
+                  event={event}
+                  key={event.id}
+                  handleDeleteEvent={handleDeleteEvent}
+                />
+              );
+            })}
+          </div>
         </div>
         <div>{errors ? errors.map((error) => <p>{error}</p>) : null}</div>
       </div>

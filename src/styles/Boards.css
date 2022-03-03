@@ -84,6 +84,8 @@
 .hashtag-input > p {
   display: flex;
   align-items: center;
+  font-size: 2em;
+  color: #f2cb05;
 }
 
 #board-form input,
@@ -95,6 +97,14 @@ select {
 
 #board-form label {
   padding: 5px;
+}
+
+.preview-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .previews {

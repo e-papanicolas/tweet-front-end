@@ -64,7 +64,7 @@ export default function NewBoardForm({
             name="name"
             onChange={handleEventFormChange}
           ></input>
-          <label>Hashtag: (do not include #)</label>
+          <label>Hashtag: </label>
           <span className="hashtag-input">
             <p>#</p>
             <input
@@ -72,6 +72,7 @@ export default function NewBoardForm({
               name="hashtag"
               onChange={handleEventFormChange}
             ></input>
+            <p>#</p>
           </span>
           <label>Streaming Time: </label>
           <select name="timeout" onChange={handleEventFormChange}>

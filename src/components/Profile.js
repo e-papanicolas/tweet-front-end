@@ -125,43 +125,43 @@ function Profile({ user, setUser, setLoggedIn }) {
             ) : (
               <img src={profilePic || user.get_image} alt="user" />
             )}
-
-            {uploadPhoto ? (
-              <div>
-                <div className="upload-photo">
-                  <form onSubmit={handleSubmitPicture}>
-                    <label htmlFor="image">
-                      <input type="file" name="image" accept="image/*" />
-                    </label>
-                    <input
-                      className="submit-button"
-                      type="submit"
-                      value="Submit"
-                    />
-                  </form>
-                  <Tooltip title="close">
-                    <Icon
-                      className="icon-s"
-                      onClick={() => setUploadPhoto(!uploadPhoto)}
-                    >
-                      clear
-                    </Icon>
-                  </Tooltip>
-                </div>
-              </div>
-            ) : (
-              <div className="camera-icon">
-                <Tooltip title="upload profile image">
+          </div>
+          {uploadPhoto ? (
+            <div>
+              <div className="upload-photo">
+                <form onSubmit={handleSubmitPicture}>
+                  <label htmlFor="image">
+                    <input type="file" name="image" accept="image/*" />
+                  </label>
+                  <input
+                    className="submit-button"
+                    type="submit"
+                    value="Submit"
+                  />
+                </form>
+                <Tooltip title="close">
                   <Icon
-                    className="icon-p"
+                    className="icon-s"
                     onClick={() => setUploadPhoto(!uploadPhoto)}
                   >
-                    add_a_photo
+                    clear
                   </Icon>
                 </Tooltip>
               </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className="camera-icon">
+              <Tooltip title="upload profile image">
+                <Icon
+                  className="icon-p"
+                  onClick={() => setUploadPhoto(!uploadPhoto)}
+                >
+                  add_a_photo
+                </Icon>
+              </Tooltip>
+            </div>
+          )}
+
           {editProfile ? (
             <div className="edit-profile">
               <form>
@@ -190,17 +190,17 @@ function Profile({ user, setUser, setLoggedIn }) {
                   ></input>
                 </div>
                 <div className="edit-profile-bio-input">
-                  <label>bio: </label>
+                  <label>Bio: </label>
                   <textarea
                     name="bio"
                     placeholder={user.bio}
                     onChange={handleProfileDataChange}
-                    cols="50"
-                    rows="8"
+                    cols="40"
+                    rows="6"
                   ></textarea>
                 </div>
               </form>
-              <div>
+              <div className="upload-buttons">
                 <Tooltip title="upload changes">
                   <Icon
                     className="icon-p"
