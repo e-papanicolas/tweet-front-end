@@ -71,6 +71,7 @@ export default function NewBoardForm({
           <label>Streaming Time: </label>
           <select name="timeout" onChange={handleEventFormChange}>
             <option value="select an option">Select an option:</option>
+            <option value="300">5 minutes</option>
             <option value="900">15 minutes</option>
             <option value="1800">30 minutes</option>
             <option value="3600">1 hour</option>
