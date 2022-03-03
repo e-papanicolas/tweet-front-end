@@ -111,3 +111,12 @@ img {
 .submit-button {
   padding: 2px;
 }
+
+.delete-profile {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.delete-profile form {
+  padding: 5px;
+}

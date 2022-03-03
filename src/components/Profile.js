@@ -263,7 +263,7 @@ function Profile({ user, setUser, setLoggedIn }) {
           )}
           {errors ? errors.map((error) => <p>{error}</p>) : null}
           {warnDelete ? (
-            <div>
+            <div className="delete-profile">
               <p>
                 <strong>WARNING: </strong> You are about to delete your account.
                 This cannot be undone.
