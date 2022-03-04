@@ -166,7 +166,7 @@ function SignUp({ handleLogin }) {
                   />
                 </Grid>
               </Grid>
-              {errors ? <p>{errors}</p> : null}
+              {errors ? <p className="error">{errors}</p> : null}
               <Button
                 type="submit"
                 fullWidth

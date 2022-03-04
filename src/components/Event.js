@@ -7,6 +7,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import "../styles/Event.css";
+import anime from "animejs/lib/anime.es.js";
 
 // import components
 import Tweet from "./Tweet";
@@ -30,6 +31,23 @@ export default function Event({ user }) {
   });
 
   console.log(event);
+
+  function animate() {
+    anime({
+      targets: ".the-tweet",
+      translateY: {
+        value: -700,
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      rotate: {
+        value: 360,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+      delay: 250, // All properties except 'scale' inherit 250ms delay
+    });
+  }
 
   // fetches the event and loads info on page
   useEffect(() => {
@@ -80,6 +98,7 @@ export default function Event({ user }) {
       if (res.body !== "\r\n") {
         const newTweet = res;
         setTweets([...tweets, newTweet]);
+        animate(newTweet);
         console.log(newTweet);
       }
     }
@@ -128,7 +147,11 @@ export default function Event({ user }) {
               return <Tweet key={tweet.data.id} tweet={tweet} />;
             })}
           </div>
-          <div>{errors ? errors.map((error) => <p>{error}</p>) : null}</div>
+          <div>
+            {errors
+              ? errors.map((error) => <p className="error">{error}</p>)
+              : null}
+          </div>
         </ActionCableConsumer>
       </div>
     </ActionCableProvider>

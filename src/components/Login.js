@@ -141,7 +141,7 @@ function Login({ onLogin }) {
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {errors ? <p>{errors.error}</p> : null}
+              {errors ? <p className="error">{errors.error}</p> : null}
               <Button
                 type="submit"
                 fullWidth

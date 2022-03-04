@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 import "../styles/Profile.css";
 import Loader from "./Loader";
 import defaultImage from "../images/default-user-image.png";
@@ -53,6 +55,7 @@ function Profile({ user, setUser, setLoggedIn }) {
       },
       body: JSON.stringify(profileData),
     }).then((res) => {
+      console.log(res);
       if (res.ok) {
         res.json().then((data) => {
           setUser(data.user);
@@ -60,6 +63,7 @@ function Profile({ user, setUser, setLoggedIn }) {
         });
       } else {
         res.json().then((data) => {
+          console.log(data);
           setErrors(data.errors);
         });
       }
@@ -261,7 +265,10 @@ function Profile({ user, setUser, setLoggedIn }) {
               </Tooltip>
             </div>
           )}
-          {errors ? errors.map((error) => <p>{error}</p>) : null}
+          {errors
+            ? errors.map((error) => <p className="error">{error}</p>)
+            : null}
+
           {warnDelete ? (
             <div className="delete-profile">
               <p>

@@ -3,8 +3,9 @@ import "../styles/Tweet.css";
 
 export default function Tweet({ tweet }) {
   const date = new Date(tweet.data.created_at).toString();
+
   return (
-    <div id="tweet">
+    <div id="tweet" className="the-tweet">
       <div className="tweet-wrap">
         <div className="tweet-header">
           <img

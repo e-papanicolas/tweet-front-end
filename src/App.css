@@ -85,3 +85,8 @@ select:focus {
   outline-offset: 0px !important;
   outline: none !important;
 }
+
+.error {
+  font-size: 0.75em;
+  color: #f64652;
+}
