@@ -32,23 +32,6 @@ export default function Event({ user }) {
 
   console.log(event);
 
-  function animate() {
-    anime({
-      targets: ".the-tweet",
-      translateY: {
-        value: -700,
-        duration: 2200,
-        easing: "easeInSine",
-      },
-      rotate: {
-        value: 360,
-        duration: 2200,
-        easing: "easeInOutSine",
-      },
-      delay: 250, // All properties except 'scale' inherit 250ms delay
-    });
-  }
-
   // fetches the event and loads info on page
   useEffect(() => {
     setLoading(!isLoading);
@@ -97,11 +80,29 @@ export default function Event({ user }) {
       console.log(res);
       if (res.body !== "\r\n") {
         const newTweet = res;
+        newTweet.isNew = true;
         setTweets([...tweets, newTweet]);
         animate(newTweet);
-        console.log(newTweet);
       }
     }
+  }
+
+  // tweet animation using anime.js
+  function animate(newTweet) {
+    anime({
+      targets: [tweets, ".the-tweet"],
+      translateY: {
+        value: [1000, 0],
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      rotate: {
+        value: 720,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+    });
+    newTweet.isNew = false;
   }
 
   // loading spinner when state is set to true
