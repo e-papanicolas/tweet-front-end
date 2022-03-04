@@ -3,6 +3,8 @@ import React from "react";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import anime from "animejs/lib/anime.es.js";
 
 // import components
@@ -19,6 +21,7 @@ function Boards({ user }) {
   const [errors, setErrors] = useState([]);
   const [events, setEvents] = useState(user.events);
   const [isLoading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -111,6 +114,11 @@ function Boards({ user }) {
     delay: 250, // All properties except 'scale' inherit 250ms delay
   });
 
+  // handles closing error messages
+  function handleClose() {
+    setOpen(false);
+  }
+
   // renders new form popup when button is clicked
   if (formPopup) {
     return (
@@ -121,7 +129,9 @@ function Boards({ user }) {
           handleCreateNewEvent={handleCreateNewEvent}
         />
         {errors
-          ? errors.map((error) => <p className="error">{error}</p>)
+          ? errors.map((error) => (
+              <Snackbar autoHideDuration={6000}>{error}</Snackbar>
+            ))
           : null}
       </div>
     );
@@ -176,7 +186,20 @@ function Boards({ user }) {
         </div>
         <div>
           {errors
-            ? errors.map((error) => <p className="error">{error}</p>)
+            ? errors.map((error) => {
+                return (
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={5000}
+                    onClose={handleClose}
+                    message={error}
+                  >
+                    <MuiAlert variant="filled" severity="error">
+                      {error}
+                    </MuiAlert>
+                  </Snackbar>
+                );
+              })
             : null}
         </div>
       </div>

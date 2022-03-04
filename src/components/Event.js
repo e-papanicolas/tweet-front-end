@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import "../styles/Event.css";
 import anime from "animejs/lib/anime.es.js";
 
@@ -22,6 +24,7 @@ export default function Event({ user }) {
   // sets state
   const [tweets, setTweets] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [open, setOpen] = useState(false);
   const [event, setEvent] = useState({
     hashtag: "",
     id: eventId,
@@ -105,6 +108,11 @@ export default function Event({ user }) {
     newTweet.isNew = false;
   }
 
+  // handles closing error messages
+  function handleClose() {
+    setOpen(false);
+  }
+
   // loading spinner when state is set to true
   if (isLoading) {
     return <Loader />;
@@ -150,7 +158,20 @@ export default function Event({ user }) {
           </div>
           <div>
             {errors
-              ? errors.map((error) => <p className="error">{error}</p>)
+              ? errors.map((error) => {
+                  return (
+                    <Snackbar
+                      open={open}
+                      autoHideDuration={5000}
+                      onClose={handleClose}
+                      message={error}
+                    >
+                      <MuiAlert variant="filled" severity="error">
+                        {error}
+                      </MuiAlert>
+                    </Snackbar>
+                  );
+                })
               : null}
           </div>
         </ActionCableConsumer>

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
-import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import "../styles/Profile.css";
 import Loader from "./Loader";
 import defaultImage from "../images/default-user-image.png";
@@ -22,6 +22,7 @@ function Profile({ user, setUser, setLoggedIn }) {
   const [confirmDelete, setConfirmDelete] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const [profileData, setProfileData] = useState({
     bio: user.bio,
@@ -65,6 +66,7 @@ function Profile({ user, setUser, setLoggedIn }) {
         res.json().then((data) => {
           console.log(data);
           setErrors(data.errors);
+          setOpen(true);
         });
       }
       setLoading(false);
@@ -94,6 +96,7 @@ function Profile({ user, setUser, setLoggedIn }) {
       } else {
         res.json().then((data) => {
           setErrors(data.errors);
+          setOpen(true);
         });
       }
       setLoading(false);
@@ -116,6 +119,11 @@ function Profile({ user, setUser, setLoggedIn }) {
       setLoading(false);
       navigate("/");
     }
+  }
+
+  // handles closing error messages
+  function handleClose() {
+    setOpen(false);
   }
 
   // page render
@@ -265,10 +273,24 @@ function Profile({ user, setUser, setLoggedIn }) {
               </Tooltip>
             </div>
           )}
-          {errors
-            ? errors.map((error) => <p className="error">{error}</p>)
-            : null}
-
+          <div>
+            {errors
+              ? errors.map((error) => {
+                  return (
+                    <Snackbar
+                      open={open}
+                      autoHideDuration={5000}
+                      onClose={handleClose}
+                      message={error}
+                    >
+                      <MuiAlert variant="filled" severity="error">
+                        {error}
+                      </MuiAlert>
+                    </Snackbar>
+                  );
+                })
+              : null}
+          </div>
           {warnDelete ? (
             <div className="delete-profile">
               <p>
