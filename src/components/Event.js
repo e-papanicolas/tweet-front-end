@@ -52,6 +52,7 @@ export default function Event({ user }) {
       } else {
         res.json().then((data) => {
           setErrors(data.errors);
+          setOpen(true);
         });
       }
       setLoading(false);

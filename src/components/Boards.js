@@ -44,6 +44,7 @@ function Boards({ user }) {
       } else {
         res.json().then((data) => {
           setErrors(data.errors);
+          setOpen(true);
         });
       }
       setLoading(false);
@@ -67,6 +68,7 @@ function Boards({ user }) {
       } else {
         res.json().then((data) => {
           setErrors(data.errors);
+          setOpen(true);
         });
       }
       setLoading(false);
