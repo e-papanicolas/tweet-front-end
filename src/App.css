@@ -8,14 +8,13 @@ body {
   font-family: Poppins, sans-serif;
   min-height: 100vh;
   background: #f0f0f2;
-  /* color: #f2cb05; */
   color: #5f5f63;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
-
-  background-image: url(./images/people_img.jpg);
-  background-repeat: no-repeat;
+  background: url(./images/people_img.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 

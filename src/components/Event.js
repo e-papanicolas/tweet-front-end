@@ -19,12 +19,13 @@ export default function Event({ user }) {
   let { eventId } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
-  const [isLoading, setLoading] = useState(false);
 
   // sets state
   const [tweets, setTweets] = useState([]);
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [event, setEvent] = useState({
     hashtag: "",
     id: eventId,
@@ -61,12 +62,19 @@ export default function Event({ user }) {
 
   // sends request to back end to start streaming from twitter
   function startStream() {
+    console.log("clicked");
     fetch(`http://localhost:3000/streamstart/${event.id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+    // function timeout() {
+    //   setDisabled(true);
+    //   setTimeout(() => {
+    //     setDisabled(false);
+    //   }, event.timeout);
+    // }
   }
 
   // lets the back end know the channel to broadcast on
@@ -150,7 +158,9 @@ export default function Event({ user }) {
           </div>
 
           <div className="start-stream">
-            <button onClick={startStream}>start streaming now</button>
+            <button disabled={disabled} onClick={startStream}>
+              start streaming now
+            </button>
           </div>
           <div id="tweet-container">
             {tweets.map((tweet) => {

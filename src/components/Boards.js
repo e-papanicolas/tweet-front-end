@@ -23,6 +23,8 @@ function Boards({ user }) {
   const [isLoading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
+  console.log(user);
+
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
     e.preventDefault();
@@ -63,7 +65,10 @@ function Boards({ user }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setEvents(data);
+          const updatedEvents = events.filter((e) => {
+            return e.id !== event.id;
+          });
+          setEvents(updatedEvents);
         });
       } else {
         res.json().then((data) => {
@@ -81,40 +86,82 @@ function Boards({ user }) {
   }
 
   // animations for welcome text using anime.js (import at top)
-  anime
-    .timeline({
-      endDelay: 1000,
-      easing: "easeInOutQuad",
-      direction: "alternate",
-      loop: true,
-    })
-    .add({ targets: ".welcome-animation", color: "#f2cb05" }, 0);
+  function animate() {
+    anime
+      .timeline({
+        endDelay: 1000,
+        easing: "easeInOutQuad",
+        direction: "alternate",
+        loop: true,
+      })
+      .add({ targets: ".welcome-animation", color: "#f2cb05" }, 0);
 
-  anime({
-    targets: ".welcome-animation",
-    translateY: {
-      value: 0,
-      duration: 2200,
-      easing: "easeInSine",
-    },
-    translateX: {
-      value: 250,
-      duration: 1200,
-      easing: "easeInOutSine",
-    },
-    rotate: {
-      value: 360,
-      duration: 2200,
-      easing: "easeInOutSine",
-    },
-    scale: {
-      value: 2,
-      duration: 2000,
-      delay: 800,
-      easing: "easeInOutQuart",
-    },
-    delay: 250, // All properties except 'scale' inherit 250ms delay
-  });
+    anime({
+      targets: ".welcome-animation",
+      translateY: {
+        value: 0,
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      translateX: {
+        value: 350,
+        duration: 1200,
+        easing: "easeInOutSine",
+      },
+      rotate: {
+        value: 360,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+      scale: {
+        value: 2,
+        duration: 2000,
+        delay: 800,
+        easing: "easeInOutQuart",
+      },
+      delay: 250, // All properties except 'scale' inherit 250ms delay
+    });
+  }
+  animate();
+
+  // animations for alternate welcome text using anime.js (import at top)
+  function animate2() {
+    anime
+      .timeline({
+        endDelay: 1000,
+        easing: "easeInOutQuad",
+        direction: "alternate",
+        loop: true,
+      })
+      .add({ targets: ".welcome-animation-two", color: "#f2cb05" }, 0);
+
+    anime({
+      targets: ".welcome-animation-two",
+      translateY: {
+        value: -100,
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      translateX: {
+        value: 400,
+        duration: 1200,
+        easing: "easeInOutSine",
+      },
+      rotate: {
+        value: 360,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+      scale: {
+        value: 2,
+        duration: 2000,
+        delay: 800,
+        easing: "easeInOutQuart",
+      },
+      delay: 250, // All properties except 'scale' inherit 250ms delay
+    });
+  }
+  animate2();
 
   // handles closing error messages
   function handleClose() {
@@ -143,9 +190,7 @@ function Boards({ user }) {
   if (!events || events.length === 0) {
     return (
       <div className="event-page-container">
-        <div className="welcome">
-          <p className="welcome-animation">welcome, {user.first_name}</p>
-        </div>
+        <p className="welcome-animation-two">welcome, {user.first_name}</p>
         <div id="board-container">
           <p>You don't have any boards...</p>
           <p>Click to add one now.</p>
