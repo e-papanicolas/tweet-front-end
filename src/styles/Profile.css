@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-img {
+.profile-page-container img {
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 200px;

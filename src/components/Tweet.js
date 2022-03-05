@@ -15,7 +15,7 @@ export default function Tweet({ tweet }) {
             className="avatar"
           />
           <div className="tweet-header-info">
-            {tweet.includes.users[0].name}{" "}
+            {tweet.includes.users[0].name}
             <span>@{tweet.includes.users[0].username}</span>
             <span>
               {date.slice(4, 10)} {date.slice(16, 21)}
@@ -26,7 +26,7 @@ export default function Tweet({ tweet }) {
         {tweet.includes.media ? (
           <div className="tweet-img-wrap">
             <img
-              src={tweet.includes.media.preview_image_url}
+              src={tweet.includes.media[0].url}
               alt="tweet img attached"
               className="tweet-img"
             />

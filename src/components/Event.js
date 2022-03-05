@@ -60,7 +60,7 @@ export default function Event({ user }) {
 
   // sends request to back end to start streaming from twitter
   function startStream() {
-    console.log("clicked");
+    console.log("starting stream");
     fetch(`http://localhost:3000/streamstart/${event.id}`, {
       method: "GET",
       headers: {
@@ -85,6 +85,7 @@ export default function Event({ user }) {
   // creates a new tweet out of the response and adds it to the tweet array
   // which triggers state and it appears on the page
   function handleRecieveData(data) {
+    console.log(data);
     if (data.body !== "starting twitter streaming") {
       const res = JSON.parse(data.body);
       console.log(res);

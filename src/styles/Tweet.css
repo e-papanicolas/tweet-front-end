@@ -32,18 +32,23 @@
   align-items: flex-start;
   font-size: 14px;
 }
+
 .tweet-header-info {
   font-weight: bold;
+  color: black;
 }
+
 .tweet-header-info span {
   color: #657786;
   font-weight: normal;
   margin-left: 5px;
 }
+
 .tweet-header-info p {
   font-weight: normal;
   margin-top: 5px;
 }
+
 .tweet-img-wrap {
   padding-left: 60px;
 }
@@ -53,11 +58,23 @@
   margin-left: 60px;
   margin-top: 10px;
 }
+
 .tweet-info-counts div {
   display: flex;
   margin-right: 20px;
 }
+
 .tweet-info-counts div svg {
   color: #657786;
   margin-right: 10px;
+}
+
+.tweet-img {
+  height: 33%;
+  width: 33%;
+}
+
+.bold {
+  color: black;
+  font-weight: bold;
 }
