@@ -34,8 +34,6 @@ export default function Event({ user }) {
     timeout: "",
   });
 
-  console.log(event);
-
   // fetches the event and loads info on page
   useEffect(() => {
     setLoading(!isLoading);
@@ -69,12 +67,12 @@ export default function Event({ user }) {
         Authorization: `Bearer ${token}`,
       },
     });
-    // function timeout() {
-    //   setDisabled(true);
-    //   setTimeout(() => {
-    //     setDisabled(false);
-    //   }, event.timeout);
-    // }
+    // disables the start streaming button to avoid sending requests
+    // and interrupting the stream
+    setDisabled(true);
+    setTimeout(() => {
+      setDisabled(false);
+    }, event.timeout * 1000);
   }
 
   // lets the back end know the channel to broadcast on
