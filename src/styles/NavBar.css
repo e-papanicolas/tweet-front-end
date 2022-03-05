@@ -1,5 +1,9 @@
 /* NAV STYLES */
 
+/* .nav {
+  z-index: 2;
+} */
+
 nav {
   background: #f2cb05;
   display: inline-block;
