@@ -87,7 +87,7 @@ textarea {
   outline: none;
   transition: box-shadow 0.2s;
   border-radius: 5px;
-  background-color: var(--text-primary);
+  background-color: var(--input);
   font-family: Poppins, sans-serif;
 }
 

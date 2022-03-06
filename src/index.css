@@ -18,13 +18,15 @@ code {
   --text-secondary: #5f5f63;
   --accent: #5b85d9;
   --yellow: #f2cb05;
+  --input: #fff;
   --bkimg: url(./images/people_img.jpg);
 }
 [data-theme="dark"] {
   --background: #5f5f63;
   --text-primary: #f0f0f2;
   --text-secondary: #f0f0f2;
-  --accent: #5b85d9;
-  --yellow: #f2cb05;
+  --accent: #f2cb05;
+  --yellow: #5b85d9;
+  --input: #f0f0f2;
   --bkimg: url(./images/people_img-darktheme.jpg);
 }

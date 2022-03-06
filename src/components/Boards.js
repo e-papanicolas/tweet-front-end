@@ -1,6 +1,6 @@
 // import react and utils
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
@@ -23,7 +23,81 @@ function Boards({ user }) {
   const [isLoading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  console.log(user);
+  // animations for welcome text using anime.js (import at top)
+  useEffect(() => {
+    anime
+      .timeline({
+        endDelay: 1000,
+        easing: "easeInOutQuad",
+        direction: "alternate",
+        loop: true,
+      })
+      .add({ targets: ".welcome-animation", color: "#f2cb05" }, 0);
+
+    anime({
+      targets: ".welcome-animation",
+      translateY: {
+        value: 0,
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      translateX: {
+        value: 350,
+        duration: 1200,
+        easing: "easeInOutSine",
+      },
+      rotate: {
+        value: 360,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+      scale: {
+        value: 2,
+        duration: 2000,
+        delay: 800,
+        easing: "easeInOutQuart",
+      },
+      delay: 250, // All properties except 'scale' inherit 250ms delay
+    });
+  }, []);
+
+  // animations for alternate welcome text using anime.js (import at top)
+  useEffect(() => {
+    anime
+      .timeline({
+        endDelay: 1000,
+        easing: "easeInOutQuad",
+        direction: "alternate",
+        loop: true,
+      })
+      .add({ targets: ".welcome-animation-two", color: "#f2cb05" }, 0);
+
+    anime({
+      targets: ".welcome-animation-two",
+      translateY: {
+        value: -100,
+        duration: 2200,
+        easing: "easeInSine",
+      },
+      translateX: {
+        value: 400,
+        duration: 1200,
+        easing: "easeInOutSine",
+      },
+      rotate: {
+        value: 360,
+        duration: 2200,
+        easing: "easeInOutSine",
+      },
+      scale: {
+        value: 2,
+        duration: 2000,
+        delay: 800,
+        easing: "easeInOutQuart",
+      },
+      delay: 250, // All properties except 'scale' inherit 250ms delay
+    });
+  }, []);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -84,84 +158,6 @@ function Boards({ user }) {
   if (isLoading) {
     return <Loader />;
   }
-
-  // animations for welcome text using anime.js (import at top)
-  function animate() {
-    anime
-      .timeline({
-        endDelay: 1000,
-        easing: "easeInOutQuad",
-        direction: "alternate",
-        loop: true,
-      })
-      .add({ targets: ".welcome-animation", color: "#f2cb05" }, 0);
-
-    anime({
-      targets: ".welcome-animation",
-      translateY: {
-        value: 0,
-        duration: 2200,
-        easing: "easeInSine",
-      },
-      translateX: {
-        value: 350,
-        duration: 1200,
-        easing: "easeInOutSine",
-      },
-      rotate: {
-        value: 360,
-        duration: 2200,
-        easing: "easeInOutSine",
-      },
-      scale: {
-        value: 2,
-        duration: 2000,
-        delay: 800,
-        easing: "easeInOutQuart",
-      },
-      delay: 250, // All properties except 'scale' inherit 250ms delay
-    });
-  }
-  animate();
-
-  // animations for alternate welcome text using anime.js (import at top)
-  function animate2() {
-    anime
-      .timeline({
-        endDelay: 1000,
-        easing: "easeInOutQuad",
-        direction: "alternate",
-        loop: true,
-      })
-      .add({ targets: ".welcome-animation-two", color: "#f2cb05" }, 0);
-
-    anime({
-      targets: ".welcome-animation-two",
-      translateY: {
-        value: -100,
-        duration: 2200,
-        easing: "easeInSine",
-      },
-      translateX: {
-        value: 400,
-        duration: 1200,
-        easing: "easeInOutSine",
-      },
-      rotate: {
-        value: 360,
-        duration: 2200,
-        easing: "easeInOutSine",
-      },
-      scale: {
-        value: 2,
-        duration: 2000,
-        delay: 800,
-        easing: "easeInOutQuart",
-      },
-      delay: 250, // All properties except 'scale' inherit 250ms delay
-    });
-  }
-  animate2();
 
   // handles closing error messages
   function handleClose() {

@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  color: var(--text-secondary);
 }
 
 #event-page h2 {
@@ -46,7 +47,7 @@
 .start-stream button {
   cursor: pointer;
   background-color: var(--background);
-  color: #5b85d9;
+  color: var(--accent);
   padding: 5px;
   font-weight: bold;
   font-size: 1.25 rem;
@@ -57,6 +58,10 @@
   opacity: 50%;
 }
 
+.start-stream button:disabled {
+  opacity: 50%;
+}
+
 .hashtag {
-  color: #f2cb05;
+  color: var(--yellow);
 }

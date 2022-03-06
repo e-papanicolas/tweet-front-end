@@ -83,6 +83,7 @@
   padding: 10px;
   margin: 5px;
   justify-content: center;
+  color: var(--text-secondary);
 }
 
 .form {
@@ -148,10 +149,8 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.preview-titles {
   padding: 10px;
+  color: var(--text-secondary);
 }
 
 .preview-buttons {
