@@ -67,7 +67,7 @@
   justify-content: space-between;
   height: 50vh;
   width: 50vh;
-  background-color: white;
+  background-color: var(--background);
   border: 2px solid #f2cb05;
   border-radius: 5px;
 }
@@ -140,7 +140,7 @@ select {
   padding: 10px;
   margin: 30px;
   display: flex;
-  background-color: #f0f0f2;
+  background-color: var(--background);
   height: 30vh;
 }
 

@@ -1,6 +1,7 @@
 // import react and utils
 import { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 
 // import components
 import Login from "./components/Login";
@@ -24,6 +25,18 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState([]);
   const [isLoading, setLoading] = useState(false);
+
+  // dark and light mode
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
 
   // handles login and logout, sets or removes user
   function handleLogin(user) {
@@ -89,9 +102,14 @@ function App() {
 
   // pages rendered when user is logged in
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <div className="background"></div>
-      <NavBar handleLogOut={handleLogOut} user={currentUser} />
+      <NavBar
+        handleLogOut={handleLogOut}
+        user={currentUser}
+        switchTheme={switchTheme}
+        theme={theme}
+      />
       <Routes>
         <Route
           path="/me"

@@ -1,9 +1,5 @@
 /* NAV STYLES */
 
-/* .nav {
-  z-index: 2;
-} */
-
 nav {
   background: #f2cb05;
   display: inline-block;
@@ -35,14 +31,14 @@ nav {
 .nav ul li a {
   display: inline-block;
   padding: 15px;
-  color: #f0f0f2;
+  color: var(--background);
   transition: transform 0.3s cubic-bezier(0.925, 0.15, 0.505, 1.03);
 }
 
 .nav p {
   display: inline-block;
   padding: 15px;
-  color: #f0f0f2;
+  color: var(--background);
   transition: transform 0.3s cubic-bezier(0.925, 0.15, 0.505, 1.03);
   cursor: pointer;
 }

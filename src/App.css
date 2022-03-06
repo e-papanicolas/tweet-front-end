@@ -7,11 +7,11 @@
 body {
   font-family: Poppins, sans-serif;
   min-height: 100vh;
-  background: #f0f0f2;
-  color: #5f5f63;
+  background: var(--background);
+  color: var(--text-primary);
   justify-content: center;
   align-items: center;
-  background: url(./images/people_img.jpg) no-repeat center center fixed;
+  background: var(--bkimg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -70,22 +70,26 @@ body {
   opacity: 50%;
 }
 
-.form-line-active input:focus,
-.form-line-active textarea:focus {
-  border: 1px solid #f2cb05 !important;
-  box-shadow: 0 0 3px #f2cb05 !important;
-  -moz-box-shadow: 0 0 3px #f2cb05 !important;
-  -webkit-box-shadow: 0 0 3px #f2cb05 !important;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline-offset: 0px !important;
-  outline: none !important;
-}
-
 .error {
   font-size: 0.75em;
   color: #f64652;
+}
+
+input,
+textarea {
+  --focus: 2px var(--yellow);
+  --active: var(--text-secondary);
+  --border: var(--background);
+  --border-hover: var(--text-primary);
+  padding: 2px;
+  outline: none;
+  transition: box-shadow 0.2s;
+  border-radius: 5px;
+  background-color: var(--text-primary);
+  font-family: Poppins, sans-serif;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 var(--focus);
 }

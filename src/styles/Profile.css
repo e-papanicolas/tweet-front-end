@@ -36,8 +36,8 @@
 
 .edit-profile-input {
   display: flex;
-  width: 60%;
   margin: 0.5em;
+  justify-content: center;
 }
 
 .edit-profile {
@@ -46,6 +46,10 @@
 
 .edit-profile input {
   margin-left: 3px;
+}
+
+.edit-profile label {
+  align-self: center;
 }
 
 .camera-icon {
@@ -67,7 +71,7 @@
 }
 
 #profile-container {
-  background: #f0f0f2;
+  background: var(--background);
   height: 70vh;
   width: 40vw;
   padding: 20px;
@@ -76,6 +80,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .inner-profile {

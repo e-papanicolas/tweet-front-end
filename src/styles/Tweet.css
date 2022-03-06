@@ -1,7 +1,7 @@
 /* TWEET STYLES */
 
 #tweet-container body {
-  background: #e6ecf0;
+  background: var(--background);
   font-family: "Asap", sans-serif;
   font-family: "Roboto", sans-serif;
 }
@@ -24,7 +24,7 @@
   margin-top: 20px;
   border-radius: 3px;
   padding: 10px;
-  border: 1px solid #e6ecf0;
+  border: 1px solid var(--background);
 }
 
 .tweet-header {
@@ -35,11 +35,11 @@
 
 .tweet-header-info {
   font-weight: bold;
-  color: black;
+  color: var(--text-primary);
 }
 
 .tweet-header-info span {
-  color: #657786;
+  color: var(--text-secondary);
   font-weight: normal;
   margin-left: 5px;
 }
@@ -65,7 +65,7 @@
 }
 
 .tweet-info-counts div svg {
-  color: #657786;
+  color: var(--text-secondary);
   margin-right: 10px;
 }
 
@@ -75,6 +75,6 @@
 }
 
 .bold {
-  color: black;
+  color: var(--text-primary);
   font-weight: bold;
 }
