@@ -82,120 +82,119 @@ function SignUp({ handleLogin }) {
 
   return (
     <div className="signup">
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
+      <h1 className="logo">Tweet</h1>
+      <Container component="main" maxWidth="xs" sx={{ m: 0 }}>
+        <CssBaseline />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "white",
+            border: "2px solid #5B85d9",
+            padding: "20px",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "#5b85d9" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
           <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: "white",
-              border: "2px solid #5B85d9",
-              padding: "20px",
-            }}
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "#5b85d9" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign up
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="first_name"
+                  required
+                  fullWidth
+                  id="first_name"
+                  label="First Name"
+                  autoFocus
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="last_name"
+                  label="Last Name"
+                  name="last_name"
+                  autoComplete="family-name"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+            {errors ? <p className="error">{errors}</p> : null}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: "#5b85d9" }}
             >
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="username"
-                    label="Username"
-                    name="username"
-                    autoComplete="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="first_name"
-                    required
-                    fullWidth
-                    id="first_name"
-                    label="First Name"
-                    autoFocus
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="last_name"
-                    label="Last Name"
-                    name="last_name"
-                    autoComplete="family-name"
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </Grid>
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <NavLink
+                  to="/"
+                  variant="body2"
+                  sx={{
+                    underline: {
+                      borderBottom: "2px solid white",
+                    },
+                  }}
+                >
+                  Already have an account? Sign in
+                </NavLink>
               </Grid>
-              {errors ? <p className="error">{errors}</p> : null}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "#5b85d9" }}
-              >
-                Sign Up
-              </Button>
-              <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <NavLink
-                    to="/"
-                    variant="body2"
-                    sx={{
-                      underline: {
-                        borderBottom: "2px solid white",
-                      },
-                    }}
-                  >
-                    Already have an account? Sign in
-                  </NavLink>
-                </Grid>
-              </Grid>
-            </Box>
-            <Copyright sx={{ mt: 5 }} />
+            </Grid>
           </Box>
-        </Container>
-      </ThemeProvider>
+          <Copyright sx={{ mt: 5 }} />
+        </Box>
+      </Container>
+      <h1 className="logo">Stream</h1>
     </div>
   );
 }

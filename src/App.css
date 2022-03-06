@@ -101,8 +101,21 @@ h1 {
   font-family: "Sansita Swashed", cursive;
   /* font-family: "Pacifico", cursive;
   /* font-family: "Staatliches", cursive; */
+  margin-bottom: 10rem;
 }
 
 .login-page {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  row-gap: 1rem;
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  row-gap: 1rem;
 }
