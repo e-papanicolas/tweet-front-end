@@ -18,6 +18,8 @@ body {
   background-size: cover;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Sansita+Swashed:wght@500&family=Staatliches&display=swap");
+
 /* ICON STYLES */
 
 .icon-container {
@@ -92,4 +94,15 @@ textarea {
 input:focus,
 textarea:focus {
   box-shadow: 0 0 0 var(--focus);
+}
+
+h1 {
+  font-size: 8rem;
+  font-family: "Sansita Swashed", cursive;
+  /* font-family: "Pacifico", cursive;
+  /* font-family: "Staatliches", cursive; */
+}
+
+.login-page {
+  display: flex;
 }

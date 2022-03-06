@@ -17,6 +17,7 @@ import Loader from "./Loader";
 function Copyright(props) {
   return (
     <Typography
+      backgroundColor="white"
       variant="body2"
       color="text.secondary"
       align="center"
@@ -25,9 +26,8 @@ function Copyright(props) {
       {"Copyright © "}
       <Link color="inherit" href="https://elenipapanicolas.com">
         Eleni Papanicolas
-      </Link>
+      </Link>{" "}
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -92,7 +92,8 @@ function SignUp({ handleLogin }) {
               flexDirection: "column",
               alignItems: "center",
               backgroundColor: "white",
-              //signing container
+              border: "2px solid #5B85d9",
+              padding: "20px",
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "#5b85d9" }}>
@@ -177,14 +178,22 @@ function SignUp({ handleLogin }) {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <NavLink to="/" variant="body2">
+                  <NavLink
+                    to="/"
+                    variant="body2"
+                    sx={{
+                      underline: {
+                        borderBottom: "2px solid white",
+                      },
+                    }}
+                  >
                     Already have an account? Sign in
                   </NavLink>
                 </Grid>
               </Grid>
             </Box>
+            <Copyright sx={{ mt: 5 }} />
           </Box>
-          <Copyright sx={{ mt: 5 }} />
         </Container>
       </ThemeProvider>
     </div>
