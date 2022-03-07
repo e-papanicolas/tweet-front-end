@@ -37,7 +37,7 @@
 }
 
 #profile-container h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin: 5px;
 }
 
@@ -79,16 +79,23 @@
   display: flex;
   flex-direction: row;
   padding: 5px;
-  /* justify-content: flex-end; */
+  justify-content: flex-end;
 }
 
-.upload-photo form {
+#upload-photo-form {
   display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.upload-photo-label {
+  width: 100%;
 }
 
 #submit-button {
   padding: 2px;
-  width: 10rem;
+  width: 20%;
+  cursor: pointer;
 }
 
 .edit-profile-bio-input {
@@ -109,10 +116,6 @@ textarea {
   width: 70%;
   border: none;
   padding: 5px;
-}
-
-.edit-profile label {
-  align-self: center;
 }
 
 .edit-profile form {

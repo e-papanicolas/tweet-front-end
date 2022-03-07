@@ -33,21 +33,10 @@ export default function UpdateProfileForm({
         )}
       </div>
 
-      {/* <div> */}
-      {/* <div className="upload-photo">
-          <form onSubmit={handleSubmitPicture}>
-            <label htmlFor="image">
-              <input type="file" name="image" accept="image/*" />
-            </label>
-            <input className="submit-button" type="submit" value="Submit" />
-          </form>
-        </div> */}
-      {/* </div> */}
-
       <div className="edit-profile">
         <div className="upload-photo">
-          <form onSubmit={handleSubmitPicture}>
-            <label htmlFor="image">
+          <form onSubmit={handleSubmitPicture} id="upload-photo-form">
+            <label htmlFor="image" className="upload-photo-label">
               <input type="file" name="image" accept="image/*" />
             </label>
             <input id="submit-button" type="submit" value="Submit" />

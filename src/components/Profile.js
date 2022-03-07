@@ -158,22 +158,6 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
               </div>
             )}
           </div>
-          <div className="profile-buttons">
-            <Tooltip title="delete account">
-              <Icon className="icon-p icon-r" onClick={setWarnDelete}>
-                delete_forever
-              </Icon>
-            </Tooltip>
-            <Tooltip title="edit profile">
-              <Icon
-                className="icon-p icon-y"
-                onClick={() => setEditProfile(true)}
-              >
-                edit
-              </Icon>
-            </Tooltip>
-          </div>
-
           {warnDelete ? (
             <div className="delete-profile">
               <p>
@@ -194,6 +178,21 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
               </form>
             </div>
           ) : null}
+          <div className="profile-buttons">
+            <Tooltip title="delete account">
+              <Icon className="icon-p icon-r" onClick={setWarnDelete}>
+                delete_forever
+              </Icon>
+            </Tooltip>
+            <Tooltip title="edit profile">
+              <Icon
+                className="icon-p icon-y"
+                onClick={() => setEditProfile(true)}
+              >
+                edit
+              </Icon>
+            </Tooltip>
+          </div>
         </div>
       )}
 
