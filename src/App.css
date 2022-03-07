@@ -27,6 +27,11 @@ body {
   justify-content: center;
 }
 
+.icon-container-left {
+  display: flex;
+  align-items: center;
+}
+
 #icon-large {
   font-size: 7em;
   cursor: pointer;

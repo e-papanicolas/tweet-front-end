@@ -1,11 +1,10 @@
 // import react and utils
 import React from "react";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import anime from "animejs/lib/anime.es.js";
 
 // import components
 import NewBoardForm from "./NewBoardForm";
@@ -20,82 +19,6 @@ function Boards({ user, setLoading }) {
   const [errors, setErrors] = useState([]);
   const [events, setEvents] = useState(user.events);
   const [open, setOpen] = useState(false);
-
-  // animations for welcome text using anime.js (import at top)
-  useLayoutEffect(() => {
-    anime
-      .timeline({
-        endDelay: 1000,
-        easing: "easeInOutQuad",
-        direction: "alternate",
-        loop: true,
-      })
-      .add({ targets: ".welcome-animation", color: "#f2cb05" }, 0);
-
-    anime({
-      targets: ".welcome-animation",
-      translateY: {
-        value: 0,
-        duration: 2200,
-        easing: "easeInSine",
-      },
-      translateX: {
-        value: 350,
-        duration: 1200,
-        easing: "easeInOutSine",
-      },
-      rotate: {
-        value: 360,
-        duration: 2200,
-        easing: "easeInOutSine",
-      },
-      scale: {
-        value: 2,
-        duration: 2000,
-        delay: 800,
-        easing: "easeInOutQuart",
-      },
-      delay: 250, // All properties except 'scale' inherit 250ms delay
-    });
-  }, []);
-
-  // animations for alternate welcome text using anime.js (import at top)
-  useLayoutEffect(() => {
-    anime
-      .timeline({
-        endDelay: 1000,
-        easing: "easeInOutQuad",
-        direction: "alternate",
-        loop: true,
-      })
-      .add({ targets: ".welcome-animation-two", color: "#f2cb05" }, 0);
-
-    anime({
-      targets: ".welcome-animation-two",
-      translateY: {
-        value: -100,
-        duration: 2200,
-        easing: "easeInSine",
-      },
-      translateX: {
-        value: 400,
-        duration: 1200,
-        easing: "easeInOutSine",
-      },
-      rotate: {
-        value: 360,
-        duration: 2200,
-        easing: "easeInOutSine",
-      },
-      scale: {
-        value: 2,
-        duration: 2000,
-        delay: 800,
-        easing: "easeInOutQuart",
-      },
-      delay: 250, // All properties except 'scale' inherit 250ms delay
-    });
-  }, []);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -175,38 +98,28 @@ function Boards({ user, setLoading }) {
     );
   }
 
-  // <p className="welcome-animation-two">welcome, {user.first_name}</p>
-  // <p className="welcome-animation">welcome, {user.first_name}</p>
-
-  //   <div className="welcome">
-  //   <Tooltip title="add new event board">
-  //     <Icon id="icon-med" onClick={() => setFormPopup(true)}></Icon>
-  //   </Tooltip>
-  // </div>
-
-  // if user has no events, only offer to add new
-  if (!events || events.length === 0) {
-    return (
-      <div className="event-page-container">
-        <div id="board-container">
-          <p>You don't have any boards...</p>
-          <p>Click to add one now.</p>
-          <div className="icon-container">
-            <Tooltip title="add new event board">
-              <Icon id="icon-large" onClick={() => setFormPopup(true)}>
-                edit_calendar
-              </Icon>
-            </Tooltip>
-          </div>
+  // if user has boards, map over and render Event component for each, if not display message
+  return (
+    <div id="boards-container">
+      <div className="event-board-title-container">
+        <h2>My Event Boards</h2>
+        <div className="icon-container-left">
+          <Tooltip title="add new event board">
+            <Icon id="icon-med" onClick={() => setFormPopup(true)}>
+              add_box
+            </Icon>
+          </Tooltip>
+          <p>New event board</p>
         </div>
       </div>
-    );
-  }
-
-  // if user has boards, map over and render Event component for each
-  else
-    return (
-      <div id="boards-container">
+      {!events || events.length === 0 ? (
+        <div className="event-page-container">
+          <div id="board-container">
+            <p>You don't have any boards...</p>
+            <p>Click to add one now.</p>
+          </div>
+        </div>
+      ) : (
         <div className="preview-container">
           <div className="previews">
             {events.map((event) => {
@@ -220,26 +133,28 @@ function Boards({ user, setLoading }) {
             })}
           </div>
         </div>
-        <div>
-          {errors
-            ? errors.map((error) => {
-                return (
-                  <Snackbar
-                    open={open}
-                    autoHideDuration={5000}
-                    onClose={handleClose}
-                    message={error}
-                  >
-                    <MuiAlert variant="filled" severity="error">
-                      {error}
-                    </MuiAlert>
-                  </Snackbar>
-                );
-              })
-            : null}
-        </div>
+      )}
+
+      <div>
+        {errors
+          ? errors.map((error) => {
+              return (
+                <Snackbar
+                  open={open}
+                  autoHideDuration={5000}
+                  onClose={handleClose}
+                  message={error}
+                >
+                  <MuiAlert variant="filled" severity="error">
+                    {error}
+                  </MuiAlert>
+                </Snackbar>
+              );
+            })
+          : null}
       </div>
-    );
+    </div>
+  );
 }
 
 export default Boards;

@@ -15,7 +15,8 @@
 #boards-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 80vh;
+  justify-content: space-between;
 }
 
 .event-page-container {
@@ -43,22 +44,6 @@
   margin: 30px;
   font-size: 1.5em;
   z-index: 1;
-}
-
-.welcome-animation {
-  padding-top: 20px;
-  margin: 10px;
-  font-size: 2em;
-  text-align: center;
-  transform: translateY(-100px);
-}
-
-.welcome-animation-two {
-  padding-top: 20px;
-  margin: 10px;
-  font-size: 2em;
-  text-align: center;
-  transform: translateY(-200px);
 }
 
 #board-form {
@@ -127,11 +112,12 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateY(-100px);
 }
 
 .previews {
   display: flex;
-  transform: translateY(150px);
+  /* transform: translateY(150px); */
 }
 
 .event-preview {
@@ -174,4 +160,15 @@ select {
 
 .blue {
   color: #5b85d9;
+}
+
+.event-board-title-container {
+  margin-top: 2rem;
+  margin-left: 11rem;
+  text-align: left;
+  font-size: 1.5em;
+}
+
+.new-event-button {
+  color: #f2cb05;
 }
