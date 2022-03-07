@@ -175,11 +175,19 @@ function Boards({ user, setLoading }) {
     );
   }
 
+  // <p className="welcome-animation-two">welcome, {user.first_name}</p>
+  // <p className="welcome-animation">welcome, {user.first_name}</p>
+
+  //   <div className="welcome">
+  //   <Tooltip title="add new event board">
+  //     <Icon id="icon-med" onClick={() => setFormPopup(true)}></Icon>
+  //   </Tooltip>
+  // </div>
+
   // if user has no events, only offer to add new
   if (!events || events.length === 0) {
     return (
       <div className="event-page-container">
-        <p className="welcome-animation-two">welcome, {user.first_name}</p>
         <div id="board-container">
           <p>You don't have any boards...</p>
           <p>Click to add one now.</p>
@@ -199,15 +207,6 @@ function Boards({ user, setLoading }) {
   else
     return (
       <div id="boards-container">
-        <div className="welcome">
-          <Tooltip title="add new event board">
-            <Icon id="icon-med" onClick={() => setFormPopup(true)}>
-              {/* <FontAwesomeIcon icon="fa-solid fa-calendar-circle-plus" /> */}
-            </Icon>
-            {/* <FontAwesomeIcon icon="fa-solid fa-calendar-circle-plus" /> */}
-          </Tooltip>
-        </div>
-        <p className="welcome-animation">welcome, {user.first_name}</p>
         <div className="preview-container">
           <div className="previews">
             {events.map((event) => {

@@ -3,21 +3,31 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import "../styles/NavBar.css";
+import logo from "../images/grey-logo.jpg";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
   console.log(theme);
   return (
     <div id="nav">
+      <div className="logo">
+        <img src={logo} alt="tweet stream logo" />
+        <h1 id="nav-logo-title">TweetStream</h1>
+      </div>
+      <div className="first">
+        <h3>Welcome, {user.first_name}</h3>
+        <NavLink to="/me">
+          <img
+            className="profile-pic-preview"
+            src={user.get_image}
+            alt="profile"
+          />
+        </NavLink>
+      </div>
       <nav className="nav vertical">
         <ul>
           <li>
             <NavLink to="/myevents">
               <Icon>home</Icon>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/me">
-              <Icon>face</Icon>
             </NavLink>
           </li>
           <li>

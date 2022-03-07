@@ -123,16 +123,15 @@ select {
 }
 
 .preview-container {
-  width: 80%;
-  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100px);
 }
 
 .previews {
   display: flex;
+  transform: translateY(150px);
 }
 
 .event-preview {
@@ -143,6 +142,7 @@ select {
   display: flex;
   background-color: var(--background);
   height: 30vh;
+  width: 20vw;
 }
 
 .preview-titles {

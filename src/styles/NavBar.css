@@ -7,16 +7,28 @@ nav {
   padding: 0 10px;
   margin: 30px;
   position: absolute;
-  left: 0;
-  top: 0;
+  right: 0;
+  top: 5em;
 }
 
-#nav h1 {
-  color: #5b85d9;
+.first {
   position: absolute;
-  left: 0;
-  padding: 0 10px;
+  top: 0;
+  right: 0;
+  display: flex;
   margin: 30px;
+  align-items: center;
+}
+
+.profile-pic-preview {
+  border-radius: 50%;
+  height: 4em;
+  padding: 0 10px;
+  border: 1px solid #f2cb05;
+}
+
+.first h3 {
+  padding-right: 5px;
 }
 
 .nav ul {
@@ -72,4 +84,24 @@ nav.horizontal:hover::after {
 
 nav.vertical:hover::after {
   transform: scaleY(1.1);
+}
+
+/* LOGO ON TOP LEFT STYLES */
+
+.logo img {
+  width: 10%;
+  height: 10%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.logo {
+  display: flex;
+}
+
+#nav-logo-title {
+  color: var(--text-primary);
+  font-size: 4em;
+  transform: translateY(50px);
+  margin-bottom: 0;
 }
