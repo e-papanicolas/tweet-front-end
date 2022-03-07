@@ -150,10 +150,13 @@ export default function Event({ user, setLoading }) {
                 Start the TweetStream
               </button>
             </div>
-
-            <div className="countdown">
-              <Countdown timeout={event.timeout} />
-            </div>
+            {disabled ? (
+              <div className="countdown">
+                <Countdown timeout={event.timeout} />
+              </div>
+            ) : (
+              <div className="countdown"></div>
+            )}
           </div>
           <div id="tweet-container">
             {tweets.map((tweet) => {

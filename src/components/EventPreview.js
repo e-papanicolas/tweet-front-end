@@ -27,7 +27,7 @@ export default function EventPreview({ event, handleDeleteEvent }) {
             className="open-event-button"
             onClick={() => navigate(`/myevents/${event.id}`)}
           >
-            open event
+            Open event board
           </p>
         </Tooltip>
       </div>

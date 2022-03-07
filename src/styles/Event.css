@@ -66,8 +66,10 @@
   margin-left: 5em;
   margin-right: 5em;
   justify-content: space-around;
+  align-items: center;
 }
 
 .countdown {
   color: var(--text-primary);
+  width: 15em;
 }

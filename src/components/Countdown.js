@@ -73,6 +73,7 @@ export default function Countdown({ timeout }) {
 
   // We put empty array to act as componentDid
   // mount only
+
   useEffect(() => {
     clearTimer(getDeadTime());
   }, []);
