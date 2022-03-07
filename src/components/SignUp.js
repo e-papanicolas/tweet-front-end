@@ -31,7 +31,7 @@ function Copyright(props) {
   );
 }
 
-function SignUp({ handleLogin }) {
+function SignUp({ handleLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -79,7 +79,13 @@ function SignUp({ handleLogin }) {
 
   return (
     <div className="signup">
-      <h1 className="logo">Tweet</h1>
+      <h1
+        className="logo"
+        onMouseEnter={onMouseEnterLogo}
+        onMouseLeave={onMouseLeaveLogo}
+      >
+        Tweet
+      </h1>
       <Container component="main" maxWidth="xs" sx={{ m: 0 }}>
         <CssBaseline />
         <Box
@@ -191,7 +197,13 @@ function SignUp({ handleLogin }) {
           <Copyright sx={{ mt: 5 }} />
         </Box>
       </Container>
-      <h1 className="logo">Stream</h1>
+      <h1
+        className="logo"
+        onMouseEnter={onMouseEnterLogo}
+        onMouseLeave={onMouseLeaveLogo}
+      >
+        Stream
+      </h1>
     </div>
   );
 }

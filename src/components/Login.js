@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import Loader from "./Loader";
+import { gsap } from "gsap";
 
 function Copyright(props) {
   return (
@@ -29,12 +30,23 @@ function Copyright(props) {
   );
 }
 
-function Login({ onLogin }) {
+function Login({ onLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
   const token = localStorage.getItem("jwt");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   const letters = `${".logo"}`;
+
+  //   gsap.staggerFrom(
+  //     letters,
+  //     0.25,
+  //     { opacity: 0, y: 200, ease: gsap.easeOut },
+  //     0.08
+  //   );
+  // }, []);
 
   // loading spinner when state is set to true
   if (isLoading) {
@@ -75,7 +87,13 @@ function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-      <h1 className="logo">Tweet</h1>
+      <h1
+        className="logo"
+        onMouseEnter={onMouseEnterLogo}
+        onMouseLeave={onMouseLeaveLogo}
+      >
+        Tweet
+      </h1>
       <Container component="main" maxWidth="xs" sx={{ m: 0 }}>
         <CssBaseline />
         <Box
@@ -151,7 +169,13 @@ function Login({ onLogin }) {
           <Copyright sx={{ mt: 8, mb: 4 }} />
         </Box>
       </Container>
-      <h1 className="logo">Stream</h1>
+      <h1
+        className="logo"
+        onMouseEnter={onMouseEnterLogo}
+        onMouseLeave={onMouseLeaveLogo}
+      >
+        Stream
+      </h1>
     </div>
   );
 }

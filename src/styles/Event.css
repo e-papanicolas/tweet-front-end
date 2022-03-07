@@ -11,6 +11,7 @@
   top: 0;
   margin: 30px;
   cursor: pointer;
+  color: var(--text-primary);
 }
 
 .send-button {
@@ -19,7 +20,8 @@
 
 .event-title {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10px;
   color: var(--text-secondary);
 }

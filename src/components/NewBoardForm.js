@@ -54,7 +54,7 @@ export default function NewBoardForm({
             </Icon>
           </Tooltip>
         </div>
-        <h2>create a new event board</h2>
+        <h2>Create a new event board</h2>
       </div>
       <div className="form">
         <form onSubmit={(e) => handleCreateNewEvent(e, eventFormData)}>
@@ -74,7 +74,7 @@ export default function NewBoardForm({
             ></input>
             <p>#</p>
           </span>
-          <label>Streaming Time: </label>
+          <label>Streaming Duration: </label>
           <select name="timeout" onChange={handleEventFormChange}>
             <option value="select an option">Select an option:</option>
             <option value="300">5 minutes</option>

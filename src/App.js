@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Route, Routes } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
+import { gsap } from "gsap";
 
 // import components
 import Login from "./components/Login";
@@ -78,6 +79,15 @@ function App() {
     return <Loader />;
   }
 
+  // animations for logo
+  const onMouseEnterLogo = ({ currentTarget }) => {
+    gsap.to(currentTarget, { color: "#f2cb05" });
+  };
+
+  const onMouseLeaveLogo = ({ currentTarget }) => {
+    gsap.to(currentTarget, { color: "black" });
+  };
+
   // pages rendered when user is logged out
   if (loggedIn === false) {
     return (
@@ -89,11 +99,23 @@ function App() {
               <SignUp
                 setCurrentUser={setCurrentUser}
                 handleLogin={handleLogin}
+                onMouseEnterLogo={onMouseEnterLogo}
+                onMouseLeaveLogo={onMouseLeaveLogo}
               />
             }
           />
 
-          <Route exact path="/" element={<Login onLogin={handleLogin} />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Login
+                onLogin={handleLogin}
+                onMouseEnterLogo={onMouseEnterLogo}
+                onMouseLeaveLogo={onMouseLeaveLogo}
+              />
+            }
+          />
           {errors ? errors.map((e) => <div>{e}</div>) : null}
         </Routes>
       </div>
@@ -118,13 +140,17 @@ function App() {
               user={currentUser}
               setUser={setCurrentUser}
               setLoggedIn={setLoggedIn}
+              setLoading={setLoading}
             />
           }
         />
-        <Route path="/myevents" element={<Boards user={currentUser} />} />
+        <Route
+          path="/myevents"
+          element={<Boards user={currentUser} setLoading={setLoading} />}
+        />
         <Route
           path="/myevents/:eventId"
-          element={<Event user={currentUser} />}
+          element={<Event user={currentUser} setLoading={setLoading} />}
         />
       </Routes>
     </div>

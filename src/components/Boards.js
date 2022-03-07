@@ -1,6 +1,6 @@
 // import react and utils
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
@@ -10,21 +10,19 @@ import anime from "animejs/lib/anime.es.js";
 // import components
 import NewBoardForm from "./NewBoardForm";
 import EventPreview from "./EventPreview";
-import Loader from "./Loader";
 import "../styles/Boards.css";
 
-function Boards({ user }) {
+function Boards({ user, setLoading }) {
   const token = localStorage.getItem("jwt");
 
   // sets state
   const [formPopup, setFormPopup] = useState(false);
   const [errors, setErrors] = useState([]);
   const [events, setEvents] = useState(user.events);
-  const [isLoading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   // animations for welcome text using anime.js (import at top)
-  useEffect(() => {
+  useLayoutEffect(() => {
     anime
       .timeline({
         endDelay: 1000,
@@ -62,7 +60,7 @@ function Boards({ user }) {
   }, []);
 
   // animations for alternate welcome text using anime.js (import at top)
-  useEffect(() => {
+  useLayoutEffect(() => {
     anime
       .timeline({
         endDelay: 1000,
@@ -102,7 +100,7 @@ function Boards({ user }) {
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
     e.preventDefault();
-    setLoading(!isLoading);
+    setLoading(true);
     fetch(`http://localhost:3000/events`, {
       method: "POST",
       headers: {
@@ -130,7 +128,7 @@ function Boards({ user }) {
   // deletes event from db, updates state to remove it from the page
   // deletes rule from twitter stream also
   function handleDeleteEvent(event) {
-    setLoading(!isLoading);
+    setLoading(true);
     fetch(`http://localhost:3000/events/${event.id}`, {
       method: "DELETE",
       headers: {
@@ -152,11 +150,6 @@ function Boards({ user }) {
       }
       setLoading(false);
     });
-  }
-
-  // loading spinner when state is set to true
-  if (isLoading) {
-    return <Loader />;
   }
 
   // handles closing error messages
@@ -209,8 +202,9 @@ function Boards({ user }) {
         <div className="welcome">
           <Tooltip title="add new event board">
             <Icon id="icon-med" onClick={() => setFormPopup(true)}>
-              edit_calendar
+              {/* <FontAwesomeIcon icon="fa-solid fa-calendar-circle-plus" /> */}
             </Icon>
+            {/* <FontAwesomeIcon icon="fa-solid fa-calendar-circle-plus" /> */}
           </Tooltip>
         </div>
         <p className="welcome-animation">welcome, {user.first_name}</p>

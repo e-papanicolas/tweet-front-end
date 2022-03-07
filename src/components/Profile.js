@@ -7,10 +7,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import "../styles/Profile.css";
-import Loader from "./Loader";
 import defaultImage from "../images/default-user-image.png";
 
-function Profile({ user, setUser, setLoggedIn }) {
+function Profile({ user, setUser, setLoggedIn, setLoading }) {
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
 
@@ -21,7 +20,6 @@ function Profile({ user, setUser, setLoggedIn }) {
   const [warnDelete, setWarnDelete] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const [profileData, setProfileData] = useState({
@@ -30,11 +28,6 @@ function Profile({ user, setUser, setLoggedIn }) {
     last_name: user.last_name,
     username: user.username,
   });
-
-  // loading spinner when state is set to true
-  if (isLoading) {
-    return <Loader />;
-  }
 
   // handles form input changes
   function handleProfileDataChange(e) {
@@ -46,7 +39,7 @@ function Profile({ user, setUser, setLoggedIn }) {
 
   // fetch to submit profile update
   function handleSubmitProfileEdit(e) {
-    setLoading(!isLoading);
+    setLoading(true);
     e.preventDefault();
     fetch(`http://localhost:3000/users/${user.id}`, {
       method: "PATCH",
@@ -75,7 +68,7 @@ function Profile({ user, setUser, setLoggedIn }) {
 
   // separate fetch for the profile picture because body is not being stringified
   function handleSubmitPicture(e) {
-    setLoading(!isLoading);
+    setLoading(true);
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -105,7 +98,7 @@ function Profile({ user, setUser, setLoggedIn }) {
 
   // handles account deletion
   function handleDeleteAccount(e) {
-    setLoading(!isLoading);
+    setLoading(true);
     e.preventDefault();
     if (confirmDelete === user.username) {
       fetch(`http://localhost:3000/users/${user.id}`, {

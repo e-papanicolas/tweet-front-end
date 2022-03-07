@@ -13,9 +13,8 @@ import anime from "animejs/lib/anime.es.js";
 
 // import components
 import Tweet from "./Tweet";
-import Loader from "./Loader";
 
-export default function Event({ user }) {
+export default function Event({ user, setLoading }) {
   let { eventId } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
@@ -24,7 +23,6 @@ export default function Event({ user }) {
   const [tweets, setTweets] = useState([]);
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
-  const [isLoading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [event, setEvent] = useState({
     hashtag: "",
@@ -36,7 +34,7 @@ export default function Event({ user }) {
 
   // fetches the event and loads info on page
   useEffect(() => {
-    setLoading(!isLoading);
+    setLoading(true);
     fetch(`http://localhost:3000/events/${eventId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -121,11 +119,6 @@ export default function Event({ user }) {
     setOpen(false);
   }
 
-  // loading spinner when state is set to true
-  if (isLoading) {
-    return <Loader />;
-  }
-
   // render event
   return (
     <ActionCableProvider url="ws://localhost:3000/cable">
@@ -158,7 +151,7 @@ export default function Event({ user }) {
 
           <div className="start-stream">
             <button disabled={disabled} onClick={startStream}>
-              start streaming now
+              Start the TweetStream
             </button>
           </div>
           <div id="tweet-container">
