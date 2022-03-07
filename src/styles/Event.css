@@ -7,27 +7,21 @@
 
 .close-button {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 4em;
+  top: 3em;
   margin: 30px;
   cursor: pointer;
   color: var(--text-primary);
-}
-
-.send-button {
-  align-self: center;
 }
 
 .event-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 #event-page h2 {
-  padding: 10px;
   font-size: 3em;
 }
 
@@ -38,7 +32,6 @@
   align-content: flex-start;
   gap: 10px;
   height: 100vh;
-  margin-left: 10rem;
 }
 
 .start-stream {
@@ -66,4 +59,15 @@
 
 .hashtag {
   color: var(--yellow);
+}
+
+.event-header {
+  display: flex;
+  margin-left: 5em;
+  margin-right: 5em;
+  justify-content: space-around;
+}
+
+.countdown {
+  color: var(--text-primary);
 }

@@ -13,6 +13,7 @@ import anime from "animejs/lib/anime.es.js";
 
 // import components
 import Tweet from "./Tweet";
+import Countdown from "./Countdown";
 
 export default function Event({ user, setLoading }) {
   let { eventId } = useParams();
@@ -34,7 +35,7 @@ export default function Event({ user, setLoading }) {
 
   // fetches the event and loads info on page
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     fetch(`http://localhost:3000/events/${eventId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -52,7 +53,7 @@ export default function Event({ user, setLoading }) {
           setOpen(true);
         });
       }
-      setLoading(false);
+      // setLoading(false);
     });
   }, [token, eventId]);
 
@@ -127,32 +128,32 @@ export default function Event({ user, setLoading }) {
           channel={channelObj}
           onReceived={handleRecieveData}
         >
-          <div className="event-title">
-            <h2>{event.name}</h2>
-            <h2>
-              <span className="hashtag">#</span>
-              {event.hashtag}
-            </h2>
-            {/* <Icon id="icon-med" className="send-button">
-              send
-            </Icon> */}
-            {/* TODO: add click handler to share */}
-          </div>
-          <div>
-            <Tooltip title="close">
-              <Icon
-                className="icon-s close-button"
-                onClick={() => navigate(`/myevents`)}
-              >
-                clear
-              </Icon>
-            </Tooltip>
-          </div>
+          <Tooltip title="close">
+            <Icon
+              className="icon-s close-button"
+              onClick={() => navigate(`/myevents`)}
+            >
+              clear
+            </Icon>
+          </Tooltip>
+          <div className="event-header">
+            <div className="event-title">
+              <h2>{event.name}</h2>
+              <h2>
+                <span className="hashtag">#</span>
+                {event.hashtag}
+              </h2>
+            </div>
 
-          <div className="start-stream">
-            <button disabled={disabled} onClick={startStream}>
-              Start the TweetStream
-            </button>
+            <div className="start-stream">
+              <button disabled={disabled} onClick={startStream}>
+                Start the TweetStream
+              </button>
+            </div>
+
+            <div className="countdown">
+              <Countdown timeout={event.timeout} />
+            </div>
           </div>
           <div id="tweet-container">
             {tweets.map((tweet) => {
