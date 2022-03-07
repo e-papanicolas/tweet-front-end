@@ -28,8 +28,9 @@
 #tweet-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-content: flex-start;
+  flex-wrap: wrap;
   gap: 10px;
   height: 100vh;
 }

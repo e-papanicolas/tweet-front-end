@@ -4,7 +4,6 @@ import "../styles/Tweet.css";
 export default function Tweet({ tweet }) {
   const date = new Date(tweet.data.created_at).toString();
 
-  // className={tweet.isNewest ? "the-tweet" : null}
   return (
     <div id="tweet" className={tweet.isNew ? "the-tweet" : "not-the-tweet"}>
       <div className="tweet-wrap">

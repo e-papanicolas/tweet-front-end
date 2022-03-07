@@ -69,9 +69,10 @@ export default function Event({ user, setLoading }) {
     // disables the start streaming button to avoid sending requests
     // and interrupting the stream
     setDisabled(true);
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setDisabled(false);
     }, event.timeout * 1000);
+    return () => clearTimeout(timeoutId);
   }
 
   // lets the back end know the channel to broadcast on
