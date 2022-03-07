@@ -75,6 +75,34 @@ function Boards({ user, setLoading }) {
     });
   }
 
+  // update event function
+  function handleUpdateEvent(e, event) {
+    console.log(event);
+    e.preventDefault();
+    setLoading(true);
+    fetch(`http://localhost:3000/events/${event.id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(event),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log(data);
+          setEvents([...events, data]);
+        });
+      } else {
+        res.json().then((data) => {
+          console.log(data);
+          setErrors(data.errors);
+          setOpen(true);
+        });
+        setLoading(false);
+      }
+    });
+  }
+
   // handles closing error messages
   function handleClose() {
     setOpen(false);
@@ -125,9 +153,11 @@ function Boards({ user, setLoading }) {
             {events.map((event) => {
               return (
                 <EventPreview
-                  event={event}
                   key={event.id}
+                  event={event}
                   handleDeleteEvent={handleDeleteEvent}
+                  user={user}
+                  handleUpdateEvent={handleUpdateEvent}
                 />
               );
             })}

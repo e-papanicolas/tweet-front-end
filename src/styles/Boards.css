@@ -207,3 +207,57 @@ select {
 .center {
   align-self: center;
 }
+
+.preview-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+
+.preview-header h2 {
+  font-weight: bold;
+}
+
+.closing-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.edit-event-content input {
+  border: none;
+  padding: 5px;
+}
+
+.submit-button {
+  cursor: pointer;
+  background-color: #f2cb05;
+  border-radius: 15px;
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.select-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.preview-titles input {
+  width: 70%;
+}
+
+.preview-hashtags input {
+  width: 60%;
+}
