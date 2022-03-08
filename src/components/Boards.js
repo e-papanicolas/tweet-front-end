@@ -77,13 +77,13 @@ function Boards({ user, setLoading }) {
 
   // update event function
   function handleUpdateEvent(e, event) {
-    console.log(event);
     e.preventDefault();
     setLoading(true);
     fetch(`http://localhost:3000/events/${event.id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(event),
     }).then((res) => {
@@ -91,6 +91,10 @@ function Boards({ user, setLoading }) {
         res.json().then((data) => {
           console.log(data);
           setEvents([...events, data]);
+          // set the index where the key is (where you map over EVENTS)
+          // Pass along the index for the event that you're updating
+          // spread events before and after the one that you're updating
+          // setEvents([...events.slice(0, index), data, ...events.slice(index)])
         });
       } else {
         res.json().then((data) => {
@@ -98,9 +102,8 @@ function Boards({ user, setLoading }) {
           setErrors(data.errors);
           setOpen(true);
         });
-        setLoading(false);
       }
-    });
+    }).finally(() => setLoading(false));
   }
 
   // handles closing error messages
