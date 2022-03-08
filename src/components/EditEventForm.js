@@ -58,7 +58,7 @@ export default function EditEventForm({
         </div>
         <div className="edit-event-content">
           <div className="preview-header">
-            <h2>Update event</h2>
+            <h2>Update event board</h2>
           </div>
           <form onSubmit={(e) => handleUpdateEvent(e, eventFormData)}>
             <div className="preview-titles">
@@ -76,7 +76,7 @@ export default function EditEventForm({
             <div className="select-menu">
               <h2>Streaming/ </h2>
               <select name="timeout" onChange={handleEventFormChange}>
-                <option value="select an option">Select an option:</option>
+                <option value="select an option">Select one:</option>
                 <option value="300">5 minutes</option>
                 <option value="900">15 minutes</option>
                 <option value="1800">30 minutes</option>

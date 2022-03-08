@@ -7,13 +7,10 @@ import defaultImage from "../images/default-user-image.png";
 export default function UpdateProfileForm({
   setProfileData,
   profileData,
-  uploadPhoto,
-  setUploadPhoto,
   handleSubmitPicture,
   user,
   handleSubmitProfileEdit,
   setEditProfile,
-  editProfile,
 }) {
   // handles form input changes
   function handleProfileDataChange(e) {
@@ -44,7 +41,7 @@ export default function UpdateProfileForm({
         </div>
         <form>
           <div className="edit-profile-input">
-            <label>Username/ </label>
+            <label>Username </label>
             <input
               name="username"
               placeholder={user.username}
@@ -52,7 +49,7 @@ export default function UpdateProfileForm({
             ></input>
           </div>
           <div className="edit-profile-input">
-            <label>First name/ </label>
+            <label>First name </label>
             <input
               name="first_name"
               placeholder={user.first_name}
@@ -60,7 +57,7 @@ export default function UpdateProfileForm({
             ></input>
           </div>
           <div className="edit-profile-input">
-            <label>Last name/ </label>
+            <label>Last name </label>
             <input
               name="last_name"
               placeholder={user.last_name}
@@ -68,28 +65,28 @@ export default function UpdateProfileForm({
             ></input>
           </div>
           <div className="edit-profile-bio-input">
-            <label>Bio/ </label>
+            <label>Bio </label>
 
             <textarea
               name="bio"
               placeholder={user.bio}
               onChange={handleProfileDataChange}
-              rows="4"
+              rows="3"
             ></textarea>
           </div>
         </form>
         <div className="upload-buttons">
-          <Tooltip title="upload changes">
-            <Icon
-              className="icon-p"
-              onClick={(e) => handleSubmitProfileEdit(e)}
-            >
-              upload
-            </Icon>
-          </Tooltip>
           <Tooltip title="close">
             <Icon className="icon-p" onClick={() => setEditProfile(false)}>
               clear
+            </Icon>
+          </Tooltip>
+          <Tooltip title="upload changes">
+            <Icon
+              className="icon-p yellow"
+              onClick={(e) => handleSubmitProfileEdit(e)}
+            >
+              upload
             </Icon>
           </Tooltip>
         </div>

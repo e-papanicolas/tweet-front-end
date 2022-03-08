@@ -4,6 +4,7 @@ import { useState } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import "../App.css";
+import "../styles/Boards.css";
 
 export default function NewBoardForm({
   user,
@@ -43,6 +44,12 @@ export default function NewBoardForm({
     }
   }
 
+  // info for the hovers on the form
+  const appInfo = `A TweetStream event board can be used for a variety of occasions, any celebrations where you would want to follow a hashtag, think weddings or graduations. An event board connects you to the Twitter Stream and this connection allows the event board to collect Tweets for you that match your hashtag and displays them in real time.`;
+  const nameInfo = `The name of your event will be displayed on the top of your event board and you can name it anything you'd like, ex: "Kristin's Bachelorette Party!"`;
+  const hashtagInfo = `The hashtag you choose will also be displayed on the top of your event board, and for the duration of streaming, any Tweets matching the hashtag will be streamed to your event board, ex: "kristinsbach". Don't worry about the hashtag, we've included that for you!`;
+  const streamingInfo = `Unfortunately we cannot stream forever! Your event board is connected to the Twitter Stream for the length of time you select.`;
+
   // form render
   return (
     <div id="board-form">
@@ -55,16 +62,27 @@ export default function NewBoardForm({
           </Tooltip>
         </div>
         <h2>Create a new event board</h2>
+        <p className="app-info">{appInfo}</p>
       </div>
       <div className="form">
         <form onSubmit={(e) => handleCreateNewEvent(e, eventFormData)}>
-          <label>Event Name: </label>
+          <h3>
+            What should this event be called ?{" "}
+            <Tooltip placement="right-start" title={nameInfo}>
+              <Icon id="info-icon">help</Icon>
+            </Tooltip>
+          </h3>
           <input
             type="text"
             name="name"
             onChange={handleEventFormChange}
           ></input>
-          <label>Hashtag: </label>
+          <h3>
+            What hashtag are you following ?{" "}
+            <Tooltip placement="right-start" title={hashtagInfo}>
+              <Icon id="info-icon">help</Icon>
+            </Tooltip>
+          </h3>
           <span className="hashtag-input">
             <p>#</p>
             <input
@@ -74,7 +92,12 @@ export default function NewBoardForm({
             ></input>
             <p>#</p>
           </span>
-          <label>Streaming Duration: </label>
+          <h3>
+            Streaming Duration ?{" "}
+            <Tooltip placement="right-start" title={streamingInfo}>
+              <Icon id="info-icon">help</Icon>
+            </Tooltip>
+          </h3>
           <select name="timeout" onChange={handleEventFormChange}>
             <option value="select an option">Select an option:</option>
             <option value="300">5 minutes</option>
@@ -83,7 +106,7 @@ export default function NewBoardForm({
             <option value="3600">1 hour</option>
             <option value="7200">2 hours</option>
           </select>
-          <input type="submit"></input>
+          <input type="submit" className="submit-button"></input>
         </form>
       </div>
     </div>

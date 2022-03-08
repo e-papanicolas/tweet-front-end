@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import "../styles/NavBar.css";
-import logo from "../images/grey-logo.jpg";
+import logo from "../images/logo-grey.svg";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
   console.log(theme);

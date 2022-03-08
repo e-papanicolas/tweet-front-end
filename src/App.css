@@ -127,3 +127,12 @@ h1 {
   height: 100vh;
   width: 100vw;
 }
+
+#info-icon {
+  font-size: 0.75em;
+  color: #5b85d9;
+}
+
+.yellow {
+  color: #f2cb05;
+}

@@ -16,8 +16,6 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
 
   // sets state
   const [editProfile, setEditProfile] = useState(false);
-  const [profilePic, setProfilePic] = useState();
-  const [uploadPhoto, setUploadPhoto] = useState(false);
   const [warnDelete, setWarnDelete] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState("");
   const [errors, setErrors] = useState([]);
@@ -76,8 +74,7 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
       if (res.ok) {
         res.json().then((data) => {
           console.log(data);
-          setProfilePic(data.user.get_image);
-          setUploadPhoto(!uploadPhoto);
+          setUser(data.user);
         });
       } else {
         res.json().then((data) => {
@@ -119,12 +116,9 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
         <UpdateProfileForm
           setProfileData={setProfileData}
           profileData={profileData}
-          setUploadPhoto={setUploadPhoto}
-          uploadPhoto={uploadPhoto}
           user={user}
           handleSubmitPicture={handleSubmitPicture}
           handleSubmitProfileEdit={handleSubmitProfileEdit}
-          editProfile={editProfile}
           setEditProfile={setEditProfile}
         />
       ) : (
@@ -133,7 +127,13 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
             {user.get_image === "../images/default-user-image.png" ? (
               <img src={defaultImage} alt="user" />
             ) : (
-              <img src={profilePic || user.get_image} alt="user" />
+              // <div
+              //   style={{ backgroundImage: "url(" + { defaultImage } + ")" }}
+              // ></div>
+              <img src={user.get_image} alt="user" />
+              // <div
+              //   style={{ backgroundImage: "url(" + { defaultImage } + ")" }}
+              // ></div>
             )}
           </div>
           <div className="profile-info-container">
