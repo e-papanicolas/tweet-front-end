@@ -57,7 +57,8 @@
   border-radius: 5px;
 }
 
-#board-form h2 {
+#board-form h2,
+h3 {
   color: var(--text-primary);
   margin-bottom: 5px;
 }
@@ -220,6 +221,7 @@ select {
 
 .preview-header h2 {
   font-weight: bold;
+  color: var(--text-primary);
 }
 
 .closing-flex {
@@ -242,7 +244,7 @@ select {
   cursor: pointer;
   background-color: #f2cb05;
   border-radius: 15px;
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
   font-weight: bold;
 }
 
@@ -251,6 +253,10 @@ select {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+}
+
+.select-menu h2 {
+  color: var(--text-primary);
 }
 
 .submit-container {
