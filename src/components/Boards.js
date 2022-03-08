@@ -1,6 +1,6 @@
 // import react and utils
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
@@ -17,8 +17,22 @@ function Boards({ user, setLoading }) {
   // sets state
   const [formPopup, setFormPopup] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [events, setEvents] = useState(user.events);
+  const [events, setEvents] = useState([]);
   const [open, setOpen] = useState(false);
+
+  // fetches users events to store in state
+  useEffect(() => {
+    fetch(`http://localhost:3000/events`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvents(data);
+      });
+  }, [token]);
 
   // fetch for creating new event
   function handleCreateNewEvent(e, eventFormData) {
@@ -60,10 +74,8 @@ function Boards({ user, setLoading }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          const updatedEvents = events.filter((e) => {
-            return e.id !== event.id;
-          });
-          setEvents(updatedEvents);
+          console.log(data);
+          setEvents(data);
         });
       } else {
         res.json().then((data) => {
@@ -86,24 +98,26 @@ function Boards({ user, setLoading }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(event),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          console.log(data);
-          setEvents([...events, data]);
-          // set the index where the key is (where you map over EVENTS)
-          // Pass along the index for the event that you're updating
-          // spread events before and after the one that you're updating
-          // setEvents([...events.slice(0, index), data, ...events.slice(index)])
-        });
-      } else {
-        res.json().then((data) => {
-          console.log(data);
-          setErrors(data.errors);
-          setOpen(true);
-        });
-      }
-    }).finally(() => setLoading(false));
+    })
+      .then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            console.log(data);
+            setEvents([...events, data]);
+            // set the index where the key is (where you map over EVENTS)
+            // Pass along the index for the event that you're updating
+            // spread events before and after the one that you're updating
+            // setEvents([...events.slice(0, index), data, ...events.slice(index)])
+          });
+        } else {
+          res.json().then((data) => {
+            console.log(data);
+            setErrors(data.errors);
+            setOpen(true);
+          });
+        }
+      })
+      .finally(() => setLoading(false));
   }
 
   // handles closing error messages
@@ -143,7 +157,7 @@ function Boards({ user, setLoading }) {
           <p>New event board</p>
         </div>
       </div>
-      {!events || events.length === 0 ? (
+      {!user.events ? (
         <div className="event-page-container">
           <div id="board-container">
             <p>You don't have any boards...</p>
