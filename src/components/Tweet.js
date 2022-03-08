@@ -24,11 +24,19 @@ export default function Tweet({ tweet }) {
         </div>
         {tweet.includes.media ? (
           <div className="tweet-img-wrap">
-            <img
-              src={tweet.includes.media[0].url}
-              alt="tweet img attached"
-              className="tweet-img"
-            />
+            {tweet.includes.media[0].type === "photo" ? (
+              <img
+                src={tweet.includes.media[0].url}
+                alt="tweet img attached"
+                className="tweet-img"
+              />
+            ) : (
+              <img
+                src={tweet.includes.media[0].preview_image_url}
+                alt="tweet img attached"
+                className="tweet-img"
+              />
+            )}
           </div>
         ) : null}
 

@@ -15,6 +15,7 @@
   height: 200px;
   margin: 1em;
   transform: translateY(70px);
+  object-fit: cover;
 }
 
 .profile-photo-container {

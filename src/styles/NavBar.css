@@ -24,7 +24,9 @@ nav {
 .profile-pic-preview {
   border-radius: 50%;
   height: 4em;
-  border: 1px solid #f2cb05;
+  width: 4em;
+  border: 2px solid #f2cb05;
+  object-fit: cover;
 }
 
 .first h3 {
