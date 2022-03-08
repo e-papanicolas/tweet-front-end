@@ -88,6 +88,14 @@ function App() {
     gsap.to(currentTarget, { color: "black" });
   };
 
+  const onMouseEnterLetter = ({ currentTarget }) => {
+    gsap.to(currentTarget, { y: -100, duration: 1 });
+  };
+
+  const onMouseLeaveLetter = ({ currentTarget }) => {
+    gsap.to(currentTarget, { y: 0, duration: 1 });
+  };
+
   // pages rendered when user is logged out
   if (loggedIn === false) {
     return (
@@ -101,6 +109,8 @@ function App() {
                 handleLogin={handleLogin}
                 onMouseEnterLogo={onMouseEnterLogo}
                 onMouseLeaveLogo={onMouseLeaveLogo}
+                onMouseEnterLetter={onMouseEnterLetter}
+                onMouseLeaveLetter={onMouseLeaveLetter}
               />
             }
           />
@@ -113,6 +123,8 @@ function App() {
                 onLogin={handleLogin}
                 onMouseEnterLogo={onMouseEnterLogo}
                 onMouseLeaveLogo={onMouseLeaveLogo}
+                onMouseEnterLetter={onMouseEnterLetter}
+                onMouseLeaveLetter={onMouseLeaveLetter}
               />
             }
           />

@@ -31,7 +31,13 @@ function Copyright(props) {
   );
 }
 
-function SignUp({ handleLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
+function SignUp({
+  handleLogin,
+  onMouseEnterLogo,
+  onMouseLeaveLogo,
+  onMouseEnterLetter,
+  onMouseLeaveLetter,
+}) {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -84,7 +90,36 @@ function SignUp({ handleLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
         onMouseEnter={onMouseEnterLogo}
         onMouseLeave={onMouseLeaveLogo}
       >
-        Tweet
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          T
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          w
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          t
+        </span>
       </h1>
       <Container component="main" maxWidth="xs" sx={{ m: 0 }}>
         <CssBaseline />
@@ -202,7 +237,42 @@ function SignUp({ handleLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
         onMouseEnter={onMouseEnterLogo}
         onMouseLeave={onMouseLeaveLogo}
       >
-        Stream
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          S
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          t
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          r
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          a
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          m
+        </span>
       </h1>
     </div>
   );

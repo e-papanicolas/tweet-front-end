@@ -4,13 +4,18 @@ import { NavLink } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import "../styles/NavBar.css";
 import logo from "../images/logo-grey.svg";
+import lightLogo from "../images/logo-light-grey.svg";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
-  console.log(theme);
   return (
     <div id="nav">
       <div className="logo">
-        <img src={logo} alt="tweet stream logo" />
+        {theme === "light" ? (
+          <img src={logo} alt="tweet stream logo" />
+        ) : (
+          <img src={lightLogo} alt="tweet stream logo" />
+        )}
+
         <h1 id="nav-logo-title">TweetStream</h1>
       </div>
       <div className="first">

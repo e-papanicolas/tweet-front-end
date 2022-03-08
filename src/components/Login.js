@@ -30,23 +30,18 @@ function Copyright(props) {
   );
 }
 
-function Login({ onLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
+function Login({
+  onLogin,
+  onMouseEnterLogo,
+  onMouseLeaveLogo,
+  onMouseEnterLetter,
+  onMouseLeaveLetter,
+}) {
   const token = localStorage.getItem("jwt");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const letters = `${".logo"}`;
-
-  //   gsap.staggerFrom(
-  //     letters,
-  //     0.25,
-  //     { opacity: 0, y: 200, ease: gsap.easeOut },
-  //     0.08
-  //   );
-  // }, []);
 
   // loading spinner when state is set to true
   if (isLoading) {
@@ -92,7 +87,36 @@ function Login({ onLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
         onMouseEnter={onMouseEnterLogo}
         onMouseLeave={onMouseLeaveLogo}
       >
-        Tweet
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          T
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          w
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          t
+        </span>
       </h1>
       <Container component="main" maxWidth="xs" sx={{ m: 0 }}>
         <CssBaseline />
@@ -174,7 +198,42 @@ function Login({ onLogin, onMouseEnterLogo, onMouseLeaveLogo }) {
         onMouseEnter={onMouseEnterLogo}
         onMouseLeave={onMouseLeaveLogo}
       >
-        Stream
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          S
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          t
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          r
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          e
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          a
+        </span>
+        <span
+          onMouseEnter={onMouseEnterLetter}
+          onMouseLeave={onMouseLeaveLetter}
+        >
+          m
+        </span>
       </h1>
     </div>
   );

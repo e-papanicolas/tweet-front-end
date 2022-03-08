@@ -126,10 +126,10 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
           <div className="profile-photo-container">
             {user.get_image === "../images/default-user-image.png" ? (
               <img src={defaultImage} alt="user" />
-            ) : (
               // <div
               //   style={{ backgroundImage: "url(" + { defaultImage } + ")" }}
               // ></div>
+            ) : (
               <img src={user.get_image} alt="user" />
               // <div
               //   style={{ backgroundImage: "url(" + { defaultImage } + ")" }}

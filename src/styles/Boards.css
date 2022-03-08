@@ -130,6 +130,7 @@ select {
   margin-left: 11rem;
   text-align: left;
   font-size: 1.5em;
+  color: var(--text-primary);
 }
 
 .new-event-button {
