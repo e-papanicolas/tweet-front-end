@@ -36,6 +36,7 @@
   height: 100vh;
   margin-left: 10em;
   margin-top: 1em;
+  overflow: scroll;
 }
 
 .start-stream {
