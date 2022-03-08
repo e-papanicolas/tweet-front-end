@@ -5,6 +5,7 @@ import Icon from "@mui/material/Icon";
 import "../styles/NavBar.css";
 import logo from "../images/logo-grey.svg";
 import lightLogo from "../images/logo-light-grey.svg";
+import defaultImage from "../images/default-user-image.png";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
   return (
@@ -21,11 +22,19 @@ function NavBar({ handleLogOut, user, switchTheme, theme }) {
       <div className="first">
         <h3>Welcome, {user.first_name}</h3>
         <NavLink to="/me">
-          <img
-            className="profile-pic-preview"
-            src={user.get_image}
-            alt="profile"
-          />
+          {user.get_image === "../images/default-user-image.png" ? (
+            <img
+              src={defaultImage}
+              alt="user"
+              className="profile-pic-preview"
+            />
+          ) : (
+            <img
+              src={user.get_image}
+              alt="user"
+              className="profile-pic-preview"
+            />
+          )}
         </NavLink>
       </div>
       <nav className="nav vertical">

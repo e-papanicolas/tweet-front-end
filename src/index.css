@@ -19,7 +19,7 @@ code {
   --accent: #5b85d9;
   --yellow: #f2cb05;
   --input: #fff;
-  --bkimg: url(./images/dark-mode-bg-01.svg);
+  --bkimg: url(./images/people_img.jpg);
 }
 [data-theme="dark"] {
   --background: #5f5f63;

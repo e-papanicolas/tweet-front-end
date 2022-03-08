@@ -157,11 +157,11 @@ function Boards({ user, setLoading }) {
           <p>New event board</p>
         </div>
       </div>
-      {!user.events ? (
+      {events.length === 0 ? (
         <div className="event-page-container">
           <div id="board-container">
-            <p>You don't have any boards...</p>
-            <p>Click to add one now.</p>
+            <p>You don't have any event boards yet...</p>
+            <p>Add one now.</p>
           </div>
         </div>
       ) : (

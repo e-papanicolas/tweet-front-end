@@ -12,6 +12,8 @@ import Profile from "./components/Profile";
 import Boards from "./components/Boards";
 import Event from "./components/Event";
 import Loader from "./components/Loader";
+import bglight from "../src/images/people_img.jpg";
+import bgdark from "../src/images/dark-mode-bg-01.svg";
 
 // import css file
 import "./index.css";
@@ -96,6 +98,14 @@ function App() {
     gsap.to(currentTarget, { y: 0, duration: 1 });
   };
 
+  // const backgroundImageChange = () => {
+  //   if (theme === "light") {
+  //     return bglight;
+  //   } else {
+  //     return bgdark;
+  //   }
+  // };
+
   // pages rendered when user is logged out
   if (loggedIn === false) {
     return (
@@ -136,35 +146,41 @@ function App() {
 
   // pages rendered when user is logged in
   return (
-    <div className="App" data-theme={theme}>
-      <div className="background"></div>
-      <NavBar
-        handleLogOut={handleLogOut}
-        user={currentUser}
-        switchTheme={switchTheme}
-        theme={theme}
-      />
-      <Routes>
-        <Route
-          path="/me"
-          element={
-            <Profile
-              user={currentUser}
-              setUser={setCurrentUser}
-              setLoggedIn={setLoggedIn}
-              setLoading={setLoading}
-            />
-          }
+    <div>
+      <div
+        className="App"
+        data-theme={theme}
+        // style={{ backgroundImage: `url(${backgroundImageChange})` }}
+      >
+        <div className="background"></div>
+        <NavBar
+          handleLogOut={handleLogOut}
+          user={currentUser}
+          switchTheme={switchTheme}
+          theme={theme}
         />
-        <Route
-          path="/myevents"
-          element={<Boards user={currentUser} setLoading={setLoading} />}
-        />
-        <Route
-          path="/myevents/:eventId"
-          element={<Event user={currentUser} setLoading={setLoading} />}
-        />
-      </Routes>
+        <Routes>
+          <Route
+            path="/me"
+            element={
+              <Profile
+                user={currentUser}
+                setUser={setCurrentUser}
+                setLoggedIn={setLoggedIn}
+                setLoading={setLoading}
+              />
+            }
+          />
+          <Route
+            path="/myevents"
+            element={<Boards user={currentUser} setLoading={setLoading} />}
+          />
+          <Route
+            path="/myevents/:eventId"
+            element={<Event user={currentUser} setLoading={setLoading} />}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
