@@ -26,7 +26,7 @@
 
 #profile-container {
   background: var(--background);
-  width: 35vw;
+  width: 40vw;
   border: 2px solid var(--yellow);
   border-radius: 5px;
   display: flex;
@@ -40,12 +40,15 @@
   margin: 5px;
 }
 
+#profile-container p {
+  font-size: 0.75em;
+}
+
 .at {
   color: var(--yellow);
 }
 
 .profile-info-container {
-  height: 45%;
   padding-top: 4em;
   padding-left: 1em;
 }

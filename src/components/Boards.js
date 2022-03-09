@@ -73,7 +73,6 @@ function Boards({ user, setLoading }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           setEvents(data);
         });
       } else {
@@ -160,7 +159,8 @@ function Boards({ user, setLoading }) {
       {events.length === 0 ? (
         <div className="event-page-container">
           <div id="board-container">
-            <p>You don't have any event boards yet...</p>
+            <p>You don't have any</p>
+            <p> event boards yet...</p>
             <p>Add one now.</p>
           </div>
         </div>

@@ -102,12 +102,12 @@ export default function Event({ user, setLoading }) {
       targets: [tweets, ".the-tweet"],
       translateY: {
         value: [1000, 0],
-        duration: 2200,
-        easing: "easeInSine",
+        duration: 3200,
+        easing: "easeOutBounce",
       },
       rotate: {
         value: 720,
-        duration: 2200,
+        duration: 3200,
         easing: "easeInOutSine",
       },
     });
@@ -138,10 +138,10 @@ export default function Event({ user, setLoading }) {
           <div className="event-header">
             <div className="event-title">
               <h2>{event.name}</h2>
-              <h2>
+              <h3>
                 <span className="hashtag">#</span>
                 {event.hashtag}
-              </h2>
+              </h3>
             </div>
 
             <div className="start-stream">

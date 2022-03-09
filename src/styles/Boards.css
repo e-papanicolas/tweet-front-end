@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  transform: translate(100px, -200px);
+  transform: translate(0px, -250px);
 }
 
 #board-container p {
@@ -48,11 +48,12 @@
 #board-form {
   display: flex;
   flex-direction: column;
-  width: 50vh;
+  width: 60vh;
   background-color: var(--background);
   border: 2px solid var(--yellow);
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding-bottom: 1em;
 }
 
 #board-form h2,
@@ -144,7 +145,7 @@ select {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--background);
-  height: 38vh;
+  height: 40vh;
   width: 23vw;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
@@ -161,6 +162,7 @@ select {
   justify-content: space-between;
   padding: 0.5em;
   color: var(--text-primary);
+  width: 100%;
 }
 
 .preview-buttons {
