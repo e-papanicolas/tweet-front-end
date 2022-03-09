@@ -1,7 +1,7 @@
 /* NAV STYLES */
 
 nav {
-  background: var(--yellow);
+  background: #f2cb05;
   display: inline-block;
   border-radius: 35px;
   padding: 0 10px;
@@ -79,10 +79,6 @@ nav::after {
   transform: scaleX(1);
   z-index: -1;
   transition: all 0.3s cubic-bezier(0.925, 0.15, 0.505, 1.03);
-}
-
-nav.horizontal:hover::after {
-  transform: scaleX(1.1);
 }
 
 nav.vertical:hover::after {
