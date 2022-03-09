@@ -35,7 +35,6 @@ export default function Event({ user, setLoading }) {
 
   // fetches the event and loads info on page
   useEffect(() => {
-    // setLoading(true);
     fetch(`http://localhost:3000/events/${eventId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -53,7 +52,6 @@ export default function Event({ user, setLoading }) {
           setOpen(true);
         });
       }
-      // setLoading(false);
     });
   }, [token, eventId]);
 

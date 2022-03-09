@@ -52,7 +52,7 @@
   height: 50vh;
   width: 50vh;
   background-color: var(--background);
-  border: 2px solid var(-yellow);
+  border: 2px solid var(--yellow);
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
@@ -181,7 +181,6 @@ select {
 
 .red {
   color: #f64652;
-  font-size: em;
 }
 
 .blue {

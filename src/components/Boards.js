@@ -48,7 +48,6 @@ function Boards({ user, setLoading }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           setFormPopup(!formPopup);
           setEvents([...events, data]);
         });
@@ -90,6 +89,8 @@ function Boards({ user, setLoading }) {
   // update event function
   function handleUpdateEvent(e, event) {
     e.preventDefault();
+    const index = event.index;
+    const nextIndex = event.index + 1;
     setLoading(true);
     fetch(`http://localhost:3000/events/${event.id}`, {
       method: "PATCH",
@@ -102,12 +103,11 @@ function Boards({ user, setLoading }) {
       .then((res) => {
         if (res.ok) {
           res.json().then((data) => {
-            console.log(data);
-            setEvents([...events, data]);
-            // set the index where the key is (where you map over EVENTS)
-            // Pass along the index for the event that you're updating
-            // spread events before and after the one that you're updating
-            // setEvents([...events.slice(0, index), data, ...events.slice(index)])
+            setEvents([
+              ...events.slice(0, index),
+              data,
+              ...events.slice(nextIndex),
+            ]);
           });
         } else {
           res.json().then((data) => {
@@ -167,9 +167,10 @@ function Boards({ user, setLoading }) {
       ) : (
         <div className="preview-container">
           <div className="previews">
-            {events.map((event) => {
+            {events.map((event, index) => {
               return (
                 <EventPreview
+                  index={index}
                   key={event.id}
                   event={event}
                   handleDeleteEvent={handleDeleteEvent}

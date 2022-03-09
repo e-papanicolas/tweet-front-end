@@ -8,15 +8,17 @@ export default function EditEventForm({
   user,
   handleUpdateEvent,
   setEditingEvent,
+  index,
 }) {
   // sets state
   const [eventFormData, setEventFormData] = useState({
     user_id: user.id,
-    name: "",
-    hashtag: "",
-    timeout: 0,
+    name: event.name,
+    hashtag: event.hashtag,
+    timeout: event.timeout,
     rule_id: event.rule_id,
     id: event.id,
+    index: index,
   });
 
   // removes any whitespace from hashtag input
@@ -60,10 +62,12 @@ export default function EditEventForm({
           </div>
         </div>
         <div className="edit-event-content">
-          {/* <div className="preview-header">
-            <h2>Update event board</h2>
-          </div> */}
-          <form onSubmit={(e) => handleUpdateEvent(e, eventFormData)}>
+          <form
+            onSubmit={(e) => {
+              setEditingEvent(false);
+              handleUpdateEvent(e, eventFormData);
+            }}
+          >
             <div className="preview-titles">
               <h2>Event / </h2>
               <input name="name" onChange={handleEventFormChange}></input>

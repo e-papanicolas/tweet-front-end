@@ -6,27 +6,22 @@ import "../styles/Boards.css";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import EditEventForm from "./EditEventForm";
-import { gsap } from "gsap";
 
 export default function EventPreview({
   event,
   handleDeleteEvent,
   user,
   handleUpdateEvent,
+  index,
 }) {
-  const navigate = useNavigate();
-
   const [editingEvent, setEditingEvent] = useState(false);
-
-  const editEvent = ({ currentTarget }) => {
-    gsap.to(currentTarget, { rotation: 180, duration: 10 });
-    setEditingEvent(true);
-  };
+  const navigate = useNavigate();
 
   return (
     <div>
       {editingEvent ? (
         <EditEventForm
+          index={index}
           event={event}
           user={user}
           handleUpdateEvent={handleUpdateEvent}
@@ -67,7 +62,11 @@ export default function EventPreview({
               </Icon>
             </Tooltip>
             <Tooltip title="edit" placement="bottom">
-              <Icon className="blue" id="pb" onClick={editEvent}>
+              <Icon
+                className="blue"
+                id="pb"
+                onClick={() => setEditingEvent(true)}
+              >
                 edit
               </Icon>
             </Tooltip>
