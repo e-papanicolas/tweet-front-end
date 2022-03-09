@@ -10,18 +10,21 @@ body {
   color: var(--text-primary);
   justify-content: center;
   align-items: center;
+  background-image: var(--bkimg);
+  background-size: cover;
 }
 
 .App {
-  background-image: var(--bkimg);
-  background-repeat: no-repeat;
-  background-attachment: center;
-  background-position: center fixed;
+  background: var(--bkimg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+select {
+  border-radius: 5px;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Sansita+Swashed:wght@500&family=Staatliches&display=swap");
@@ -41,7 +44,7 @@ body {
 #icon-large {
   font-size: 7em;
   cursor: pointer;
-  color: #f2cb05;
+  color: var(-yellow);
 }
 
 #icon-large:hover {
@@ -50,7 +53,7 @@ body {
 
 #icon-med {
   font-size: 3em;
-  color: #f2cb05;
+  color: var(-yellow);
   cursor: pointer;
 }
 
@@ -63,7 +66,7 @@ body {
 }
 
 .icon-y {
-  color: #f2cb05;
+  color: var(-yellow);
 }
 
 .icon-s {
@@ -141,5 +144,5 @@ h1 {
 }
 
 .yellow {
-  color: #f2cb05;
+  color: var(-yellow);
 }

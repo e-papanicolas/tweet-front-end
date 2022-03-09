@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  transform: translateY(-200px);
+  transform: translate(100px, -200px);
 }
 
 #board-container p {
@@ -31,11 +31,9 @@
 
 .new-board-form-container {
   width: 100%;
-  height: 80vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  transform: translateY(-100px);
+  transform: translateY(100px);
 }
 
 .welcome {
@@ -54,8 +52,9 @@
   height: 50vh;
   width: 50vh;
   background-color: var(--background);
-  border: 2px solid #f2cb05;
+  border: 2px solid var(-yellow);
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 #board-form h2,
@@ -103,7 +102,7 @@ h3 {
   display: flex;
   align-items: center;
   font-size: 2em;
-  color: #f2cb05;
+  color: var(-yellow);
 }
 
 #board-form input,
@@ -136,13 +135,13 @@ select {
 }
 
 .new-event-button {
-  color: #f2cb05;
+  color: var(-yellow);
 }
 
 /* EVENT PREVIEW STYLES */
 
 .event-preview {
-  border: 2px solid #f2cb05;
+  border: 2px solid var(-yellow);
   border-radius: 10px;
   padding: 10px;
   margin: 30px;
@@ -152,20 +151,19 @@ select {
   background-color: var(--background);
   height: 30vh;
   width: 20vw;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .preview-titles {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px;
   color: var(--text-primary);
 }
 
 .preview-hashtags {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 10px;
   color: var(--text-primary);
 }
@@ -191,7 +189,7 @@ select {
 }
 
 .blue {
-  color: #5b85d9;
+  color: var(--accent);
 }
 
 .bold {
@@ -207,8 +205,9 @@ select {
   font-weight: bold;
   border-radius: 15px;
   padding: 8px;
-  background-color: #f2cb05;
+  background-color: var(-yellow);
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .center {
@@ -218,6 +217,8 @@ select {
 .preview-header {
   display: flex;
   justify-content: space-around;
+  margin-left: 2.5em;
+  margin-bottom: 1.5em;
 }
 
 .preview-header h2 {
@@ -227,7 +228,7 @@ select {
 
 .closing-flex {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .edit-event-content {
@@ -238,15 +239,16 @@ select {
 
 .edit-event-content input {
   border: none;
-  padding: 5px;
+  padding: 10px;
 }
 
 .submit-button {
   cursor: pointer;
-  background-color: #f2cb05;
+  background-color: var(-yellow);
   border-radius: 15px;
   /* color: var(--text-primary); */
   font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .select-menu {

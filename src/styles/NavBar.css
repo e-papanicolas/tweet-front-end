@@ -1,7 +1,7 @@
 /* NAV STYLES */
 
 nav {
-  background: #f2cb05;
+  background: var(--yellow);
   display: inline-block;
   border-radius: 35px;
   padding: 0 10px;
@@ -25,8 +25,9 @@ nav {
   border-radius: 50%;
   height: 4em;
   width: 4em;
-  border: 2px solid #f2cb05;
+  border: 2px solid var(--yellow);
   object-fit: cover;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .first h3 {

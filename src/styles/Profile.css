@@ -2,9 +2,10 @@
 
 .profile-page-container {
   width: 100%;
-  height: 100%;
+  /* min-height: 100vh; */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: space-around; */
   align-items: center;
   color: var(--text-primary);
 }
@@ -19,26 +20,22 @@
 }
 
 .profile-photo-container {
-  /* display: flex;
-  justify-content: center; */
-  /* width: 200px;
-  height: 200px; */
   z-index: 2;
   background-image: url(../images/profile-ppl.jpg);
   background-size: cover;
-  border-bottom: 2px solid #f2cb05;
+  border-bottom: 2px solid var(--yellow);
 }
 
 #profile-container {
   background: var(--background);
   transform: translateY(50px);
   width: 35vw;
-  border: 2px solid #f2cb05;
+  border: 2px solid var(--yellow);
   border-radius: 5px;
   display: flex;
 
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 #profile-container h2 {
@@ -47,7 +44,7 @@
 }
 
 .at {
-  color: #f2cb05;
+  color: var(--yellow);
 }
 
 .profile-info-container {
@@ -104,6 +101,11 @@
   padding: 2px;
   width: 20%;
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.blue {
+  color: var(--accent);
 }
 
 .edit-profile-bio-input {
@@ -143,4 +145,9 @@ textarea {
 .edit-profile {
   height: 45%;
   padding-top: 2em;
+}
+
+.errors-container {
+  width: 150px;
+  height: 150px;
 }

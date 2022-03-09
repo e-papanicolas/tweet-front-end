@@ -74,11 +74,6 @@ function App() {
     setLoading(false);
   }, [token]);
 
-  // spinner for loading when state is true
-  if (isLoading) {
-    return <Loader />;
-  }
-
   // animations for logo
   const onMouseEnterLogo = ({ currentTarget }) => {
     gsap.to(currentTarget, { color: "#f2cb05" });
@@ -138,6 +133,7 @@ function App() {
   return (
     <div>
       <div className="App" data-theme={theme}>
+        {isLoading ? <Loader /> : null}
         <div className="background"></div>
         <NavBar
           handleLogOut={handleLogOut}

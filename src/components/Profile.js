@@ -180,7 +180,7 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
             </Tooltip>
             <Tooltip title="edit profile">
               <Icon
-                className="icon-p icon-y"
+                className="icon-p blue"
                 onClick={() => setEditProfile(true)}
               >
                 edit
@@ -190,7 +190,7 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
         </div>
       )}
 
-      <div>
+      <div className="errors-container">
         {errors
           ? errors.map((error) => {
               return (

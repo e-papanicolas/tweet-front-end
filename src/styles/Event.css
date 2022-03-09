@@ -46,16 +46,19 @@
 
 .start-stream button {
   cursor: pointer;
-  background-color: var(--background);
-  color: var(--accent);
+  background-color: var(--yellow);
+  color: var(--text-primary);
   padding: 5px;
   font-weight: bold;
   font-size: 1.25 rem;
-  border-radius: 5px;
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .start-stream button:hover {
-  opacity: 50%;
+  opacity: 70%;
 }
 
 .start-stream button:disabled {

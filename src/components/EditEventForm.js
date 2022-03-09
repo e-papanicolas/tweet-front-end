@@ -48,6 +48,9 @@ export default function EditEventForm({
     <div className="event-preview">
       <div className="preview-titles-container">
         <div className="closing-flex">
+          <div className="preview-header">
+            <h2>Update event board</h2>
+          </div>
           <div>
             <Tooltip title="close">
               <Icon className="icon-s" onClick={() => setEditingEvent(false)}>
@@ -57,21 +60,17 @@ export default function EditEventForm({
           </div>
         </div>
         <div className="edit-event-content">
-          <div className="preview-header">
+          {/* <div className="preview-header">
             <h2>Update event board</h2>
-          </div>
+          </div> */}
           <form onSubmit={(e) => handleUpdateEvent(e, eventFormData)}>
             <div className="preview-titles">
-              <h2>
-                Event /{" "}
-                <input name="name" onChange={handleEventFormChange}></input>
-              </h2>
+              <h2>Event / </h2>
+              <input name="name" onChange={handleEventFormChange}></input>
             </div>
             <div className="preview-hashtags">
-              <h2>
-                Hashtag /{" "}
-                <input name="hashtag" onChange={handleEventFormChange}></input>
-              </h2>
+              <h2>Hashtag / </h2>
+              <input name="hashtag" onChange={handleEventFormChange}></input>
             </div>
             <div className="select-menu">
               <h2>Streaming/ </h2>
