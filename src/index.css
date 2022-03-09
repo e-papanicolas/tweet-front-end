@@ -20,7 +20,7 @@ code {
   --yellow: #f2cb05;
   --blue: #5b85d9;
   --input: #fff;
-  --bkimg: url(./images/people_img.jpg);
+  --bkimg: url(./images/people_bg1.jpg);
 }
 [data-theme="dark"] {
   --background: #5f5f63;
@@ -30,5 +30,5 @@ code {
   --yellow: #f2cb05;
   --blue: #5b85d9;
   --input: #f0f0f2;
-  --bkimg: url(./images/darkmode-bg.jpg);
+  --bkimg: url(./images/people_bgdark.jpg);
 }

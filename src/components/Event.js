@@ -10,6 +10,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import "../styles/Event.css";
 import anime from "animejs/lib/anime.es.js";
+// import Countdown from "react-countdown";
 
 // import components
 import Tweet from "./Tweet";
@@ -25,6 +26,7 @@ export default function Event({ user, setLoading }) {
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [countdown, setCountdown] = useState(false);
   const [event, setEvent] = useState({
     hashtag: "",
     id: eventId,
@@ -64,6 +66,7 @@ export default function Event({ user, setLoading }) {
         Authorization: `Bearer ${token}`,
       },
     });
+    setCountdown(true);
     // disables the start streaming button to avoid sending requests
     // and interrupting the stream
     setDisabled(true);
@@ -149,7 +152,7 @@ export default function Event({ user, setLoading }) {
                 Start the TweetStream
               </button>
             </div>
-            {disabled ? (
+            {countdown ? (
               <div className="countdown">
                 <Countdown timeout={event.timeout} />
               </div>
