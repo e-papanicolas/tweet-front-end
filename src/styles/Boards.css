@@ -33,7 +33,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  transform: translateY(100px);
 }
 
 .welcome {
@@ -49,7 +48,6 @@
 #board-form {
   display: flex;
   flex-direction: column;
-  height: 50vh;
   width: 50vh;
   background-color: var(--background);
   border: 2px solid var(--yellow);
@@ -118,7 +116,8 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100px);
+  transform: translateY(-50px);
+  flex-wrap: wrap;
 }
 
 .previews {
@@ -145,27 +144,27 @@ select {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--background);
-  height: 30vh;
-  width: 20vw;
+  height: 38vh;
+  width: 23vw;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 .preview-titles {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0.5em;
   color: var(--text-primary);
 }
 
 .preview-hashtags {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0.5em;
   color: var(--text-primary);
 }
 
 .preview-buttons {
-  padding: 10px;
+  padding: 0.5em;
   display: flex;
   justify-content: space-between;
 }
@@ -258,7 +257,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0.5em;
 }
 
 .select-menu h2 {

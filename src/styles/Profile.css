@@ -2,10 +2,8 @@
 
 .profile-page-container {
   width: 100%;
-  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   align-items: center;
   color: var(--text-primary);
 }
@@ -28,7 +26,6 @@
 
 #profile-container {
   background: var(--background);
-  transform: translateY(50px);
   width: 35vw;
   border: 2px solid var(--yellow);
   border-radius: 5px;
@@ -104,6 +101,10 @@
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
+#submit-button:hover {
+  opacity: 80%;
+}
+
 .blue {
   color: var(--accent);
 }
@@ -139,12 +140,11 @@ textarea {
 .upload-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.5em;
 }
 
 .edit-profile {
   height: 45%;
-  padding-top: 2em;
+  padding-top: 3em;
 }
 
 .errors-container {
