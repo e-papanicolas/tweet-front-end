@@ -48,7 +48,7 @@ select {
 }
 
 #icon-large:hover {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 #icon-med {
@@ -58,7 +58,7 @@ select {
 }
 
 #icon-med:hover {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .icon-r {
@@ -75,7 +75,16 @@ select {
 }
 
 .icon-s:hover {
-  opacity: 50%;
+  opacity: 80%;
+}
+
+#info-icon {
+  font-size: 0.75em;
+  color: var(--blue);
+}
+
+.yellow {
+  color: #f2cb05;
 }
 
 #profile-container .icon-p {
@@ -84,7 +93,7 @@ select {
 }
 
 #profile-container .icon-p:hover {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .error {
@@ -136,13 +145,4 @@ h1 {
   align-items: center;
   height: 100vh;
   width: 100vw;
-}
-
-#info-icon {
-  font-size: 0.75em;
-  color: var(--accent);
-}
-
-.yellow {
-  color: #f2cb05;
 }

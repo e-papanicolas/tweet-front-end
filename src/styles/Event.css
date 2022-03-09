@@ -46,7 +46,7 @@
 
 .start-stream button {
   cursor: pointer;
-  background-color: var(--yellow);
+  background-color: var(--accent);
   color: var(--text-primary);
   padding: 5px;
   font-weight: bold;

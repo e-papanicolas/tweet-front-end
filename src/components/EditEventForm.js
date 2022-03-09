@@ -8,7 +8,7 @@ export default function EditEventForm({
   user,
   handleUpdateEvent,
   setEditingEvent,
-  index,
+  index, 
 }) {
   // sets state
   const [eventFormData, setEventFormData] = useState({

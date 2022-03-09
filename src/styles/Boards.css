@@ -176,7 +176,7 @@ select {
 }
 
 .pb:hover {
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .red {
@@ -203,6 +203,10 @@ select {
   background-color: var(--yellow);
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.open-event-button:hover {
+  opacity: 80%;
 }
 
 .center {
@@ -244,6 +248,10 @@ select {
   /* color: var(--text-primary); */
   font-weight: bold;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.submit-button:hover {
+  opacity: 80%;
 }
 
 .select-menu {

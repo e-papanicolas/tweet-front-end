@@ -16,8 +16,9 @@ code {
   --background: #f0f0f2;
   --text-primary: #3c3c3a;
   --text-secondary: black;
-  --accent: #5b85d9;
+  --accent: #f2cb05;
   --yellow: #f2cb05;
+  --blue: #5b85d9;
   --input: #fff;
   --bkimg: url(./images/people_img.jpg);
 }
@@ -25,8 +26,9 @@ code {
   --background: #5f5f63;
   --text-primary: #f0f0f2;
   --text-secondary: #f0f0f2;
-  --accent: #f2cb05;
-  --yellow: #5b85d9;
+  --accent: #5b85d9;
+  --yellow: #f2cb05;
+  --blue: #5b85d9;
   --input: #f0f0f2;
   --bkimg: url(./images/darkmode-bg.jpg);
 }

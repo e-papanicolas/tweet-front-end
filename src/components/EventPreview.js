@@ -6,6 +6,7 @@ import "../styles/Boards.css";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import EditEventForm from "./EditEventForm";
+import Loader from "./Loader";
 
 export default function EventPreview({
   event,
