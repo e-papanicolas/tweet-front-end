@@ -244,6 +244,13 @@ select {
   padding: 10px;
 }
 
+.event-edit-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
 .submit-button {
   cursor: pointer;
   background-color: var(--yellow);

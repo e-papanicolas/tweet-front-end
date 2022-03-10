@@ -8,7 +8,7 @@ export default function EditEventForm({
   user,
   handleUpdateEvent,
   setEditingEvent,
-  index, 
+  index,
 }) {
   // sets state
   const [eventFormData, setEventFormData] = useState({
@@ -48,7 +48,7 @@ export default function EditEventForm({
 
   return (
     <div className="event-preview">
-      <div className="preview-titles-container">
+      <div className="event-edit-container">
         <div className="closing-flex">
           <div className="preview-header">
             <h2>Update event board</h2>
