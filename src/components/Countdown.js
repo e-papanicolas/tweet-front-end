@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 
 export default function Countdown({ timeout }) {
-  const Ref = useRef(timeout);
+  // let Ref;
+  let Ref = useRef();
+  // if (Ref.current) {
+  //   Ref = Ref.current;
+  // } else {
+  //   Ref = myRef;
+  // }
 
   const [timer, setTimer] = useState("00:00:00");
 
@@ -45,20 +51,24 @@ export default function Countdown({ timeout }) {
     // } else {
     //   setTimer("00:00:00");
     // }
-
+    if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
       startTimer(e);
       Ref.current = Ref.current - 1;
       console.log(Ref.current);
+      return function () {
+        clearInterval(id);
+      };
     }, 1000);
-    return function () {
-      clearInterval(id);
-    };
   };
 
   const getDeadTime = () => {
     let deadline = new Date();
-    deadline.setSeconds(deadline.getSeconds() + Ref.current);
+    if (Ref.current) {
+      deadline.setSeconds(deadline.getSeconds() + Ref.current);
+    } else {
+      deadline.setSeconds(deadline.getSeconds() + timeout);
+    }
     return deadline;
   };
 

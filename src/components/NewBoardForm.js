@@ -48,7 +48,7 @@ export default function NewBoardForm({
   const appInfo = `A TweetStream event board can be used for a variety of occasions, any celebrations where you would want to follow a hashtag, think weddings or graduations. An event board connects you to the Twitter Stream and this connection allows the event board to collect Tweets for you that match your hashtag and displays them in real time.`;
   const nameInfo = `The name of your event will be displayed on the top of your event board and you can name it anything you'd like, ex: "Kristin's Bachelorette Party!"`;
   const hashtagInfo = `The hashtag you choose will also be displayed on the top of your event board, and for the duration of streaming, any Tweets matching the hashtag will be streamed to your event board, ex: "kristinsbach". Don't worry about the hashtag, we've included that for you!`;
-  const streamingInfo = `Unfortunately we cannot stream forever! Your event board is connected to the Twitter Stream for the length of time you select.`;
+  const streamingInfo = `Your event board is connected to the Twitter Stream for the length of time you select.`;
 
   // form render
   return (

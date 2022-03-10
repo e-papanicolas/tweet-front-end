@@ -6,8 +6,25 @@ import "../styles/NavBar.css";
 import logo from "../images/logo-grey.svg";
 import lightLogo from "../images/logo-light-grey.svg";
 import defaultImage from "../images/default-user-image.png";
+import { gsap } from "gsap";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
+  const onHover = ({ currentTarget }) => {
+    gsap.to(currentTarget, { scale: 2.5, duration: 1 });
+  };
+
+  const onAfterHover = ({ currentTarget }) => {
+    gsap.to(currentTarget, { scale: 1, duration: 1 });
+  };
+
+  const onNavHover = ({ currentTarget }) => {
+    // gsap.to(currentTarget, { scale: 1.5, duration: 1 });
+  };
+
+  const onNavAfterHover = ({ currentTarget }) => {
+    // gsap.to(currentTarget, { scale: 1, duration: 1 });
+  };
+
   return (
     <div id="nav">
       <div className="logo">
@@ -37,25 +54,45 @@ function NavBar({ handleLogOut, user, switchTheme, theme }) {
           )}
         </NavLink>
       </div>
-      <nav className="nav vertical">
+      <nav
+        className="nav vertical"
+        onMouseEnter={onNavHover}
+        onMouseLeave={onNavAfterHover}
+      >
         <ul>
           <li>
             <NavLink to="/myevents">
-              <Icon>home</Icon>
+              <Icon onMouseEnter={onHover} onMouseLeave={onAfterHover}>
+                home
+              </Icon>
             </NavLink>
           </li>
           <li>
             <p>
               {theme === "dark" ? (
-                <Icon onClick={switchTheme}>light_mode</Icon>
+                <Icon
+                  onClick={switchTheme}
+                  onMouseEnter={onHover}
+                  onMouseLeave={onAfterHover}
+                >
+                  light_mode
+                </Icon>
               ) : (
-                <Icon onClick={switchTheme}>dark_mode</Icon>
+                <Icon
+                  onClick={switchTheme}
+                  onMouseEnter={onHover}
+                  onMouseLeave={onAfterHover}
+                >
+                  dark_mode
+                </Icon>
               )}
             </p>
           </li>
           <li onClick={handleLogOut}>
             <p>
-              <Icon>logout</Icon>
+              <Icon onMouseEnter={onHover} onMouseLeave={onAfterHover}>
+                logout
+              </Icon>
             </p>
           </li>
         </ul>

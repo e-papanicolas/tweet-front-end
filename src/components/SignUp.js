@@ -204,7 +204,9 @@ function SignUp({
                 />
               </Grid>
             </Grid>
-            {errors ? <p className="error">{errors}</p> : null}
+            {errors
+              ? errors.map((error) => <p className="error">{error}</p>)
+              : null}
             <Button
               type="submit"
               fullWidth

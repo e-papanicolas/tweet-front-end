@@ -51,6 +51,7 @@
 .profile-info-container {
   padding-top: 4em;
   padding-left: 1em;
+  padding-right: 1em;
 }
 
 .profile-buttons {
@@ -148,9 +149,4 @@ textarea {
 .edit-profile {
   height: 45%;
   padding-top: 3em;
-}
-
-.errors-container {
-  width: 150px;
-  height: 150px;
 }

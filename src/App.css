@@ -10,7 +10,7 @@ body {
   color: var(--text-primary);
   justify-content: center;
   align-items: center;
-  background-image: var(--bkimg);
+  background: var(--bkimg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -145,4 +145,9 @@ h1 {
   align-items: center;
   height: 100vh;
   width: 100vw;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
 }
