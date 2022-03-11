@@ -1,4 +1,7 @@
 // import react and utils
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+// Material UI Components
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,8 +12,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+// import components
 import Loader from "./Loader";
 
 function Copyright(props) {
@@ -38,6 +40,7 @@ function SignUp({
   onMouseEnterLetter,
   onMouseLeaveLetter,
 }) {
+  // sets state
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -51,6 +54,7 @@ function SignUp({
     return <Loader />;
   }
 
+  // signup form data
   const signUpData = {
     user: {
       username,
@@ -61,6 +65,7 @@ function SignUp({
     },
   };
 
+  // submits form, handles success and errors
   function handleSubmit(e) {
     setLoading(!isLoading);
     e.preventDefault();
@@ -83,6 +88,8 @@ function SignUp({
     });
   }
 
+  // render signup page
+  // spans are for animation passed down through props
   return (
     <div className="signup">
       <h1

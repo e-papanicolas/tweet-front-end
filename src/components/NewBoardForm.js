@@ -10,6 +10,7 @@ export default function NewBoardForm({
   user,
   setFormPopup,
   handleCreateNewEvent,
+  removeSpacesFromHashtag,
 }) {
   // sets state
   const [eventFormData, setEventFormData] = useState({
@@ -18,11 +19,6 @@ export default function NewBoardForm({
     hashtag: "",
     timeout: 0,
   });
-
-  // removes any whitespace from hashtag input
-  function removeSpacesFromHashtag(string) {
-    return string.replace(" ", "");
-  }
 
   // handles input changes on form
   function handleEventFormChange(e) {
@@ -50,7 +46,7 @@ export default function NewBoardForm({
   const hashtagInfo = `The hashtag you choose will also be displayed on the top of your event board, and for the duration of streaming, any Tweets matching the hashtag will be streamed to your event board, ex: "kristinsbach". Don't worry about the hashtag, we've included that for you!`;
   const streamingInfo = `Your event board is connected to the Twitter Stream for the length of time you select.`;
 
-  // form render
+  // renders form view
   return (
     <div id="board-form">
       <div className="form-title">

@@ -24,7 +24,6 @@
   max-width: 400px;
   background: #fff;
   margin: 0 auto;
-  /* margin-top: 20px; */
   border-radius: 3px;
   padding: 10px;
   border: 1px solid var(--background);
@@ -38,11 +37,9 @@
 
 .tweet-header-info {
   font-weight: bold;
-  /* color: var(--text-primary); */
 }
 
 .tweet-header-info span {
-  /* color: var(--text-secondary); */
   font-weight: normal;
   margin-left: 5px;
 }
@@ -60,7 +57,6 @@
   display: flex;
   margin-left: 60px;
   margin-top: 10px;
-  /* color: var(--text-primary); */
 }
 
 .tweet-info-counts div {
@@ -69,7 +65,6 @@
 }
 
 .tweet-info-counts div svg {
-  /* color: var(--text-secondary); */
   margin-right: 10px;
 }
 

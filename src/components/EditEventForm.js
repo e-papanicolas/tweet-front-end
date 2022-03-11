@@ -1,3 +1,4 @@
+// import react and utils
 import React from "react";
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
@@ -9,8 +10,10 @@ export default function EditEventForm({
   handleUpdateEvent,
   setEditingEvent,
   index,
+  removeSpacesFromHashtag,
 }) {
-  // sets state
+  // sets state of form with current values so that if user
+  // leaves them blank it doesn't get overwritten
   const [eventFormData, setEventFormData] = useState({
     user_id: user.id,
     name: event.name,
@@ -21,12 +24,7 @@ export default function EditEventForm({
     index: index,
   });
 
-  // removes any whitespace from hashtag input
-  function removeSpacesFromHashtag(string) {
-    return string.replace(" ", "");
-  }
-
-  // handles input changes on form
+  // handles input changes on form and sets in state
   function handleEventFormChange(e) {
     if (e.target.name === "timeout") {
       setEventFormData({
@@ -46,6 +44,7 @@ export default function EditEventForm({
     }
   }
 
+  // renders form to update event board
   return (
     <div className="event-preview">
       <div className="event-edit-container">

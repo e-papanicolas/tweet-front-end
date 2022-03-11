@@ -1,3 +1,4 @@
+// import react and utils
 import React from "react";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
@@ -19,7 +20,7 @@ export default function UpdateProfileForm({
       [e.target.name]: e.target.value,
     });
   }
-
+  // renders form view
   return (
     <div id="profile-container">
       <div className="profile-photo-container">

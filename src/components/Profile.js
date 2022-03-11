@@ -6,6 +6,7 @@ import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+// import css, images, and components
 import "../styles/Profile.css";
 import defaultImage from "../images/default-user-image.png";
 import UpdateProfileForm from "./UpdateProfileForm";
@@ -20,7 +21,6 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
   const [confirmDelete, setConfirmDelete] = useState("");
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
-
   const [profileData, setProfileData] = useState({
     bio: user.bio,
     first_name: user.first_name,
@@ -86,7 +86,7 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
     });
   }
 
-  // handles account deletion
+  // handles account deletion, navigates back to login page
   function handleDeleteAccount(e) {
     setLoading(true);
     e.preventDefault();
@@ -109,7 +109,7 @@ function Profile({ user, setUser, setLoggedIn, setLoading }) {
     setOpen(false);
   }
 
-  // page render
+  // renders profile page or update profile form
   return (
     <div className="profile-page-container">
       {editProfile ? (

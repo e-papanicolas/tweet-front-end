@@ -13,9 +13,8 @@ import anime from "animejs/lib/anime.es.js";
 
 // import components
 import Tweet from "./Tweet";
-// import Countdown from "./Countdown";
 
-export default function Event({ user }) {
+export default function Event() {
   let { eventId } = useParams();
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
@@ -25,8 +24,8 @@ export default function Event({ user }) {
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  // const [countdown, setCountdown] = useState(false);
-
+  // event is not getting passed down through props, it has a useEffect to get the data
+  // each page has its own route - usinng useParams for its event id
   const [event, setEvent] = useState({
     hashtag: "",
     id: eventId,
@@ -57,7 +56,7 @@ export default function Event({ user }) {
     });
   }, [token, eventId]);
 
-  // sends request to back end to start streaming from twitter
+  // sends request to back end to start streaming from twitter filtered stream endpoint
   function startStream() {
     console.log("starting stream");
     fetch(`http://localhost:3000/streamstart/${event.id}`, {
@@ -66,9 +65,8 @@ export default function Event({ user }) {
         Authorization: `Bearer ${token}`,
       },
     });
-    // setCountdown(true);
     // disables the start streaming button to avoid sending requests
-    // and interrupting the stream
+    // and disrupting the stream
     setDisabled(true);
     const timeoutId = setTimeout(() => {
       setDisabled(false);
@@ -84,7 +82,7 @@ export default function Event({ user }) {
 
   // recieves data from websocket, filters out broadcasts that arent tweets
   // creates a new tweet out of the response and adds it to the tweet array
-  // which triggers state and it appears on the page
+  // which triggers state and it is animated onto the page
   function handleRecieveData(data) {
     console.log(data);
     if (data.body !== "starting twitter streaming") {
@@ -122,7 +120,7 @@ export default function Event({ user }) {
     setOpen(false);
   }
 
-  // render event
+  // render event page
   return (
     <ActionCableProvider url="ws://localhost:3000/cable">
       <div id="event-page">

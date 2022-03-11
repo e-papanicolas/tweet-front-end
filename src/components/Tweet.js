@@ -2,8 +2,10 @@ import React from "react";
 import "../styles/Tweet.css";
 
 export default function Tweet({ tweet }) {
+  // changes timestamp into full date string
   const date = new Date(tweet.data.created_at).toString();
 
+  // renders tweet
   return (
     <div id="tweet" className={tweet.isNew ? "the-tweet" : "not-the-tweet"}>
       <div className="tweet-wrap">

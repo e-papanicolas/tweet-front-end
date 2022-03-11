@@ -5,18 +5,23 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Boards.css";
 import Icon from "@mui/material/Icon";
 import Tooltip from "@mui/material/Tooltip";
+
+// import components
 import EditEventForm from "./EditEventForm";
 
 export default function EventPreview({
   event,
-  handleDeleteEvent,
   user,
-  handleUpdateEvent,
   index,
+  handleDeleteEvent,
+  handleUpdateEvent,
+  removeSpacesFromHashtag,
 }) {
   const [editingEvent, setEditingEvent] = useState(false);
   const navigate = useNavigate();
 
+  // renders the event preview, or when edit button is clicked
+  // renders the edit event form component
   return (
     <div>
       {editingEvent ? (
@@ -26,6 +31,7 @@ export default function EventPreview({
           user={user}
           handleUpdateEvent={handleUpdateEvent}
           setEditingEvent={setEditingEvent}
+          removeSpacesFromHashtag={removeSpacesFromHashtag}
         />
       ) : (
         <div className="event-preview">

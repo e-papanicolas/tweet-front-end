@@ -27,7 +27,7 @@ select {
   border-radius: 5px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Sansita+Swashed:wght@500&family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?&family=Sansita+Swashed:wght@500&display=swap");
 
 /* ICON STYLES */
 
@@ -118,8 +118,6 @@ textarea {
 h1 {
   font-size: 8rem;
   font-family: "Sansita Swashed", cursive;
-  /* font-family: "Pacifico", cursive;
-  /* font-family: "Staatliches", cursive; */
   margin-bottom: 10rem;
 }
 

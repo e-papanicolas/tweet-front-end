@@ -9,20 +9,13 @@ import defaultImage from "../images/default-user-image.png";
 import { gsap } from "gsap";
 
 function NavBar({ handleLogOut, user, switchTheme, theme }) {
+  // uses greensock for animations
   const onHover = ({ currentTarget }) => {
     gsap.to(currentTarget, { scale: 2.5, duration: 1 });
   };
 
   const onAfterHover = ({ currentTarget }) => {
     gsap.to(currentTarget, { scale: 1, duration: 1 });
-  };
-
-  const onNavHover = ({ currentTarget }) => {
-    // gsap.to(currentTarget, { scale: 1.5, duration: 1 });
-  };
-
-  const onNavAfterHover = ({ currentTarget }) => {
-    // gsap.to(currentTarget, { scale: 1, duration: 1 });
   };
 
   return (
@@ -54,11 +47,7 @@ function NavBar({ handleLogOut, user, switchTheme, theme }) {
           )}
         </NavLink>
       </div>
-      <nav
-        className="nav vertical"
-        onMouseEnter={onNavHover}
-        onMouseLeave={onNavAfterHover}
-      >
+      <nav className="nav vertical">
         <ul>
           <li>
             <NavLink to="/myevents">

@@ -1,4 +1,7 @@
+// import react and utils
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+// import Material UI Components
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { NavLink } from "react-router-dom";
+// import components
 import Loader from "./Loader";
 
 function Copyright(props) {
@@ -36,6 +39,8 @@ function Login({
   onMouseEnterLetter,
   onMouseLeaveLetter,
 }) {
+  // uses JWT for auth, stores token in local storage
+  // token is sent with every protected fetch route (not signup)
   const token = localStorage.getItem("jwt");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -47,6 +52,7 @@ function Login({
     return <Loader />;
   }
 
+  // login form data
   let loginData = {
     user: {
       username: username,
@@ -54,6 +60,7 @@ function Login({
     },
   };
 
+  // submits the form and resets state, any errors are displayed
   function handleSubmit(e) {
     setLoading(!isLoading);
     e.preventDefault();
@@ -79,6 +86,8 @@ function Login({
     setPassword("");
   }
 
+  // render login page
+  // spans are for animation passed down through props
   return (
     <div className="login-page">
       <h1

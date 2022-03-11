@@ -17,7 +17,7 @@ import Loader from "./components/Loader";
 import "./index.css";
 
 function App() {
-  // auth - token needs to go on every page with a protected fetch
+  // auth - token needs to get passed with all protected fetches
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
 
@@ -27,7 +27,8 @@ function App() {
   const [errors, setErrors] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  // dark and light mode
+  // dark and light mode using css and data theme attribute
+  // stores user preference in local storage
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
@@ -52,7 +53,7 @@ function App() {
     navigate("/");
   }
 
-  // fetches the user from api and sets user
+  // fetches the user from api and sets user in state
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3000/me", {

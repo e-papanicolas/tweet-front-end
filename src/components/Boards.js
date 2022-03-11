@@ -6,7 +6,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-// import components
+// import components and css
 import NewBoardForm from "./NewBoardForm";
 import EventPreview from "./EventPreview";
 import "../styles/Boards.css";
@@ -61,8 +61,13 @@ function Boards({ user, setLoading }) {
     });
   }
 
-  // deletes event from db, updates state to remove it from the page
-  // deletes rule from twitter stream also
+  // removes any whitespace from hashtag input, passed down as props
+  function removeSpacesFromHashtag(string) {
+    return string.replace(" ", "");
+  }
+
+  // deletes event from db, deletes rule from twitter stream
+  // updates state to remove it from the page
   function handleDeleteEvent(event) {
     setLoading(true);
     fetch(`http://localhost:3000/events/${event.id}`, {
@@ -85,7 +90,7 @@ function Boards({ user, setLoading }) {
     });
   }
 
-  // update event function
+  // update event function, uses slice method to update it in place instead of end of array
   function handleUpdateEvent(e, event) {
     e.preventDefault();
     const index = event.index;
@@ -124,7 +129,7 @@ function Boards({ user, setLoading }) {
     setOpen(false);
   }
 
-  // renders new form popup when button is clicked
+  // renders new event board form popup when button is clicked
   if (formPopup) {
     return (
       <div className="new-board-form-container">
@@ -132,6 +137,7 @@ function Boards({ user, setLoading }) {
           user={user}
           setFormPopup={setFormPopup}
           handleCreateNewEvent={handleCreateNewEvent}
+          removeSpacesFromHashtag={removeSpacesFromHashtag}
         />
         {errors
           ? errors.map((error) => (
@@ -142,7 +148,7 @@ function Boards({ user, setLoading }) {
     );
   }
 
-  // if user has boards, map over and render Event component for each, if not display message
+  // if user has event boards, map over and render Event component for each, if not display message
   return (
     <div id="boards-container">
       <div className="event-board-title-container">
@@ -176,6 +182,7 @@ function Boards({ user, setLoading }) {
                   handleDeleteEvent={handleDeleteEvent}
                   user={user}
                   handleUpdateEvent={handleUpdateEvent}
+                  removeSpacesFromHashtag={removeSpacesFromHashtag}
                 />
               );
             })}
