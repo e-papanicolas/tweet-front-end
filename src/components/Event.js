@@ -34,6 +34,7 @@ export default function Event() {
     timeout: "",
   });
 
+  // sets action cable subscription for web sockets
   useEffect(() => {
     if (!cable.current) {
       cable.current = createConsumer("ws://localhost:3000/cable");
