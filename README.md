@@ -13,6 +13,8 @@ To run this app, run `npm install` and `npm start`.
 - Material UI login and signup components
 - Custom CSS Light/Dark Mode
 
-Watch a demo of this project [on youtube](https://www.youtube.com/watch?v=urTOZf8Z2A4)
+## Links
+
+Watch a demo of this project [on youtube](https://www.youtube.com/watch?v=urTOZf8Z2A4).
 
 Take a look at the [back end here](https://github.com/e-papanicolas/tweet-back-end).
